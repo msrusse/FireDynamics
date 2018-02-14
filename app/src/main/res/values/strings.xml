@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">FireDynamics</string>
+    <string name="comp_width">Compartment Width</string>
+    <string name="comp_length">Compartment Length</string>
+    <string name="comp_height">Compartment Height</string>
+    <string name="vent_width">Vent Width</string>
+    <string name="interior_lining">Interior Lining</string>
+    <string name="thickness">Thickness</string>
+    <string-array name="units_array">
+        <item>ft</item>
+        <item>in</item>
+        <item>m</item>
+        <item>cm</item>
+        <item>mm</item>
+    </string-array>
+    <string-array name="lining_materials">
+        <item>Aerated Concrete</item>
+        <item>Alumina Silicate Block</item>
+        <item>Aluminum (pure)</item>
+        <item>Brick</item>
+        <item>Brick/Concrete Block</item>
+        <item>Calcium Silicate Board</item>
+        <item>Chipboard</item>
+        <item>Concrete</item>
+        <item>Expended Polystyrene</item>
+        <item>Fiber Insulation Board</item>
+        <item>Glass Fiber Insulation</item>
+        <item>Glass Plate</item>
+        <item>Gypsum Board</item>
+        <item>Plasterboard</item>
+        <item>Plywood</item>
+        <item>Steel (0.5% Carbon)</item>
+    </string-array>
 </resources>
