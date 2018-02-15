@@ -2,23 +2,31 @@ package com.example.masonrussell.firedynamics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlashOver extends AppCompatActivity {
 
-    public Spinner materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
-    public EditText ventWidthText, ventHeightText, compWidthText, compLengthText, compHeightText;
+    public Spinner intLiningSpinner, materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
+    public EditText intLiningText, ventWidthText, ventHeightText, compWidthText, compLengthText, compHeightText;
+    public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth;
+    public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits;
+    public Button calculateButton;
+    public TextView at, av, hk, thermalConduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_over);
+        calculateButton = findViewById(R.id.getFlashoverButton);
         compWidthSpinner = findViewById(R.id.compWidthSpinner);
         compWidthText = findViewById(R.id.compWidthText);
         compLengthSpinner = findViewById(R.id.compLengthSpinner);
@@ -30,12 +38,48 @@ public class FlashOver extends AppCompatActivity {
         ventWidthSpinner = findViewById(R.id.ventWidthSpinner);
         ventWidthText = findViewById(R.id.ventWidthText);
         materialSpinner = findViewById(R.id.materialSpinner);
+        thermalConduct = findViewById(R.id.conductivityResult);
+        intLiningText = findViewById(R.id.intLiningText);
+        intLiningSpinner = findViewById(R.id.intLiningSpinner);
+        hk = findViewById(R.id.hkResult);
+        av = findViewById(R.id.avResult);
+        at = findViewById(R.id.atResult);
         addItemsOnMaterialSpinner(materialSpinner);
+        addItemsOnUnitSpinner(intLiningSpinner);
         addItemsOnUnitSpinner(compWidthSpinner);
         addItemsOnUnitSpinner(compLengthSpinner);
         addItemsOnUnitSpinner(compHeightSpinner);
         addItemsOnUnitSpinner(ventHeightSpinner);
         addItemsOnUnitSpinner(ventWidthSpinner);
+
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                compWidth = Double.parseDouble(compWidthText.getText().toString());
+                compHeight = Double.parseDouble(compHeightText.getText().toString());
+                compLength = Double.parseDouble(compLengthText.getText().toString());
+                ventHeight = Double.parseDouble(ventHeightText.getText().toString());
+                ventWidth = Double.parseDouble(ventWidthText.getText().toString());
+                intLining = Double.parseDouble(intLiningText.getText().toString());
+                compWidthUnits = compWidthSpinner.getSelectedItem().toString();
+                compHeightUnits = compHeightSpinner.getSelectedItem().toString();
+                compLengthUnits = compLengthSpinner.getSelectedItem().toString();
+                ventHeightUnits = ventHeightSpinner.getSelectedItem().toString();
+                ventWidthUnits = ventWidthSpinner.getSelectedItem().toString();
+                intLiningUnits = intLiningSpinner.getSelectedItem().toString();
+                compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
+                compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
+                compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
+                ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
+                ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
+                intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
+                thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
+                thermalConduct.setText(String.valueOf(thermalConductivity));
+                hk.setText(String.valueOf(thermalConductivity/intLining));
+                av.setText(String.valueOf(ventWidth*ventHeight));
+                at.setText(String.valueOf((2*(compWidth*compLength)+2*(compHeight*compWidth)+2*(compHeight*compLength))-(ventWidth*ventHeight)));
+                //Toast.makeText(FlashOver.this, String.valueOf(compWidth), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)
@@ -54,7 +98,7 @@ public class FlashOver extends AppCompatActivity {
     public void addItemsOnMaterialSpinner(Spinner spinnerToMake)
     {
         List<String> list = new ArrayList<>();
-        list.add("aerated Concrete");
+        list.add("Aerated Concrete");
         list.add("Alumina Silicate Block");
         list.add("Aluminum (pure)");
         list.add("Brick");
