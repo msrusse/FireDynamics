@@ -74,10 +74,14 @@ public class FlashOver extends AppCompatActivity {
                 intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                 thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
                 thermalConduct.setText(String.valueOf(thermalConductivity));
-                hk.setText(String.valueOf(thermalConductivity/intLining));
-                av.setText(String.valueOf(ventWidth*ventHeight));
-                at.setText(String.valueOf((2*(compWidth*compLength)+2*(compHeight*compWidth)+2*(compHeight*compLength))-(ventWidth*ventHeight)));
-                //Toast.makeText(FlashOver.this, String.valueOf(compWidth), Toast.LENGTH_LONG).show();
+                double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
+                hk.setText(String.valueOf(hkdoub));
+                double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
+                av.setText(String.valueOf(avdoub));
+                double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
+                at.setText(String.valueOf(atdoub));
+                double mccaffreyQ = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
+                Toast.makeText(FlashOver.this, String.valueOf(mccaffreyQ), Toast.LENGTH_LONG).show();
             }
         });
     }
