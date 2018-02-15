@@ -4,8 +4,22 @@
     <string name="comp_length">Compartment Length</string>
     <string name="comp_height">Compartment Height</string>
     <string name="vent_width">Vent Width</string>
+    <string name="vent_height">Vent Height</string>
     <string name="interior_lining">Interior Lining</string>
     <string name="thickness">Thickness</string>
+    <string name="flashover">Q-Flashover</string>
+    <string name="hrr">HRR</string>
+    <string name="flame_height">Flame Height</string>
+    <string name="t2_fires">T2 Fires</string>
+    <string name="radiation_pool">Radiation Pool Fire</string>
+    <string name="conduction">Conduction</string>
+    <string name="solid_ignition">Solid Ignition</string>
+    <string name="open_pipe">Open Pipe</string>
+    <string name="gas_conc">Gas Concentration</string>
+    <string name="gas_amount">Gas Amount</string>
+    <string name="oxygen_levels">Oxygen Levels</string>
+    <string name="self_heating">Self Heating</string>
+    <string name="t_gas_layer">T Gas Layer</string>
     <string-array name="units_array">
         <item>ft</item>
         <item>in</item>
