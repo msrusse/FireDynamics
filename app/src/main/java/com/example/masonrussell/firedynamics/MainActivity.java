@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             {
                  Intent intent = new Intent(getApplicationContext(), FlashOver.class);
                  startActivity(intent);
-                 finish();
             }
         });
 
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             {
                 Intent intent = new Intent(getApplicationContext(), HRR.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

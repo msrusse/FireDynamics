@@ -41,4 +41,14 @@ class Calculations
     {
         return (kw * 1.055055852);
     }
+
+    static double CalculateArea(double radius)
+    {
+        return (Math.PI * (Math.pow(radius,2)));
+    }
+
+    static double CalculateHRRQ(double mbf, double ehc, double area)
+    {
+        return (mbf*ehc*area);
+    }
 }
