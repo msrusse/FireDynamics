@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,14 @@ public class FlashOver extends AppCompatActivity {
     public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth;
     public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits;
     public Button calculateButton;
-    public TextView at, av, hk, thermalConduct;
+    public TextView at, av, hk, thermalConduct, qMccaffrey, qBabrauskas, qThomas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final DecimalFormat twoDigits = new DecimalFormat("0.00");
+        final DecimalFormat fiveDigits = new DecimalFormat("0.00000");
+        final DecimalFormat fourDigits = new DecimalFormat("0.0000");
+        final DecimalFormat threeDigits = new DecimalFormat("0.000");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_over);
         calculateButton = findViewById(R.id.getFlashoverButton);
@@ -41,6 +46,9 @@ public class FlashOver extends AppCompatActivity {
         thermalConduct = findViewById(R.id.conductivityResult);
         intLiningText = findViewById(R.id.intLiningText);
         intLiningSpinner = findViewById(R.id.intLiningSpinner);
+        qMccaffrey = findViewById(R.id.mccaffreyQResult);
+        qBabrauskas = findViewById(R.id.babrauskasQResult);
+        qThomas = findViewById(R.id.thomasQResult);
         hk = findViewById(R.id.hkResult);
         av = findViewById(R.id.avResult);
         at = findViewById(R.id.atResult);
@@ -73,15 +81,20 @@ public class FlashOver extends AppCompatActivity {
                 ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
                 intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                 thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
-                thermalConduct.setText(String.valueOf(thermalConductivity));
+                thermalConduct.setText(String.valueOf(fiveDigits.format(thermalConductivity)));
                 double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                hk.setText(String.valueOf(hkdoub));
+                hk.setText(String.valueOf(threeDigits.format(hkdoub)));
                 double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
-                av.setText(String.valueOf(avdoub));
+                av.setText(String.valueOf(twoDigits.format(avdoub)));
                 double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
-                at.setText(String.valueOf(atdoub));
-                double mccaffreyQ = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
-                Toast.makeText(FlashOver.this, String.valueOf(mccaffreyQ), Toast.LENGTH_LONG).show();
+                at.setText(String.valueOf(twoDigits.format(atdoub)));
+                double qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
+                double qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
+                double qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
+                qMccaffrey.setText(String.valueOf(twoDigits.format(qMccaffreyDoub)));
+                qBabrauskas.setText(String.valueOf(twoDigits.format(qBabrauskasDoub)));
+                qThomas.setText(String.valueOf(twoDigits.format(qThomasDoub)));
+                //Toast.makeText(FlashOver.this, String.valueOf(qThomasDoub), Toast.LENGTH_LONG).show();
             }
         });
     }

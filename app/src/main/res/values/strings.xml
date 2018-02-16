@@ -22,6 +22,13 @@
     <string name="t_gas_layer">T Gas Layer</string>
     <string name="int_lining_thick">Interior Lining Thickness</string>
     <string name="get_calculation">Calculate for me!</string>
+    <string name="int_therm_lining">Interior Lining Thermal Conductivity</string>
+    <string name="hk">hk</string>
+    <string name="av">Av</string>
+    <string name="at">AT</string>
+    <string name="q_mccaffrey">Q according to McCaffrey, Quintiera, and Harkleroad</string>
+    <string name="q_babrauskas">Q according to Babrauskas</string>
+    <string name="q_thomas">Q according to Thomas</string>
     <string-array name="units_array">
         <item>ft</item>
         <item>in</item>

@@ -26,4 +26,14 @@ public class Calculations
     {
         return (610 * Math.sqrt(hk*at*av*Math.sqrt(ventHeight)));
     }
+    //This method calculates the value of Q according to the method of Babrauskas
+    public static double CalculateBarbraukas(double av, double ventHeight)
+    {
+        return (750 * av * Math.sqrt(ventHeight));
+    }
+    //This method calculates the value of Q according to the method of Thomas
+    public static double CalculateThomas(double av, double at, double ventHeight)
+    {
+        return (7.8 * at + 378 * av * Math.sqrt(ventHeight));
+    }
 }

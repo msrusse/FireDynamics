@@ -217,16 +217,16 @@
 
                 <TextView
                     android:id="@+id/conductivityView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Interior Lining Thermal Conductivity" />
+                    android:layout_weight=".85"
+                    android:text="@string/int_therm_lining" />
 
                 <TextView
                     android:id="@+id/conductivityResult"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight=".15" />
             </LinearLayout>
 
             <LinearLayout
@@ -236,16 +236,16 @@
 
                 <TextView
                     android:id="@+id/hkView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="hk" />
+                    android:layout_weight=".85"
+                    android:text="@string/hk" />
 
                 <TextView
                     android:id="@+id/hkResult"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight=".15" />
             </LinearLayout>
 
             <LinearLayout
@@ -255,35 +255,92 @@
 
                 <TextView
                     android:id="@+id/avView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Av" />
+                    android:layout_weight=".85"
+                    android:text="@string/av" />
 
                 <TextView
                     android:id="@+id/avResult"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight=".15" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/atView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="AT" />
+                    android:layout_weight=".85"
+                    android:text="@string/at" />
 
                 <TextView
                     android:id="@+id/atResult"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight=".15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mccaffreyQText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".85"
+                    android:text="@string/q_mccaffrey" />
+
+                <TextView
+                    android:id="@+id/mccaffreyQResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/babrauskasQText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".85"
+                    android:text="@string/q_babrauskas" />
+
+                <TextView
+                    android:id="@+id/babrauskasQResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/thomasQText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".85"
+                    android:text="@string/q_thomas" />
+
+                <TextView
+                    android:id="@+id/thomasQResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".15" />
             </LinearLayout>
 
         </LinearLayout>
