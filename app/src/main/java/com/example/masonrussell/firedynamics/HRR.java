@@ -1,5 +1,6 @@
 package com.example.masonrussell.firedynamics;
 
+import android.icu.text.Normalizer;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ public class HRR extends AppCompatActivity {
     public EditText areaBurningText;
     public TextView qResult;
     public Spinner typeSelectionSpinner, typeUnitSpinner, fuelSpinner, qSpinner;
-    public double maxBurningFlux, heatCombustion, areaDoub, radiusDoub;
+    public double maxBurningFlux, heatCombustion, areaDoub, radiusDoub, finalQ;
     public String typeSelection, typeUnits;
 
     @Override
@@ -37,6 +38,7 @@ public class HRR extends AppCompatActivity {
         fuelSpinner = findViewById(R.id.fuelSpinner);
         addItemsOnFuelSpinner(fuelSpinner);
         addSelectionsOnSpinner(typeSelectionSpinner);
+        addFinalUnitsSpinner(qSpinner);
 
         typeSelectionSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
@@ -65,18 +67,34 @@ public class HRR extends AppCompatActivity {
                 heatCombustion = ValuesConverstions.FuelHeatCombustion(fuelSpinner.getSelectedItem().toString());
                 typeSelection = typeSelectionSpinner.getSelectedItem().toString();
                 typeUnits = typeUnitSpinner.getSelectedItem().toString();
-                if (typeSelection.equals("Area of Burning"))
-                {
+                if (typeSelection.equals("Area of Burning")) {
                     areaDoub = Double.parseDouble(areaBurningText.getText().toString());
-                    areaDoub = ValuesConverstions.toMeters(areaDoub, typeUnits);
-                }
-                else if (typeSelection.equals("Radius"))
-                {
+                    areaDoub = ValuesConverstions.toSquareMeters(areaDoub, typeUnits);
+                } else if (typeSelection.equals("Radius")) {
                     radiusDoub = Double.parseDouble(areaBurningText.getText().toString());
-                    radiusDoub = ValuesConverstions.toSquareMeters(radiusDoub, typeUnits);
+                    radiusDoub = ValuesConverstions.toMeters(radiusDoub, typeUnits);
                     areaDoub = Calculations.CalculateArea(radiusDoub);
                 }
-                qResult.setText(String.valueOf(Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub)));
+                finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
+                qResult.setText(String.valueOf(Math.round(finalQ)));
+
+                qSpinner.setOnItemSelectedListener(
+                        new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                if (qSpinner.getSelectedItem().toString().equals("kW")) {
+                                    qResult.setText(String.valueOf(Math.round(finalQ)));
+                                } else if (qSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                                    qResult.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(finalQ))));
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        }
+                );
             }
         });
     }
@@ -133,6 +151,15 @@ public class HRR extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
+    }
 
+    public void addFinalUnitsSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("kW");
+        list.add("Btu/sec");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
     }
 }
