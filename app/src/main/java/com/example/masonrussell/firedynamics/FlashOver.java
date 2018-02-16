@@ -3,6 +3,7 @@ package com.example.masonrussell.firedynamics;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +17,12 @@ import java.util.List;
 
 public class FlashOver extends AppCompatActivity {
 
-    public Spinner intLiningSpinner, materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
+    public Spinner mccaffreyQSpinner, babrauskasQSpinner, qThomasSpinner, intLiningSpinner, materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
     public EditText intLiningText, ventWidthText, ventHeightText, compWidthText, compLengthText, compHeightText;
-    public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth;
+    public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub;
     public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits;
     public Button calculateButton;
-    public TextView at, av, hk, thermalConduct, qMccaffrey, qBabrauskas, qThomas;
+    public TextView qMccaffrey, qBabrauskas, qThomas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +44,14 @@ public class FlashOver extends AppCompatActivity {
         ventWidthSpinner = findViewById(R.id.ventWidthSpinner);
         ventWidthText = findViewById(R.id.ventWidthText);
         materialSpinner = findViewById(R.id.materialSpinner);
-        thermalConduct = findViewById(R.id.conductivityResult);
         intLiningText = findViewById(R.id.intLiningText);
         intLiningSpinner = findViewById(R.id.intLiningSpinner);
         qMccaffrey = findViewById(R.id.mccaffreyQResult);
+        mccaffreyQSpinner = findViewById(R.id.mccaffreyQSpinner);
+        babrauskasQSpinner = findViewById(R.id.babrauskasQSpinner);
+        qThomasSpinner = findViewById(R.id.thomasQSpinner);
         qBabrauskas = findViewById(R.id.babrauskasQResult);
         qThomas = findViewById(R.id.thomasQResult);
-        hk = findViewById(R.id.hkResult);
-        av = findViewById(R.id.avResult);
-        at = findViewById(R.id.atResult);
         addItemsOnMaterialSpinner(materialSpinner);
         addItemsOnUnitSpinner(intLiningSpinner);
         addItemsOnUnitSpinner(compWidthSpinner);
@@ -59,6 +59,9 @@ public class FlashOver extends AppCompatActivity {
         addItemsOnUnitSpinner(compHeightSpinner);
         addItemsOnUnitSpinner(ventHeightSpinner);
         addItemsOnUnitSpinner(ventWidthSpinner);
+        addFinalUnitsSpinner(qThomasSpinner);
+        addFinalUnitsSpinner(babrauskasQSpinner);
+        addFinalUnitsSpinner(mccaffreyQSpinner);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -81,19 +84,90 @@ public class FlashOver extends AppCompatActivity {
                 ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
                 intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                 thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
-                thermalConduct.setText(String.valueOf(fiveDigits.format(thermalConductivity)));
                 double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                hk.setText(String.valueOf(threeDigits.format(hkdoub)));
                 double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
-                av.setText(String.valueOf(twoDigits.format(avdoub)));
                 double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
-                at.setText(String.valueOf(twoDigits.format(atdoub)));
-                double qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
-                double qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
-                double qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
-                qMccaffrey.setText(String.valueOf(twoDigits.format(qMccaffreyDoub)));
-                qBabrauskas.setText(String.valueOf(twoDigits.format(qBabrauskasDoub)));
-                qThomas.setText(String.valueOf(twoDigits.format(qThomasDoub)));
+                qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
+                qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
+                qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
+                if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW"))
+                {
+                    qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+                }
+                else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                    qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+                }
+                if (babrauskasQSpinner.getSelectedItem().toString().equals("kW"))
+                {
+                    qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
+                }
+                else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                    qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
+                }
+                if (qThomasSpinner.getSelectedItem().toString().equals("kW"))
+                {
+                    qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
+                }
+                else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                    qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
+                }
+                mccaffreyQSpinner.setOnItemSelectedListener(
+                        new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW"))
+                                {
+                                    qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+                                }
+                                else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                                    qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        }
+                );
+                babrauskasQSpinner.setOnItemSelectedListener(
+                        new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                if (babrauskasQSpinner.getSelectedItem().toString().equals("kW"))
+                                {
+                                    qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
+                                }
+                                else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                                    qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        }
+                );
+                qThomasSpinner.setOnItemSelectedListener(
+                        new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                if (qThomasSpinner.getSelectedItem().toString().equals("kW"))
+                                {
+                                    qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
+                                }
+                                else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                                    qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        }
+                );
                 //Toast.makeText(FlashOver.this, String.valueOf(qThomasDoub), Toast.LENGTH_LONG).show();
             }
         });
@@ -131,6 +205,16 @@ public class FlashOver extends AppCompatActivity {
         list.add("Plasterboard");
         list.add("Plywood");
         list.add("Steel (0.5% Carbon)");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
+    }
+
+    public void addFinalUnitsSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("kW");
+        list.add("Btu/sec");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);

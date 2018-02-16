@@ -26,9 +26,9 @@
     <string name="hk">hk</string>
     <string name="av">Av</string>
     <string name="at">AT</string>
-    <string name="q_mccaffrey">Q according to McCaffrey, Quintiera, and Harkleroad</string>
-    <string name="q_babrauskas">Q according to Babrauskas</string>
-    <string name="q_thomas">Q according to Thomas</string>
+    <string name="q_mccaffrey_kw">MQH</string>
+    <string name="q_babrauskas_kw">Babrauskas</string>
+    <string name="q_thomas_kw">Thomas</string>
     <string name="burn_area">Area of Burning</string>
     <string name="circle_radius">Radius of the Circle</string>
     <string name="burning_flux">Max Burning Flux</string>

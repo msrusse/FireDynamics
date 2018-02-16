@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/firedynamics_background_1"
     tools:context="com.example.masonrussell.firedynamics.FlashOver">
 
     <LinearLayout
@@ -20,15 +21,18 @@
                 android:id="@+id/CompLengthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/comp_length" />
+                android:layout_weight=".7"
+                android:text="@string/comp_length"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/compLengthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compLengthText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -36,7 +40,8 @@
                 android:id="@+id/compLengthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -49,15 +54,18 @@
                 android:id="@+id/CompWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/comp_width" />
+                android:layout_weight=".7"
+                android:text="@string/comp_width"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/compWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -65,7 +73,8 @@
                 android:id="@+id/compWidthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -78,15 +87,18 @@
                 android:id="@+id/CompHeightView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/comp_height" />
+                android:layout_weight=".7"
+                android:text="@string/comp_height"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/compHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compHeightText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -94,7 +106,8 @@
                 android:id="@+id/compHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -107,15 +120,18 @@
                 android:id="@+id/ventWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/vent_width" />
+                android:layout_weight=".7"
+                android:text="@string/vent_width"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ventWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -123,7 +139,8 @@
                 android:id="@+id/ventWidthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -136,15 +153,18 @@
                 android:id="@+id/ventHieghtText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/vent_height" />
+                android:layout_weight=".7"
+                android:text="@string/vent_height"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ventHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventHeightText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -152,7 +172,8 @@
                 android:id="@+id/ventHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -165,15 +186,18 @@
                 android:id="@+id/intLiningThickView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".4"
-                android:text="@string/int_lining_thick" />
+                android:layout_weight=".7"
+                android:text="@string/int_lining_thick"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/intLiningText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3"
+                android:layout_weight=".12"
                 android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/intLiningText"
                 android:text=""
                 android:textAlignment="center" />
 
@@ -181,7 +205,8 @@
                 android:id="@+id/intLiningSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".3" />
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
 
@@ -193,16 +218,20 @@
             <Spinner
                 android:id="@+id/materialSpinner"
                 android:layout_width="0dp"
-                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:gravity="center" />
         </LinearLayout>
 
         <Button
             android:id="@+id/getFlashoverButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/get_calculation" />
+            android:backgroundTint="@android:color/white"
+            android:text="@string/get_calculation"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,93 +245,29 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/conductivityView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/int_therm_lining" />
-
-                <TextView
-                    android:id="@+id/conductivityResult"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/hkView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/hk" />
-
-                <TextView
-                    android:id="@+id/hkResult"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/avView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/av" />
-
-                <TextView
-                    android:id="@+id/avResult"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/atView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/at" />
-
-                <TextView
-                    android:id="@+id/atResult"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
                     android:id="@+id/mccaffreyQText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/q_mccaffrey" />
+                    android:layout_weight=".5"
+                    android:text="@string/q_mccaffrey_kw"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/mccaffreyQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
+                    android:layout_weight=".3"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/mccaffreyQSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:background="@drawable/firedynamic_button"
+                    android:gravity="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -314,14 +279,26 @@
                     android:id="@+id/babrauskasQText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/q_babrauskas" />
+                    android:layout_weight=".5"
+                    android:text="@string/q_babrauskas_kw"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/babrauskasQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
+                    android:layout_weight=".3"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/babrauskasQSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:background="@drawable/firedynamic_button"
+                    android:gravity="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -333,14 +310,26 @@
                     android:id="@+id/thomasQText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".85"
-                    android:text="@string/q_thomas" />
+                    android:layout_weight=".5"
+                    android:text="@string/q_thomas_kw"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/thomasQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".15" />
+                    android:layout_weight=".3"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/thomasQSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:background="@drawable/firedynamic_button"
+                    android:gravity="center" />
             </LinearLayout>
 
         </LinearLayout>
