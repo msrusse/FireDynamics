@@ -29,6 +29,29 @@ public class ValuesConverstions {
         return meters;
     }
 
+    public static double toSquareMeters(double measurement, String currentUnits)
+    {
+        double meters =0;
+        switch (currentUnits)
+        {
+            case "ft^2":
+                meters = measurement * 0.3048780488;
+                break;
+            case "in^2":
+                meters = measurement * 0.02540650407;
+                break;
+            case "mm^2":
+                meters = measurement * 0.001;
+                break;
+            case "cm^2":
+                meters = measurement * 0.01;
+                break;
+            case "m^2":
+                meters = measurement;
+        }
+        return meters;
+    }
+
     public static double thermalConductivity(String material)
     {
         double thermalValue=0;
@@ -84,5 +107,83 @@ public class ValuesConverstions {
                 break;
         }
         return thermalValue;
+    }
+
+    public static double FuelHeatCombustion(String fuel)
+    {
+        double heatCombustion=0;
+        switch(fuel)
+        {
+            case "Cellulose":
+                heatCombustion=16.1;
+                break;
+            case "Gasoline":
+                heatCombustion=43.7;
+                break;
+            case "Heptane":
+                heatCombustion=44.6;
+                break;
+            case "Methanol":
+                heatCombustion=19.8;
+                break;
+            case "PMMA":
+                heatCombustion=24.9;
+                break;
+            case "Polythylene":
+                heatCombustion=43.3;
+                break;
+            case "Polypropylene":
+                heatCombustion=43.3;
+                break;
+            case "Polystyrene":
+                heatCombustion=39.8;
+                break;
+            case "PVC":
+                heatCombustion=16.4;
+                break;
+            case "Wood":
+                heatCombustion=14;
+                break;
+        }
+        return heatCombustion;
+    }
+
+    public static double FuelBurningFlux(String fuel)
+    {
+        double burningFlux=0;
+        switch(fuel)
+        {
+            case "Cellulose":
+                burningFlux=14;
+                break;
+            case "Gasoline":
+                burningFlux=55;
+                break;
+            case "Heptane":
+                burningFlux=70;
+                break;
+            case "Methanol":
+                burningFlux=22;
+                break;
+            case "PMMA":
+                burningFlux=28;
+                break;
+            case "Polythylene":
+                burningFlux=26;
+                break;
+            case "Polypropylene":
+                burningFlux=24;
+                break;
+            case "Polystyrene":
+                burningFlux=38;
+                break;
+            case "PVC":
+                burningFlux=16;
+                break;
+            case "Wood":
+                burningFlux=11;
+                break;
+        }
+        return burningFlux;
     }
 }
