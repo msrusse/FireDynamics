@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FlashOver" />
-        <activity android:name=".HRR"></activity>
+        <activity android:name=".HRR" />
+        <activity android:name=".FlameHeight"></activity>
     </application>
 
 </manifest>

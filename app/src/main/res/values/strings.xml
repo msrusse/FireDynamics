@@ -35,7 +35,9 @@
     <string name="heat_combustion">Effective Heat of Combustion</string>
     <string name="heat_release">Heat Release Rate</string>
     <string name="cirlce_area">Area of the Circle</string>
+    <string name="l">L</string>
     <string name="m">m"</string>
+    <string name="q_heat_release_rate">Q (Heat Release)</string>
     <string name="dHc">dHc</string>
     <string name="q">Q</string>
     <string name="area">Area</string>
