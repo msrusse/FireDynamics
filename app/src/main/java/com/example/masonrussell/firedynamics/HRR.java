@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,11 +24,13 @@ public class HRR extends AppCompatActivity {
     public Spinner typeSelectionSpinner, typeUnitSpinner, fuelSpinner, qSpinner;
     public double maxBurningFlux, heatCombustion, areaDoub, radiusDoub, finalQ;
     public String typeSelection, typeUnits;
+    public LinearLayout resultLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hrr);
+        resultLayout = findViewById(R.id.resultLayout);
         getMeasurementsButton = findViewById(R.id.getMeasurementsButton);
         areaBurningText = findViewById(R.id.areaText);
         typeSelectionSpinner = findViewById(R.id.typeSelectionSpinner);
@@ -36,6 +39,7 @@ public class HRR extends AppCompatActivity {
         qResult = findViewById(R.id.qResult);
         getMeasurementsButton = findViewById(R.id.getMeasurementsButton);
         fuelSpinner = findViewById(R.id.fuelSpinner);
+        resultLayout.setVisibility(View.INVISIBLE);
         addItemsOnFuelSpinner(fuelSpinner);
         addSelectionsOnSpinner(typeSelectionSpinner);
         addFinalUnitsSpinner(qSpinner);
@@ -77,6 +81,7 @@ public class HRR extends AppCompatActivity {
                 }
                 finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
                 qResult.setText(String.valueOf(Math.round(finalQ)));
+                resultLayout.setVisibility(View.VISIBLE);
 
                 qSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {

@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class FlashOver extends AppCompatActivity {
     public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub;
     public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits;
     public Button calculateButton;
+    public LinearLayout resultLayout;
     public TextView qMccaffrey, qBabrauskas, qThomas;
 
     @Override
@@ -32,6 +34,7 @@ public class FlashOver extends AppCompatActivity {
         final DecimalFormat threeDigits = new DecimalFormat("0.000");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_over);
+        resultLayout = findViewById(R.id.resultLayout);
         calculateButton = findViewById(R.id.getFlashoverButton);
         compWidthSpinner = findViewById(R.id.compWidthSpinner);
         compWidthText = findViewById(R.id.compWidthText);
@@ -52,6 +55,7 @@ public class FlashOver extends AppCompatActivity {
         qThomasSpinner = findViewById(R.id.thomasQSpinner);
         qBabrauskas = findViewById(R.id.babrauskasQResult);
         qThomas = findViewById(R.id.thomasQResult);
+        resultLayout.setVisibility(View.INVISIBLE);
         addItemsOnMaterialSpinner(materialSpinner);
         addItemsOnUnitSpinner(intLiningSpinner);
         addItemsOnUnitSpinner(compWidthSpinner);
@@ -111,6 +115,7 @@ public class FlashOver extends AppCompatActivity {
                 else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
                     qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
                 }
+                resultLayout.setVisibility(View.VISIBLE);
                 mccaffreyQSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {
                             @Override
