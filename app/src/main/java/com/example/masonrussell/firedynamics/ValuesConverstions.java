@@ -4,9 +4,9 @@ package com.example.masonrussell.firedynamics;
  * Created by masonrussell on 2/15/18.
  */
 
-public class ValuesConverstions {
+class ValuesConverstions {
 
-    public static double toMeters(double measurement, String currentUnits)
+    static double toMeters(double measurement, String currentUnits)
     {
         double meters =0;
         switch (currentUnits)
@@ -29,7 +29,99 @@ public class ValuesConverstions {
         return meters;
     }
 
-    public static double toSquareMeters(double measurement, String currentUnits)
+    static double toCentimeters(double measurement, String currentUnits)
+    {
+        double centimeters=0;
+        switch (currentUnits)
+        {
+            case "ft":
+                centimeters = (measurement * 0.3048780488) / 0.01;
+                break;
+            case "in":
+                centimeters = (measurement * 0.02540650407) / 0.01;
+                break;
+            case "mm":
+                centimeters = measurement * 0.1;
+                break;
+            case "cm":
+                centimeters = measurement;
+                break;
+            case "m":
+                centimeters = measurement / 0.01;
+        }
+        return centimeters;
+    }
+
+    static double toMillimeters(double measurement, String currentUnits)
+    {
+        double millimeters=0;
+        switch (currentUnits)
+        {
+            case "ft":
+                millimeters = (measurement * 0.3048780488) / 0.001;
+                break;
+            case "in":
+                millimeters = (measurement * 0.02540650407) / 0.001;
+                break;
+            case "mm":
+                millimeters = measurement;
+                break;
+            case "cm":
+                millimeters = measurement / 0.1;
+                break;
+            case "m":
+                millimeters = measurement / 0.001;
+        }
+        return millimeters;
+    }
+
+    static double toFeet(double measuerement, String currentUnits)
+    {
+        double feet=0;
+        switch (currentUnits)
+        {
+            case "ft":
+                feet = measuerement;
+                break;
+            case "in":
+                feet = measuerement / 12;
+                break;
+            case "mm":
+                feet = measuerement / (0.3048780488*0.001);
+                break;
+            case "cm":
+                feet = measuerement / (0.3048780488*0.01);
+                break;
+            case "m":
+                feet = measuerement / (0.3048780488);
+        }
+        return feet;
+    }
+
+    static double toInches(double measurement, String currentUnits)
+    {
+        double inches=0;
+        switch (currentUnits)
+        {
+            case "ft":
+                inches = measurement * 12;
+                break;
+            case "in":
+                inches = measurement;
+                break;
+            case "mm":
+                inches = (measurement / (0.3048780488*0.001)) * 12;
+                break;
+            case "cm":
+                inches = (measurement / (0.3048780488*0.001)) * 12;
+                break;
+            case "m":
+                inches = (measurement / (0.3048780488)) * 12;
+        }
+        return inches;
+    }
+
+    static double toSquareMeters(double measurement, String currentUnits)
     {
         double meters =0;
         switch (currentUnits)

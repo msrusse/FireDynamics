@@ -51,4 +51,19 @@ class Calculations
     {
         return (mbf*ehc*area);
     }
+
+    static double CalculateDiameterFromArea(double diameter)
+    {
+        return (2 * Math.sqrt(diameter/Math.PI));
+    }
+
+    static double CalculateDiameterFromLengthWidth(double length, double width)
+    {
+        return Math.sqrt(4*((length) * width) / Math.PI);
+    }
+
+    static double CalculateFlameHeight(double q, double diameter)
+    {
+        return (0.23 * Math.pow(q,0.4)-1.02*diameter);
+    }
 }
