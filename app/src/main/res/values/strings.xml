@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FireDynamics</string>
+    <string name="app_name">Fire Dynamics</string>
     <string name="comp_width">Compartment Width</string>
     <string name="comp_length">Compartment Length</string>
     <string name="comp_height">Compartment Height</string>
