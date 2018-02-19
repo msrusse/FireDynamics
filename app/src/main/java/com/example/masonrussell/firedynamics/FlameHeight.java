@@ -132,7 +132,7 @@ public class FlameHeight extends AppCompatActivity {
                 }
                 lResultDoub = Calculations.CalculateFlameHeight(qDoub, diameterDoub);
                 lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
-                addItemsOnUnitSpinner(lSpinner);
+                addItemsOnResultSpinner(lSpinner);
                 resultView.setVisibility(View.VISIBLE);
                 resultUnits = lSpinner.getSelectedItem().toString();
                 lSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -185,6 +185,17 @@ public class FlameHeight extends AppCompatActivity {
         list.add("in");
         list.add("cm");
         list.add("mm");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
+    }
+
+    public void addItemsOnResultSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("m");
+        list.add("ft");
+        list.add("in");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);

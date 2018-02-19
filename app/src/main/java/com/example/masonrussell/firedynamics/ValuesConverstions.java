@@ -12,16 +12,16 @@ class ValuesConverstions {
         switch (currentUnits)
         {
             case "ft":
-                meters = measurement * 0.3048780488;
+                meters = measurement / 3.28;
                 break;
             case "in":
-                meters = measurement * 0.02540650407;
+                meters = measurement / 12 / 3.28;
                 break;
             case "mm":
-                meters = measurement * 0.001;
+                meters = measurement / 1000;
                 break;
             case "cm":
-                meters = measurement * 0.01;
+                meters = measurement / 100;
                 break;
             case "m":
                 meters = measurement;
@@ -75,25 +75,25 @@ class ValuesConverstions {
         return millimeters;
     }
 
-    static double toFeet(double measuerement, String currentUnits)
+    static double toFeet(double measurement, String currentUnits)
     {
         double feet=0;
         switch (currentUnits)
         {
             case "ft":
-                feet = measuerement;
+                feet = measurement;
                 break;
             case "in":
-                feet = measuerement / 12;
+                feet = measurement / 12;
                 break;
             case "mm":
-                feet = measuerement / (0.3048780488*0.001);
+                feet = measurement / (0.003048780488);
                 break;
             case "cm":
-                feet = measuerement / (0.3048780488*0.01);
+                feet = measurement / (0.03048780488);
                 break;
             case "m":
-                feet = measuerement / (0.3048780488);
+                feet = measurement / (0.3048780488);
         }
         return feet;
     }
@@ -144,7 +144,7 @@ class ValuesConverstions {
         return meters;
     }
 
-    public static double thermalConductivity(String material)
+    static double thermalConductivity(String material)
     {
         double thermalValue=0;
         switch (material)
@@ -201,7 +201,7 @@ class ValuesConverstions {
         return thermalValue;
     }
 
-    public static double FuelHeatCombustion(String fuel)
+    static double FuelHeatCombustion(String fuel)
     {
         double heatCombustion=0;
         switch(fuel)
@@ -240,7 +240,7 @@ class ValuesConverstions {
         return heatCombustion;
     }
 
-    public static double FuelBurningFlux(String fuel)
+    static double FuelBurningFlux(String fuel)
     {
         double burningFlux=0;
         switch(fuel)
