@@ -55,5 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        radiationPool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RadiationPoolFire.class);
+                startActivity(intent);
+            }
+        });
     }
 }

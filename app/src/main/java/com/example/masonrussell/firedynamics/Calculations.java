@@ -66,4 +66,9 @@ class Calculations
     {
         return (0.23 * Math.pow(q,0.4)-1.02*diameter);
     }
+
+    static double CalculateHeatFluxtoTarget(double l, double d)
+    {
+        return (15.4 * Math.pow((l/d),-1.59));
+    }
 }

@@ -278,4 +278,34 @@ class ValuesConverstions {
         }
         return burningFlux;
     }
+
+    static double EnergyDensitytoBtu(double energy, String newUnits)
+    {
+        double newEnergy = 0;
+        switch (newUnits)
+        {
+            case "kW/m^2":
+                newEnergy = energy * 0.088055092;
+                break;
+            case "Btu/sec/ft^2":
+                newEnergy = energy;
+                break;
+        }
+        return newEnergy;
+    }
+
+    static double EnergyDensitytokW(double energy, String newUnits)
+    {
+        double newEnergy = 0;
+        switch (newUnits)
+        {
+            case "kW/m^2":
+                newEnergy = energy;
+                break;
+            case "Btu/sec/ft^2":
+                newEnergy = energy / 0.088055092;
+                break;
+        }
+        return newEnergy;
+    }
 }

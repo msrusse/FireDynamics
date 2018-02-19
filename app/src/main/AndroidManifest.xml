@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".FlashOver" />
         <activity android:name=".HRR" />
-        <activity android:name=".FlameHeight"></activity>
+        <activity android:name=".FlameHeight" />
+        <activity android:name=".RadiationPoolFire"></activity>
     </application>
 
 </manifest>

@@ -35,6 +35,9 @@
     <string name="heat_combustion">Effective Heat of Combustion</string>
     <string name="heat_release">Heat Release Rate</string>
     <string name="cirlce_area">Area of the Circle</string>
+    <string name="target_distance">Target Distance from Pool Center</string>
+    <string name="heat_flux">Heat Flux to Target</string>
+    <string name="ld_validity">Check L/D Validity</string>
     <string name="l">L</string>
     <string name="m">m"</string>
     <string name="q_heat_release_rate">Q (Heat Release)</string>
