@@ -22,8 +22,8 @@ public class RadiationPoolFire extends AppCompatActivity {
     public double diameterDoub, distanceDoub, lengthDoub, widthDoub, ldivdDoub, heatFluxResultDoub;
     public EditText typeSelection, distance, widthLength;
     public Spinner typeSelectionSpinner, typeSelectionUnitSpinner, secondSquareUnitSpinner, distanceSpinner, heatFluxSpinner;
-    public TextView heatFluxResult, secondSquareText;
-    public String diameterUitType, lengthUnitType, widthUnitType, heatFluxUnitType, distanceUnitType;
+    public TextView heatFluxResult, secondSquareText, ldValidTestResult;
+    public String diameterUitType, lengthUnitType, widthUnitType, heatFluxUnitType, distanceUnitType, ldResult;
     public Button calculateButton;
     public LinearLayout resultLayout, secondSquareLayout;
 
@@ -34,6 +34,7 @@ public class RadiationPoolFire extends AppCompatActivity {
         final DecimalFormat twoDigits = new DecimalFormat("0.00");
         typeSelection = findViewById(R.id.typeSelectionText);
         secondSquareText = findViewById(R.id.secondSquareView);
+        ldValidTestResult = findViewById(R.id.ldValidTestResult);
         distance = findViewById(R.id.targetDistanceText);
         resultLayout = findViewById(R.id.resultView);
         widthLength = findViewById(R.id.secondSquareText);
@@ -119,6 +120,19 @@ public class RadiationPoolFire extends AppCompatActivity {
                 addUnitsOnResultSpinner(heatFluxSpinner);
                 heatFluxUnitType = heatFluxSpinner.getSelectedItem().toString();
                 resultLayout.setVisibility(View.VISIBLE);
+                if (ldivdDoub < 0.7)
+                {
+                    ldResult = "Too close to pool edge";
+                }
+                else if (ldivdDoub > 15)
+                {
+                    ldResult = "Too far from pool edge";
+                }
+                else
+                {
+                    ldResult = "OK";
+                }
+                ldValidTestResult.setText(ldResult);
                 heatFluxSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {
                             @Override
