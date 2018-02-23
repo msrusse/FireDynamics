@@ -26,7 +26,6 @@ public class T2Fires extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_t2_fires);
         resultListView = findViewById(R.id.resultListView);
-        timeListView = findViewById(R.id.timeListView);
         resultLayout = findViewById(R.id.resultLayout);
         t1Value = findViewById(R.id.t1Value);
         peakHrrValue = findViewById(R.id.peakHrrValue);

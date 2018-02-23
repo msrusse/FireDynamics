@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
@@ -58,10 +58,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/firedynamics_dark_select"
             android:fontFamily="monospace"
             android:text="@string/t2_fires"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold"
             android:typeface="monospace"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/firedynamics_dark_select"
+            android:background="@drawable/firedynamics_light_select"
             android:fontFamily="monospace"
             android:text="@string/radiation_pool"
             android:textColor="@android:color/background_light"
@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/firedynamics_light_select"
+            android:background="@drawable/firedynamics_dark_select"
             android:fontFamily="monospace"
             android:text="@string/open_pipe"
             android:textColor="@android:color/background_light"
