@@ -20,7 +20,8 @@
         <activity android:name=".HRR" />
         <activity android:name=".FlameHeight" />
         <activity android:name=".RadiationPoolFire" />
-        <activity android:name=".OpenPipe"></activity>
+        <activity android:name=".OpenPipe" />
+        <activity android:name=".T2Fires"></activity>
     </application>
 
 </manifest>

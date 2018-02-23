@@ -18,15 +18,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/pressureDropView"
+                android:id="@+id/t1View"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
-                android:text="@string/pressure_drop"
+                android:text="@string/t1"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/pressureDropText"
+                android:id="@+id/t1Value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".12"
@@ -36,13 +36,6 @@
                 android:text=""
                 android:textAlignment="center" />
 
-            <Spinner
-                android:id="@+id/pressureDropSpinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -51,15 +44,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/pipeDiameterView"
+                android:id="@+id/peakHrrView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
-                android:text="@string/pipe_diameter"
+                android:text="@string/peak_hrr"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/pipeDiamterText"
+                android:id="@+id/peakHrrValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".12"
@@ -69,12 +62,12 @@
                 android:text=""
                 android:textAlignment="center" />
 
-            <Spinner
-                android:id="@+id/pipeDiameterSpinner"
+            <TextView
+                android:id="@+id/peakHrrUnits"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
+                android:text="@string/kw"/>
 
         </LinearLayout>
 
@@ -84,15 +77,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/pipeLengthView"
+                android:id="@+id/timeIntervalView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
-                android:text="@string/pipe_length"
+                android:text="@string/time_interval"
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/pipeLengthText"
+                android:id="@+id/TimeIntervalValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".12"
@@ -102,38 +95,12 @@
                 android:text=""
                 android:textAlignment="center" />
 
-            <Spinner
-                android:id="@+id/pipeLengthSpinner"
+            <TextView
+                android:id="@+id/TimeIntervalUnits"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/specificGravityView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".8"
-                android:text="@string/specific_gas_gravity"
-                android:textSize="22sp" />
-
-            <EditText
-                android:id="@+id/specificGravityText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:labelFor="@+id/ventWidthText"
-                android:text=""
-                android:textAlignment="center" />
+                android:text="@string/seconds" />
 
         </LinearLayout>
 
