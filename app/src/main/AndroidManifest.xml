@@ -19,7 +19,8 @@
         <activity android:name=".FlashOver" />
         <activity android:name=".HRR" />
         <activity android:name=".FlameHeight" />
-        <activity android:name=".RadiationPoolFire"></activity>
+        <activity android:name=".RadiationPoolFire" />
+        <activity android:name=".OpenPipe"></activity>
     </application>
 
 </manifest>

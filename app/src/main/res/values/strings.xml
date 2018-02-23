@@ -44,29 +44,8 @@
     <string name="dHc">dHc</string>
     <string name="q">Q</string>
     <string name="area">Area</string>
-    <string-array name="units_array">
-        <item>ft</item>
-        <item>in</item>
-        <item>m</item>
-        <item>cm</item>
-        <item>mm</item>
-    </string-array>
-    <string-array name="lining_materials">
-        <item>Aerated Concrete</item>
-        <item>Alumina Silicate Block</item>
-        <item>Aluminum (pure)</item>
-        <item>Brick</item>
-        <item>Brick/Concrete Block</item>
-        <item>Calcium Silicate Board</item>
-        <item>Chipboard</item>
-        <item>Concrete</item>
-        <item>Expended Polystyrene</item>
-        <item>Fiber Insulation Board</item>
-        <item>Glass Fiber Insulation</item>
-        <item>Glass Plate</item>
-        <item>Gypsum Board</item>
-        <item>Plasterboard</item>
-        <item>Plywood</item>
-        <item>Steel (0.5% Carbon)</item>
-    </string-array>
+    <string name="pressure_drop">Pressure Drop</string>
+    <string name="pipe_diameter">Pipe Diameter</string>
+    <string name="pipe_length">Length of Pipe</string>
+    <string name="specific_gas_gravity">Specific Gravity of the Gas</string>
 </resources>

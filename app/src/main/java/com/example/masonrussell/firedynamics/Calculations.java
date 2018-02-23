@@ -71,4 +71,8 @@ class Calculations
     {
         return (15.4 * Math.pow((l/d),-1.59));
     }
+    static double CalculateOpenPipeQ(double dP, double d, double l, double sg)
+    {
+        return (0.00403*Math.pow(dP*(Math.pow(d,4.8)/(Math.pow(sg,0.8)*l)),0.555));
+    }
 }

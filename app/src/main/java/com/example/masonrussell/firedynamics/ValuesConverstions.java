@@ -308,4 +308,108 @@ class ValuesConverstions {
         }
         return newEnergy;
     }
+
+    static double PressureToMbar(double pressure, String currentUnits)
+    {
+        double mbarPressure = 0;
+        switch (currentUnits)
+        {
+            case "in H2O":
+                mbarPressure = pressure * 2.490889083;
+                break;
+            case "kPa":
+                mbarPressure = pressure * 10;
+                break;
+            case "mbar":
+                mbarPressure = pressure;
+                break;
+            case "psi":
+                mbarPressure = pressure * 68.9475728;
+                break;
+        }
+        return mbarPressure;
+    }
+
+    static double FlowtoMetersCubedPerHour(double flow, String currentUnits)
+    {
+        double metersCubed = 0;
+        switch (currentUnits)
+        {
+            case "cfm":
+                metersCubed = flow / 0.588125867;
+                break;
+            case "ft^3/sec":
+                metersCubed = flow / 0.009802098;
+                break;
+            case "m^3/hr":
+                metersCubed = flow;
+                break;
+            case "m^3/sec":
+                metersCubed = flow * 3600;
+                break;
+        }
+        return  metersCubed;
+    }
+
+    static double Flowtocfm(double flow, String currentUnits)
+    {
+        double cfm = 0;
+        switch (currentUnits)
+        {
+            case "cfm":
+                cfm = flow;
+                break;
+            case "ft^3/sec":
+                cfm = flow / 0.009802098 * 0.588125867;
+                break;
+            case "m^3/hr":
+                cfm = flow * 0.588125867;
+                break;
+            case "m^3/sec":
+                cfm = flow * 3600 * 0.588125867;
+                break;
+        }
+        return  cfm;
+    }
+
+    static double FlowtoFeetCubedPerSec(double flow, String currentUnits)
+    {
+        double ftcubed = 0;
+        switch (currentUnits)
+        {
+            case "cfm":
+                ftcubed = flow / 0.588125867 * 0.009802098;
+                break;
+            case "ft^3/sec":
+                ftcubed = flow;
+                break;
+            case "m^3/hr":
+                ftcubed = flow * 0.009802098;
+                break;
+            case "m^3/sec":
+                ftcubed = flow * 3600 * 0.009802098;
+                break;
+        }
+        return  ftcubed;
+    }
+
+    static double FlowtoMetersCubedPerSec(double flow, String currentUnits) {
+        double mcubed = 0;
+        switch (currentUnits)
+        {
+            case "cfm":
+                mcubed = flow / 0.588125867 * 3600;
+                break;
+            case "ft^3/sec":
+                mcubed = flow / 0.009802098 * 3600;
+                break;
+            case "m^3/hr":
+                mcubed = flow / 3600;
+                break;
+            case "m^3/sec":
+                mcubed = flow;
+                break;
+        }
+        return mcubed;
+    }
 }

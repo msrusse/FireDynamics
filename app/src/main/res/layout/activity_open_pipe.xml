@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firedynamics_background_1"
+    tools:context="com.example.masonrussell.firedynamics.FlashOver">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pressureDropView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:text="@string/pressure_drop"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/pressureDropText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".12"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compLengthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/pressureDropSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pipeDiameterView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:text="@string/pipe_diameter"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/pipeDiamterText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".12"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/pipeDiameterSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pipeLengthView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:text="@string/pipe_length"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/pipeLengthText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".12"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compHeightText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/pipeLengthSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/specificGravityView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:text="@string/specific_gas_gravity"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/specificGravityText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/getMeasurementsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/get_calculation"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="300dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/qResultView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/q"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/qResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/qResultSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:background="@drawable/firedynamic_button"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
