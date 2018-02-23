@@ -71,5 +71,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        t2Fire.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), T2Fires.class);
+                startActivity(intent);
+            }
+        });
     }
 }
