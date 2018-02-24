@@ -75,4 +75,14 @@ class Calculations
     {
         return (0.00403*Math.pow(dP*(Math.pow(d,4.8)/(Math.pow(sg,0.8)*l)),0.555));
     }
+
+    static double CalculateConductiveHeatFlux(double length, double thermalConductivity, double hotSideTemp, double coldSideTemp)
+    {
+        return (thermalConductivity * (hotSideTemp-coldSideTemp)/length);
+    }
+
+    static double CalculateConductiveThermalPenTime(double length, double thermalDiffucivity)
+    {
+        return (Math.pow(length,2)/(16*thermalDiffucivity));
+    }
 }

@@ -412,4 +412,229 @@ class ValuesConverstions {
         }
         return mcubed;
     }
+
+    static double ConductionThermalConductivity(String material)
+    {
+        double thermalConduct = 0;
+        switch (material)
+        {
+            case "Air":
+                thermalConduct = 0.026;
+                break;
+            case "Asbestos":
+                thermalConduct = 0.15;
+                break;
+            case "Brick":
+                thermalConduct = 0.69;
+                break;
+            case "Concrete (high)":
+                thermalConduct = 1.4;
+                break;
+            case "Concrete (low)":
+                thermalConduct = 0.8;
+                break;
+            case "Copper":
+                thermalConduct = 387;
+                break;
+            case "Fiber Insulating Board":
+                thermalConduct = 0.041;
+                break;
+            case "Glass (plate)":
+                thermalConduct = 0.76;
+                break;
+            case "Gypsum Plaster":
+                thermalConduct = 0.48;
+                break;
+            case "Oak":
+                thermalConduct = 0.17;
+                break;
+            case "PMMA":
+                thermalConduct = 0.19;
+                break;
+            case "Polyurethane Foam":
+                thermalConduct = 0.034;
+                break;
+            case "Steel (mild)":
+                thermalConduct = 45.8;
+                break;
+            case "Yellow Pine":
+                thermalConduct = 0.14;
+                break;
+        }
+        return thermalConduct;
+    }
+
+    static double ConductionSpecificHeat(String material)
+    {
+        double specificHeat = 0;
+        switch (material)
+        {
+            case "Air":
+                specificHeat = 1.04;
+                break;
+            case "Asbestos":
+                specificHeat = 1.05;
+                break;
+            case "Brick":
+                specificHeat = 0.84;
+                break;
+            case "Concrete (high)":
+                specificHeat = 0.88;
+                break;
+            case "Concrete (low)":
+                specificHeat = 0.88;
+                break;
+            case "Copper":
+                specificHeat = 0.38;
+                break;
+            case "Fiber Insulating Board":
+                specificHeat = 2.09;
+                break;
+            case "Glass (plate)":
+                specificHeat = 0.84;
+                break;
+            case "Gypsum Plaster":
+                specificHeat = 0.84;
+                break;
+            case "Oak":
+                specificHeat = 2.38;
+                break;
+            case "PMMA":
+                specificHeat = 1.42;
+                break;
+            case "Polyurethane Foam":
+                specificHeat = 1.4;
+                break;
+            case "Steel (mild)":
+                specificHeat = 0.46;
+                break;
+            case "Yellow Pine":
+                specificHeat = 2.85;
+                break;
+        }
+        return specificHeat;
+    }
+
+    static double ConductionDensity(String material)
+    {
+        double density = 0;
+        switch (material)
+        {
+            case "Air":
+                density = 1.1;
+                break;
+            case "Asbestos":
+                density = 577;
+                break;
+            case "Brick":
+                density = 1600;
+                break;
+            case "Concrete (high)":
+                density = 2300;
+                break;
+            case "Concrete (low)":
+                density = 1900;
+                break;
+            case "Copper":
+                density = 8940;
+                break;
+            case "Fiber Insulating Board":
+                density = 229;
+                break;
+            case "Glass (plate)":
+                density = 2700;
+                break;
+            case "Gypsum Plaster":
+                density = 1440;
+                break;
+            case "Oak":
+                density = 800;
+                break;
+            case "PMMA":
+                density = 1190;
+                break;
+            case "Polyurethane Foam":
+                density = 20;
+                break;
+            case "Steel (mild)":
+                density = 7850;
+                break;
+            case "Yellow Pine":
+                density = 640;
+                break;
+        }
+        return density;
+    }
+
+    static double ConductionThermalInertia(String material)
+    {
+        double thermalInertia = 0;
+        switch (material)
+        {
+            case "Air":
+                thermalInertia = 0.00003;
+                break;
+            case "Asbestos":
+                thermalInertia = 0.091;
+                break;
+            case "Brick":
+                thermalInertia = 0.93;
+                break;
+            case "Concrete (high)":
+                thermalInertia = 2;
+                break;
+            case "Concrete (low)":
+                thermalInertia = 2;
+                break;
+            case "Copper":
+                thermalInertia = 1300;
+                break;
+            case "Fiber Insulating Board":
+                thermalInertia = 0.02;
+                break;
+            case "Glass (plate)":
+                thermalInertia = 1.7;
+                break;
+            case "Gypsum Plaster":
+                thermalInertia = 0.58;
+                break;
+            case "Oak":
+                thermalInertia = 0.32;
+                break;
+            case "PMMA":
+                thermalInertia = 0.32;
+                break;
+            case "Polyurethane Foam":
+                thermalInertia = 0.00095;
+                break;
+            case "Steel (mild)":
+                thermalInertia = 160;
+                break;
+            case "Yellow Pine":
+                thermalInertia = 0.25;
+                break;
+        }
+        return thermalInertia;
+    }
+
+    static double toDegreesCentigrade(double currentTemp, String currentUnits)
+    {
+        double centigrade = 0;
+        switch (currentUnits)
+        {
+            case "C":
+                centigrade = currentTemp;
+                break;
+            case "F":
+                centigrade = (currentTemp-32) * (5/9);
+                break;
+            case "K":
+                centigrade = currentTemp - 273.15;
+                break;
+            case "R":
+                centigrade = (currentTemp - 459.67 - 32) * (5/9);
+                break;
+        }
+        return centigrade;
+    }
 }

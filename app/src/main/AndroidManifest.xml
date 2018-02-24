@@ -21,7 +21,8 @@
         <activity android:name=".FlameHeight" />
         <activity android:name=".RadiationPoolFire" />
         <activity android:name=".OpenPipe" />
-        <activity android:name=".T2Fires"></activity>
+        <activity android:name=".T2Fires" />
+        <activity android:name=".Conduction"></activity>
     </application>
 
 </manifest>
