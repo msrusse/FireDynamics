@@ -80,12 +80,12 @@ public class Conduction extends AppCompatActivity {
                         switch (heatFluxResultSpinner.getSelectedItem().toString())
                         {
                             case "Btu/sec/ft^2":
-                                heatFluxDoub = ValuesConverstions.;
+                                heatFluxDoub = ValuesConverstions.heatFluxToBtuPerSecondPerSquaredFeet(heatFluxDoub, currentHeatFluxUnits);
                                 heatFluxResult.setText(fourDigits.format(heatFluxDoub));
                                 currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
                                 break;
                             case "kW/m^2":
-                                heatFluxDoub = ValuesConverstions.;
+                                heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, currentHeatFluxUnits);
                                 heatFluxResult.setText(fourDigits.format(heatFluxDoub));
                                 currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
                                 break;
@@ -103,17 +103,17 @@ public class Conduction extends AppCompatActivity {
                         switch (thermalPenTimeResultSpinner.getSelectedItem().toString())
                         {
                             case "sec":
-                                thermalPenTimeDoub = ValuesConverstions.;
+                                thermalPenTimeDoub = ValuesConverstions.timeToSeconds(thermalPenTimeDoub, currentThermalPenTimeUnits);
                                 thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
                                 currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "min":
-                                thermalPenTimeDoub = ValuesConverstions.;
+                                thermalPenTimeDoub = ValuesConverstions.timeToMinutes(thermalPenTimeDoub, currentThermalPenTimeUnits);
                                 thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
                                 currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "hour":
-                                thermalPenTimeDoub = ValuesConverstions.;
+                                thermalPenTimeDoub = ValuesConverstions.timeToHours(thermalPenTimeDoub, currentThermalPenTimeUnits);
                                 thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
                                 currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
                                 break;

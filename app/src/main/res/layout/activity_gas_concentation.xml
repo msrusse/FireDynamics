@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firedynamics_background_1"
+    tools:context="com.example.masonrussell.firedynamics.FlashOver">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/airChangesView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".60"
+                android:text="@string/airchanges"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/airChangesValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/airChangesUnits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".23"
+                android:text="@string/changes_per_hour" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/leakageRateView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/leakage_rate"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/leakageRateValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/leakageRateUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".23"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gasVolumeView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/gas_filled_room_volume"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/gasVolumeValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compHeightText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/gasVolumeUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".23"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/timestepView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/timestep"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/timestepValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/timestepUnits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".23"
+                android:text="@string/minutes" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/getResultsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/get_calculation"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="300dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/resultListView"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

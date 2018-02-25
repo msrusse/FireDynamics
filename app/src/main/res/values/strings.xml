@@ -57,4 +57,10 @@
     <string name="cold_side">Cold Side Temp</string>
     <string name="specific_gas_gravity">Specific Gravity of the Gas</string>
     <string name="thermal_pen_time">Thermal Penetration Time</string>
+    <string name="airchanges">Air Changes</string>
+    <string name="leakage_rate">Leakage Rate</string>
+    <string name="gas_filled_room_volume">Gas Filled Area Volume</string>
+    <string name="timestep">Timestep</string>
+    <string name="changes_per_hour">changes/hour</string>
+    <string name="minutes">min</string>
 </resources>

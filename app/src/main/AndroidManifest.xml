@@ -22,7 +22,8 @@
         <activity android:name=".RadiationPoolFire" />
         <activity android:name=".OpenPipe" />
         <activity android:name=".T2Fires" />
-        <activity android:name=".Conduction"></activity>
+        <activity android:name=".Conduction" />
+        <activity android:name=".GasConcentation"></activity>
     </application>
 
 </manifest>

@@ -619,7 +619,7 @@ class ValuesConverstions {
 
     static double toDegreesCentigrade(double currentTemp, String currentUnits)
     {
-        double centigrade = 0;
+        double centigrade = currentTemp;
         switch (currentUnits)
         {
             case "C":
@@ -636,5 +636,89 @@ class ValuesConverstions {
                 break;
         }
         return centigrade;
+    }
+
+    static double timeToHours(double currentTime, String currentUnits)
+    {
+        double timeInHours = currentTime;
+        switch (currentUnits)
+        {
+            case "sec":
+                timeInHours = currentTime / 3600;
+                break;
+            case "min":
+                timeInHours = currentTime / 60;
+                break;
+            case "hour":
+                timeInHours = currentTime;
+                break;
+        }
+        return timeInHours;
+    }
+
+    static double timeToMinutes(double currentTime, String currentUnits)
+    {
+        double timeInMinutes = currentTime;
+        switch (currentUnits)
+        {
+            case "sec":
+                timeInMinutes = currentTime / 60;
+                break;
+            case "min":
+                timeInMinutes = currentTime;
+                break;
+            case "hour":
+                timeInMinutes = currentTime * 60;
+                break;
+        }
+        return  timeInMinutes;
+    }
+
+    static double timeToSeconds(double currentTime, String currentUnits)
+    {
+        double timeInSeconds = currentTime;
+        switch (currentUnits)
+        {
+            case "sec":
+                timeInSeconds = currentTime;
+                break;
+            case "min":
+                timeInSeconds = currentTime * 60;
+                break;
+            case "hour":
+                timeInSeconds = currentTime * 3600;
+                break;
+        }
+        return timeInSeconds;
+    }
+
+    static double heatFluxToBtuPerSecondPerSquaredFeet(double currentHeatFlux, String currentUnits)
+    {
+        double btuHeatFlux = currentHeatFlux;
+        switch (currentUnits)
+        {
+            case "Btu/sec/ft^2":
+                btuHeatFlux = currentHeatFlux;
+                break;
+            case "kW/m^2":
+                btuHeatFlux = currentHeatFlux / 11.3565267;
+                break;
+        }
+        return btuHeatFlux;
+    }
+
+    static double heatFluxToKillowattPerSquaredMeters(double currentHeatFlux, String currentUnits)
+    {
+        double kwHeatFlux = currentHeatFlux;
+        switch (currentUnits)
+        {
+            case "Btu/sec/ft^2":
+                kwHeatFlux = currentHeatFlux * 11.3565267;
+                break;
+            case "kW/m^2":
+                kwHeatFlux = currentHeatFlux;
+                break;
+        }
+        return kwHeatFlux;
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class T2Fires extends AppCompatActivity {
 
-    public ListView resultListView, timeListView;
+    public ListView resultListView;
     public LinearLayout resultLayout;
     public EditText t1Value, peakHrrValue, timeIntervalValue;
     public double t1Doub, peakHrrDoub, timeIntervalDoub, alphaDoub;
