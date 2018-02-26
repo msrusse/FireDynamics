@@ -63,4 +63,17 @@
     <string name="timestep">Timestep</string>
     <string name="changes_per_hour">changes/hour</string>
     <string name="minutes">min</string>
+    <string name="density">Density</string>
+    <string name="specific_heat">Specific Heat</string>
+    <string name="ignition_temp">Ignition Temp</string>
+    <string name="ambient_temp">Ambient Temp</string>
+    <string name="heat_flux_exposure">Heat Flux Exposure</string>
+    <string name="thermal_conductivity">Thermal Conductivity</string>
+    <string name="kilojoules_per_kilogram_kelvin">kJ/kgK</string>
+    <string name="killowatt_per_mk">kW/mK</string>
+    <string name="time_to_ignition">Time to Ignition</string>
+    <string name="c">C</string>
+    <string name="thermally_thin_ignition">Thermally Thin Ignition Time</string>
+    <string name="thermally_thick_ignition">Thermally Thick Ignition Time</string>
+    <string name="thermally_thick_ignition_with_materials">Thermally Thick Ignition Time With Material Selection</string>
 </resources>

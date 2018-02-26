@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firedynamics_background_1"
+    tools:context="com.example.masonrussell.firedynamics.FlashOver">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/calculationSelectionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/dialog_holo_light_frame" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/thermally_thin_ignition"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/densityView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/density"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/densityValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compLengthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/densityUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/specificHeatView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/specific_heat"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/specificHeatText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/specificHeatUnits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/kilojoules_per_kilogram_kelvin"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/thicknessView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/thickness"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/thicknessValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventHeightText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/thicknessUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ignitionTempView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/ignition_temp"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/ignitionTempValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/ignitionTempUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ambientTempView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/ambient_temp"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/ambientTempValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/intLiningText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/ambientTempUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/heatFluxView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/heat_flux_exposure"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/heatFluxValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compHeightText"
+                android:text=""
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/heatFluxUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/getMeasurementsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
+            android:text="@string/get_calculation" />
+
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/resultView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:text="@string/time_to_ignition"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/resultDisplayView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".17"
+                android:ems="10"
+                android:labelFor="@+id/compHeightText"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/resultUnitSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/seconds"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

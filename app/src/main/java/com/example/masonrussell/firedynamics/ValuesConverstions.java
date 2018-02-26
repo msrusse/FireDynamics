@@ -721,4 +721,301 @@ class ValuesConverstions {
         }
         return kwHeatFlux;
     }
+
+    static double densityToKilogramsPerMetersCubed(double currentDensity, String currentUnits)
+    {
+        double kgPerMetersCubed = currentDensity;
+        switch (currentUnits)
+        {
+            case "kg/m^3":
+                kgPerMetersCubed = currentDensity;
+                break;
+            case "lb/ft^3":
+                kgPerMetersCubed = currentDensity / 16.0185;
+                break;
+        }
+        return kgPerMetersCubed;
+    }
+
+    static double densityToPoundsPerFeetCubed(double currentDensity, String currentUnits)
+    {
+        double lbPerFeetCubed = currentDensity;
+        switch (currentUnits)
+        {
+            case "kg/m^3":
+                lbPerFeetCubed = currentDensity * 16.0185;
+                break;
+            case "lb/ft^3":
+                lbPerFeetCubed = currentDensity;
+                break;
+        }
+        return lbPerFeetCubed;
+    }
+
+    static double getSolidIgnitionKPC(String material)
+    {
+        double kpc = 0;
+        switch (material) {
+            case "Aircraft Panel, Epoxy Fiberite":
+                kpc = 0.24;
+                break;
+            case "Asphalt Shingle":
+                kpc = 0.7;
+                break;
+            case "Acrylic Carpet":
+                kpc = 0.42;
+                break;
+            case "Nylon/Wool Blend Carpet":
+                kpc = 0.68;
+                break;
+            case "Stock Wool Carpet":
+                kpc = 0.11;
+                break;
+            case "Treated Wool Carpet":
+                kpc = 0.24;
+                break;
+            case "Untreated Wool Carpet":
+                kpc = 0.25;
+                break;
+            case "Douglass Fir Particleboard (1.27 cm)":
+                kpc = 0.94;
+                break;
+            case "Fiber Insulation Board":
+                kpc = 0.46;
+                break;
+            case "Fiberglass Shingle":
+                kpc = 0.5;
+                break;
+            case "Flexible Foam (2.54 cm)":
+                kpc = 0.32;
+                break;
+            case "Rigid Foam (2.54 cm)":
+                kpc = 0.03;
+                break;
+            case "Glass Reinforced Polyester (1.14 mm)":
+                kpc = 0.72;
+                break;
+            case "Glass Reinforced Plyester (2.24 mm)":
+                kpc = 0.32;
+                break;
+            case "Hardboard (3.175 mm)":
+                kpc = 0.88;
+                break;
+            case "Hardboard (6.35 mm)":
+                kpc = 1.87;
+                break;
+            case "Gloss Paint Hardboard (3.4 mm)":
+                kpc = 1.22;
+                break;
+            case "Nitrocellulose Paint Hardboard":
+                kpc = 0.79;
+                break;
+            case "Particleboard":
+                kpc = 0.93;
+                break;
+            case "FR Plywood (1.27 cm)":
+                kpc = 0.76;
+                break;
+            case "Plain Plywood (0.635 cm)":
+                kpc = 0.46;
+                break;
+            case "Plain Plywood (1.27 cm)":
+                kpc = 0.54;
+                break;
+            case "PMMA Polycast (1.599 mm)":
+                kpc = 0.73;
+                break;
+            case "PMMA Type G (1.27 cm)":
+                kpc = 1.02;
+                break;
+            case "Polycarbonate (1.52 mm)":
+                kpc = 1.16;
+                break;
+            case "Polyisocyanurate":
+                kpc = 0.02;
+                break;
+            case "Polystyrene (5.08 cm)":
+                kpc = 0.38;
+                break;
+        }
+        return kpc;
+    }
+
+    static double getSolidIgnitionTig(String material)
+    {
+        double tig = 0;
+        switch (material) {
+            case "Aircraft Panel, Epoxy Fiberite":
+                tig = 505;
+                break;
+            case "Asphalt Shingle":
+                tig = 378;
+                break;
+            case "Acrylic Carpet":
+                tig = 300;
+                break;
+            case "Nylon/Wool Blend Carpet":
+                tig = 412;
+                break;
+            case "Stock Wool Carpet":
+                tig = 465;
+                break;
+            case "Treated Wool Carpet":
+                tig = 455;
+                break;
+            case "Untreated Wool Carpet":
+                tig = 435;
+                break;
+            case "Douglass Fir Particleboard (1.27 cm)":
+                tig = 382;
+                break;
+            case "Fiber Insulation Board":
+                tig = 355;
+                break;
+            case "Fiberglass Shingle":
+                tig = 445;
+                break;
+            case "Flexible Foam (2.54 cm)":
+                tig = 390;
+                break;
+            case "Rigid Foam (2.54 cm)":
+                tig = 435;
+                break;
+            case "Glass Reinforced Polyester (1.14 mm)":
+                tig = 400;
+                break;
+            case "Glass Reinforced Plyester (2.24 mm)":
+                tig = 390;
+                break;
+            case "Hardboard (3.175 mm)":
+                tig = 365;
+                break;
+            case "Hardboard (6.35 mm)":
+                tig = 298;
+                break;
+            case "Gloss Paint Hardboard (3.4 mm)":
+                tig = 400;
+                break;
+            case "Nitrocellulose Paint Hardboard":
+                tig = 400;
+                break;
+            case "Particleboard":
+                tig = 412;
+                break;
+            case "FR Plywood (1.27 cm)":
+                tig = 620;
+                break;
+            case "Plain Plywood (0.635 cm)":
+                tig = 390;
+                break;
+            case "Plain Plywood (1.27 cm)":
+                tig = 390;
+                break;
+            case "PMMA Polycast (1.599 mm)":
+                tig = 278;
+                break;
+            case "PMMA Type G (1.27 cm)":
+                tig = 378;
+                break;
+            case "Polycarbonate (1.52 mm)":
+                tig = 528;
+                break;
+            case "Polyisocyanurate":
+                tig = 445;
+                break;
+            case "Polystyrene (5.08 cm)":
+                tig = 630;
+                break;
+        }
+        return tig;
+    }
+
+    static double getSolidIgnitionQCrit(String material)
+    {
+        double qCrit = 0;
+        switch (material) {
+            case "Aircraft Panel, Epoxy Fiberite":
+                qCrit = 28;
+                break;
+            case "Asphalt Shingle":
+                qCrit = 15;
+                break;
+            case "Acrylic Carpet":
+                qCrit = 10;
+                break;
+            case "Nylon/Wool Blend Carpet":
+                qCrit= 18;
+                break;
+            case "Stock Wool Carpet":
+                qCrit = 23;
+                break;
+            case "Treated Wool Carpet":
+                qCrit = 22;
+                break;
+            case "Untreated Wool Carpet":
+                qCrit = 20;
+                break;
+            case "Douglass Fir Particleboard (1.27 cm)":
+                qCrit = 16;
+                break;
+            case "Fiber Insulation Board":
+                qCrit = 14;
+                break;
+            case "Fiberglass Shingle":
+                qCrit = 21;
+                break;
+            case "Flexible Foam (2.54 cm)":
+                qCrit = 16;
+                break;
+            case "Rigid Foam (2.54 cm)":
+                qCrit = 20;
+                break;
+            case "Glass Reinforced Polyester (1.14 mm)":
+                qCrit = 17;
+                break;
+            case "Glass Reinforced Plyester (2.24 mm)":
+                qCrit = 16;
+                break;
+            case "Hardboard (3.175 mm)":
+                qCrit = 14;
+                break;
+            case "Hardboard (6.35 mm)":
+                qCrit = 10;
+                break;
+            case "Gloss Paint Hardboard (3.4 mm)":
+                qCrit = 17;
+                break;
+            case "Nitrocellulose Paint Hardboard":
+                qCrit = 17;
+                break;
+            case "Particleboard":
+                qCrit = 18;
+                break;
+            case "FR Plywood (1.27 cm)":
+                qCrit = 44;
+                break;
+            case "Plain Plywood (0.635 cm)":
+                qCrit = 16;
+                break;
+            case "Plain Plywood (1.27 cm)":
+                qCrit = 16;
+                break;
+            case "PMMA Polycast (1.599 mm)":
+                qCrit = 9;
+                break;
+            case "PMMA Type G (1.27 cm)":
+                qCrit = 15;
+                break;
+            case "Polycarbonate (1.52 mm)":
+                qCrit = 30;
+                break;
+            case "Polyisocyanurate":
+                qCrit = 21;
+                break;
+            case "Polystyrene (5.08 cm)":
+                qCrit = 46;
+                break;
+        }
+        return qCrit;
+    }
 }

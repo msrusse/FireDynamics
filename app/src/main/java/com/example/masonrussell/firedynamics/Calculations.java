@@ -85,4 +85,26 @@ class Calculations
     {
         return (Math.pow(length,2)/(16*thermalDiffucivity));
     }
+
+    static double CalculateThermallyThinTimeToIgnition(double density, double specificHeat, double thickness, double ignitionTemp, double ambientTemp, double heatFlux)
+    {
+        return ((density*specificHeat*thickness*(ignitionTemp-ambientTemp))/heatFlux);
+    }
+
+    static double CalculateThermallyThickTimeToIgnition(double c, double density, double specificHeat, double thermalConductivity, double ignitionTemp, double ambientTemp, double heatFlux)
+    {
+        return (c*thermalConductivity*density*specificHeat*(Math.pow((ignitionTemp-ambientTemp)/heatFlux,2)));
+    }
+
+    static double CalculateThermallyThickTimeToIgnitionWithMaterialSelected(double thermalinertia, double ignitionTemp, double criticalIgnitionFlux, double c, double ambientTemp, double heatFluxExposure)
+    {
+        if (heatFluxExposure > criticalIgnitionFlux)
+        {
+            return (c*thermalinertia*Math.pow((ignitionTemp-ambientTemp)/heatFluxExposure,2));
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

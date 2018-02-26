@@ -95,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        solidIgnition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SolidIgnition.class);
+                startActivity(intent);
+            }
+        });
     }
 }
