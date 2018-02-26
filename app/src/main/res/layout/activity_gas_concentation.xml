@@ -165,11 +165,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ListView
-                    android:id="@+id/resultListView"
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/resultsGraph"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>
