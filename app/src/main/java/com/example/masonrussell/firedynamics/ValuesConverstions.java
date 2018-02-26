@@ -1018,4 +1018,28 @@ class ValuesConverstions {
         }
         return qCrit;
     }
+
+    static double toCubicMeters(double currentVolume, String currentUnits)
+    {
+        double cubicMeters = currentVolume;
+        switch (currentUnits)
+        {
+            case "ft^3":
+                cubicMeters = currentVolume * 0.0283168;
+                break;
+            case "gallon US":
+                cubicMeters = currentVolume * 0.00378541;
+                break;
+            case "in^3":
+                cubicMeters = currentVolume * 0.0000163870562770569;
+                break;
+            case "liter":
+                cubicMeters = currentVolume * 0.001;
+                break;
+            case "m^3":
+                cubicMeters = currentVolume;
+                break;
+        }
+        return cubicMeters;
+    }
 }

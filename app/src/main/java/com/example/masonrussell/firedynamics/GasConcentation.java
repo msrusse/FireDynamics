@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GasConcentation extends AppCompatActivity {
 
@@ -35,6 +36,8 @@ public class GasConcentation extends AppCompatActivity {
         leakageRateUnitSpinner = findViewById(R.id.leakageRateUnitSpinner);
         gasVolumeUnitSpinner = findViewById(R.id.gasVolumeUnitSpinner);
         airchangesResult = findViewById(R.id.airChangesValue);
+        addItemsOnVolumeSpinner(gasVolumeUnitSpinner);
+        addItemsOnLeakageSpinner(leakageRateUnitSpinner);
         leakageRateResult = findViewById(R.id.leakageRateValue);
         gasVolumeResult = findViewById(R.id.gasVolumeValue);
         timestepResult = findViewById(R.id.timestepValue);
@@ -49,6 +52,10 @@ public class GasConcentation extends AppCompatActivity {
                 gasVolumeDoub = Double.parseDouble(gasVolumeResult.getText().toString());
                 timestepDoub = Double.parseDouble(timestepResult.getText().toString());
                 timestepDoub = ValuesConverstions.timeToHours(timestepDoub, timestepUnits);
+                leakageRateUnits = leakageRateUnitSpinner.getSelectedItem().toString();
+                gasVolumeUnits = gasVolumeUnitSpinner.getSelectedItem().toString();
+                gasVolumeDoub = ValuesConverstions.toCubicMeters(gasVolumeDoub, gasVolumeUnits);
+                leakageRateDoub = ValuesConverstions.FlowtoMetersCubedPerHour(leakageRateDoub, leakageRateUnits);
                 getValues();
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(GasConcentation.this,android.R.layout.simple_list_item_1,gasConcentration);
                 resultListView.setAdapter(adapter);
@@ -73,5 +80,30 @@ public class GasConcentation extends AppCompatActivity {
                 gasConcentration.add(fourDigits.format(i) + ", " + String.valueOf(100*(leakageRateDoub/(qaDoub+leakageRateDoub))*(1-Math.exp(-(qaDoub+leakageRateDoub)*i/gasVolumeDoub))));
             }
         }
+    }
+
+    public void addItemsOnVolumeSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("ft^3");
+        list.add("in^3");
+        list.add("gallon US");
+        list.add("liter");
+        list.add("m^3");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
+    }
+
+    public void addItemsOnLeakageSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("cfm");
+        list.add("ft^3/sec");
+        list.add("m^3/hr");
+        list.add("m^3/sec");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
     }
 }
