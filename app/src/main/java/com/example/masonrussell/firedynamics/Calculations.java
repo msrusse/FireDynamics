@@ -21,6 +21,12 @@ class Calculations
         return ((2*(compWidth*compLength) + 2*(compHeight*compWidth) + 2*(compHeight*compLength)) - CalculateAv(ventWidth, ventHeight));
     }
 
+    static double CalculateTGasLayerAT(double compWidth, double compLength, double compHeight, double ao)
+    {
+        return ((2*(compWidth*compLength) + 2*(compHeight*compWidth) + 2*(compHeight*compLength)) - ao);
+    }
+
+
     //This method calculates the Value of Q according to the Method of McCaffrey, Quintiera, and Harkleroad in kW
     static double CalculateMccaffreyQ(double hk, double at, double av, double ventHeight)
     {
@@ -106,5 +112,12 @@ class Calculations
         {
             return 0;
         }
+    }
+
+    static double CalculateTempOfUpperGasLayerAccordingtoMQH(double q, double ambientTemp, double hk, double ao, double at, double ho)
+    {
+        double power = (1.0/3.0);
+        double firstCalculation = Math.pow(q,2)/(ao*Math.sqrt(ho)*hk*at);
+        return (6.85*Math.pow(firstCalculation,power)+ambientTemp);
     }
 }

@@ -296,7 +296,7 @@ class ValuesConverstions {
 
     static double EnergyDensitytokW(double energy, String newUnits)
     {
-        double newEnergy = 0;
+        double newEnergy = energy;
         switch (newUnits)
         {
             case "kW/m^2":
@@ -1041,5 +1041,31 @@ class ValuesConverstions {
                 break;
         }
         return cubicMeters;
+    }
+
+    static double toDegreesKelvin(double currentTemp, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "C":
+               return (currentTemp+273.15);
+            case "F":
+                return((((currentTemp-32)*5/9))+273.15);
+            case "R":
+                return (((currentTemp - 459.67 - 32) *5)/9) + 273.15;
+        }
+        return currentTemp;
+    }
+
+    static double tGasLayerEnergyToKW(double currentEnergy, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "kW":
+                return currentEnergy;
+            case "Btu/sec":
+                return (currentEnergy*1.055055852);
+        }
+        return currentEnergy;
     }
 }

@@ -103,5 +103,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        tGasLayer.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent(getApplicationContext(), TGasLayer.class);
+                    startActivity(intent);
+                }
+        });
     }
 }

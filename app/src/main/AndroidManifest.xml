@@ -24,7 +24,8 @@
         <activity android:name=".T2Fires" />
         <activity android:name=".Conduction" />
         <activity android:name=".GasConcentation" />
-        <activity android:name=".SolidIgnition"></activity>
+        <activity android:name=".SolidIgnition" />
+        <activity android:name=".TGasLayer"></activity>
     </application>
 
 </manifest>
