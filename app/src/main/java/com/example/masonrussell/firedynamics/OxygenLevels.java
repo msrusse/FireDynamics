@@ -11,20 +11,31 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OxygenLevels extends AppCompatActivity {
 
-    public EditText roomWidthValue, roomLengthValue, roomHeightValue, initialO2Value, heatReleaseRateValue, timestepValue;
-    public double roomWidthDoub, roomLengthDoub, roomHeightDoub, roomVolumeDoub, initialO2Doub, heatReleaseRateDoub, timestepDoub, oxygenMolecularWeightDoub, molarMassO2PerMolePerAirDoub, o2PerCubicMeterDoub, initialWeightO2Doub, kiloJoulePerKiloGramO2ConsumedDoub, timeToReduceO2By1Doub, timeToReduceO2By14Doub, t2AlphaValueDoub;
-    public String roomWidthUnits, roomLengthUnits, roomHeightUnits, t2FireGrowthRate;
-    public Spinner roomWidthUnitSpinner, roomLengthUnitSpinner, roomHeightUnitSpinner, t2FireGrowthRateSpinner, typeOfFireSelectionSpinner;
-    public TextView timeToReduceO2By1Result, timeToReduce02By14Result;
-    public LinearLayout resultsLayout, steadyStateFireLayout, t2FireLayout;
-    public Button getResultsButton;
-    public ViewGroup.LayoutParams resultsParams, t2Params, steadyStateFireParams;
+    EditText roomWidthValue, roomLengthValue, roomHeightValue, initialO2Value, heatReleaseRateValue, timestepValue;
+    double roomWidthDoub, roomLengthDoub, roomHeightDoub, roomVolumeDoub, initialO2Doub, heatReleaseRateDoub, timestepDoub, oxygenMolecularWeightDoub, molarMassO2PerMolePerAirDoub, o2PerCubicMeterDoub, initialWeightO2Doub, kiloJoulePerKiloGramO2ConsumedDoub, timeToReduceO2By1Doub, timeToReduceO2By14Doub, t2AlphaValueDoub;
+    String roomWidthUnits, roomLengthUnits, roomHeightUnits, t2FireGrowthRate;
+    Spinner roomWidthUnitSpinner, roomLengthUnitSpinner, roomHeightUnitSpinner, t2FireGrowthRateSpinner, typeOfFireSelectionSpinner, graphSelectionSpinner;
+    TextView timeToReduceO2By1Result, timeToReduce02By14Result;
+    LinearLayout resultsLayout, steadyStateFireLayout, t2FireLayout, qOverTimeLayout;
+    Button getResultsButton;
+    ViewGroup.LayoutParams resultsParams, t2Params, steadyStateFireParams;
+    GraphView resultsGraph;
+    ArrayList<Double> time = new ArrayList<>(), q = new ArrayList<>(), totalEnergy = new ArrayList<>(), totalO2Consumed = new ArrayList<>(), percentO2InRoom = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,9 @@ public class OxygenLevels extends AppCompatActivity {
         roomHeightUnitSpinner = findViewById(R.id.roomHeightSpinner);
         t2FireGrowthRateSpinner = findViewById(R.id.t2FireGrowthRateSelection);
         typeOfFireSelectionSpinner = findViewById(R.id.fireTypeSelectionSpinner);
+        graphSelectionSpinner = findViewById(R.id.graphSelectionSpinner);
+        resultsGraph = findViewById(R.id.resultsGraph);
+        addGraphOptionsOnSpinner(graphSelectionSpinner);
         addSelectionsOnFireTypeSpinner(typeOfFireSelectionSpinner);
         addItemsOnUnitSpinner(roomHeightUnitSpinner);
         addItemsOnUnitSpinner(roomWidthUnitSpinner);
@@ -51,6 +65,8 @@ public class OxygenLevels extends AppCompatActivity {
         resultsLayout = findViewById(R.id.resultsLayout);
         steadyStateFireLayout = findViewById(R.id.steadyStateFire);
         t2FireLayout = findViewById(R.id.t2Fire);
+        qOverTimeLayout = findViewById(R.id.qOverTimeLayout);
+        qOverTimeLayout.setVisibility(View.INVISIBLE);
         resultsLayout.setVisibility(View.INVISIBLE);
         steadyStateFireLayout.setVisibility(View.INVISIBLE);
         t2FireLayout.setVisibility(View.INVISIBLE);
@@ -129,6 +145,27 @@ public class OxygenLevels extends AppCompatActivity {
                         t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
                         t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
                         timestepDoub = Double.parseDouble(timestepValue.getText().toString());
+                        calculateTime();
+                        calculateQ();
+                        calculateTotalEnergy();
+                        calculateTotalO2Consumed();
+                        calculatePercentO2InRoom();
+                        switch (graphSelectionSpinner.getSelectedItem().toString())
+                        {
+                            case "Q Over Time":
+                                addPointsOnGraph(q);
+                                break;
+                            case "Total Energy Over Time":
+                                addPointsOnGraph(totalEnergy);
+                                break;
+                            case "Total O2 Consumed Over Time":
+                                addPointsOnGraph(totalO2Consumed);
+                                break;
+                            case "Total Percent O2 In Room":
+                                addPointsOnGraph(percentO2InRoom);
+                                break;
+                        }
+                        qOverTimeLayout.setVisibility(View.VISIBLE);
                         break;
                 }
 
@@ -169,5 +206,102 @@ public class OxygenLevels extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
+    }
+
+    public void addGraphOptionsOnSpinner(Spinner spinnerToMake)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("Q Over Time");
+        list.add("Total Energy Over Time");
+        list.add("Total O2 Consumed Over Time");
+        list.add("Total Percent O2 In Room");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerToMake.setAdapter(dataAdapter);
+    }
+
+    void calculateTime()
+    {
+        for (double i=0; i<350;i += timestepDoub)
+        {
+            time.add(i);
+        }
+    }
+
+    void calculateQ()
+    {
+        for (double i=0; i<350;i += timestepDoub)
+        {
+            q.add(t2AlphaValueDoub*Math.pow(i,2));
+        }
+    }
+
+    void calculateTotalEnergy()
+    {
+        int counter=0;
+        for (double i=0; i<350;i+=timestepDoub)
+        {
+            if (counter==0)
+            {
+                totalEnergy.add(0.0);
+            }
+            else {
+                totalEnergy.add(q.get(counter) * (i - (i-timestepDoub)) + totalEnergy.get(counter - 1));
+            }
+            counter ++;
+        }
+    }
+
+    void calculateTotalO2Consumed()
+    {
+        int counter=0;
+        for (double i=0;i<350;i+=timestepDoub)
+        {
+            if (counter==0)
+            {
+                totalO2Consumed.add(0.0);
+            }
+            else
+            {
+                totalO2Consumed.add((totalEnergy.get(counter)/kiloJoulePerKiloGramO2ConsumedDoub));
+            }
+            counter ++;
+        }
+    }
+
+    void calculatePercentO2InRoom()
+    {
+        for (int i=0;i<time.size();i++)
+        {
+            percentO2InRoom.add(((initialWeightO2Doub-totalO2Consumed.get(i))/(initialWeightO2Doub/initialO2Doub))*100);
+        }
+    }
+
+    void addPointsOnGraph(ArrayList<Double> yAxisArray)
+    {
+        resultsGraph.removeAllSeries();
+        DataPoint[] dp = new DataPoint[time.size()-1];
+        for (int x=0; x<time.size()-1; x++)
+        {
+            dp[x] = new DataPoint(time.get(x),yAxisArray.get(x));
+        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(15);
+        resultsGraph.getViewport().setScalable(true);
+        resultsGraph.getViewport().setScalableY(true);
+        resultsGraph.getViewport().setXAxisBoundsManual(true);
+        resultsGraph.getViewport().setMinX(time.get(0));
+        resultsGraph.getViewport().setMaxX(time.get(time.size()-1));
+        resultsGraph.getViewport().setYAxisBoundsManual(true);
+        resultsGraph.getViewport().setMinY(yAxisArray.get(0));
+        resultsGraph.getViewport().setMaxY(yAxisArray.get(yAxisArray.size() - 1));
+        resultsGraph.addSeries(series);
+        series.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series, DataPointInterface dataPoint) {
+                Toast.makeText(OxygenLevels.this, String.valueOf(dataPoint), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
