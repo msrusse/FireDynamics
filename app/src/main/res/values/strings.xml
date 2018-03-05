@@ -76,4 +76,13 @@
     <string name="thermally_thin_ignition">Thermally Thin Ignition Time</string>
     <string name="thermally_thick_ignition">Thermally Thick Ignition Time</string>
     <string name="thermally_thick_ignition_with_materials">Thermally Thick Ignition Time With Material Selection</string>
+    <string name="room_width">Room Width</string>
+    <string name="room_length">Room Length</string>
+    <string name="room_height">Room Height</string>
+    <string name="initial_oxygen_percent">Initial Oxygen Percent</string>
+    <string name="heat_release_rate">Heat Release Rate</string>
+    <string name="time_to_reduce_o2_by_1">Time to Reduce O2 by 1%</string>
+    <string name="time_to_reduce_o2_by_14">Time to Reduce O2 by 14%</string>
+    <string name="t2_fire_growth_rate">t^2 Fire Growth Rate</string>
+    <string name="percent">%</string>
 </resources>

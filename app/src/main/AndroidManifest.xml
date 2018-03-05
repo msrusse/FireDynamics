@@ -25,7 +25,8 @@
         <activity android:name=".Conduction" />
         <activity android:name=".GasConcentation" />
         <activity android:name=".SolidIgnition" />
-        <activity android:name=".TGasLayer"></activity>
+        <activity android:name=".TGasLayer" />
+        <activity android:name=".OxygenLevels"></activity>
     </application>
 
 </manifest>

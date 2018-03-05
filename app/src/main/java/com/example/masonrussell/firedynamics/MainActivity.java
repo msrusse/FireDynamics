@@ -112,5 +112,13 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
         });
+
+        oxygenLevels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OxygenLevels.class);
+                startActivity(intent);
+            }
+        });
     }
 }

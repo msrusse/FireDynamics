@@ -1068,4 +1068,20 @@ class ValuesConverstions {
         }
         return currentEnergy;
     }
+
+    static double t2GrowthRateAlphaValue(String speed)
+    {
+        switch (speed)
+        {
+            case "Fast":
+                return 0.044;
+            case "Medium":
+                return 0.011;
+            case "Slow":
+                return 0.003;
+            case "Ultrafast":
+                return 0.178;
+        }
+        return -1;
+    }
 }
