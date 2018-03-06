@@ -294,7 +294,14 @@ public class OxygenLevels extends AppCompatActivity {
         resultsGraph.getViewport().setMinX(time.get(0));
         resultsGraph.getViewport().setMaxX(time.get(time.size()-1));
         resultsGraph.getViewport().setYAxisBoundsManual(true);
-        resultsGraph.getViewport().setMinY(yAxisArray.get(0));
+        if (yAxisArray.get(0) != 0)
+        {
+            resultsGraph.getViewport().setMinY(0);
+        }
+        else
+        {
+            resultsGraph.getViewport().setMinY(yAxisArray.get(0));
+        }
         resultsGraph.getViewport().setMaxY(yAxisArray.get(yAxisArray.size() - 1));
         resultsGraph.addSeries(series);
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
