@@ -93,4 +93,16 @@
     <string name="mUnits">K^2/mm^2</string>
     <string name="k">K</string>
     <string name="temperature">Temperature</string>
+    <string name="lel">LEL</string>
+    <string name="stoichiometric">Stoichiometric</string>
+    <string name="uel">UEL</string>
+    <string name="vapor_density">Vapor Density</string>
+    <string name="liquid_density">Liquid Density</string>
+    <string name="kgPerCubicMeter">kg/m^3</string>
+    <string name="room_area">Area of Room/House</string>
+    <string name="height_from_leak">Height Above/Below Leak</string>
+    <string name="stoich">Stoich.</string>
+    <string name="gas_volume">Volume of Gas</string>
+    <string name="gas_weight">Weight of Gas</string>
+    <string name="liquid_volume">Volume of Liquid</string>
 </resources>

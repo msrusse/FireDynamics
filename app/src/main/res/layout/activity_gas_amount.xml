@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/firedynamics_background_1"
+    tools:context="com.example.masonrussell.firedynamics.FlashOver">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/typeOfGasSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/dialog_holo_light_frame" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/areaView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/room_area"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/areaValue"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compLengthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <Spinner
+                android:id="@+id/areaSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/heightView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/height_from_leak"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/heightValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/compWidthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <Spinner
+                android:id="@+id/heightSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:background="@drawable/firedynamic_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lelView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/lel"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/lelValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/lelUnitDisplay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/percent"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/stoichLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/stoichView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/stoichiometric"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/stoichValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/intLiningText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/stoichPercent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/percent"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/uelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/uelView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/uel"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/uelValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/uelPercent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/percent"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/vaporDensityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/vaporDensityView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/vapor_density"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/vaporDensityValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/vaporDensityUnits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/kgPerCubicMeter"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/liquidDensityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/liquidDensityView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:text="@string/liquid_density"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/liquidDensityValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".22"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:text=""
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/liquidDensityUnits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".18"
+                android:text="@string/kgPerCubicMeter"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/getMeasurementsButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/white"
+                android:text="@string/get_calculation"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/resultsTable"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".28" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:text="@string/lel"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:text="@string/stoich"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:text="@string/uel"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".28"
+                    android:text="@string/gas_volume" />
+
+                <TextView
+                    android:id="@+id/lelGasVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/stoichGasVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/uelGasVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/gasVolumeUnitSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:background="@drawable/firedynamic_button" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".28"
+                    android:text="@string/gas_weight" />
+
+                <TextView
+                    android:id="@+id/lelGasWeightResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/stoichGasWeightResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/uelGasWeightResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/gasWeightUnitSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:background="@drawable/firedynamic_button" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".28"
+                    android:text="@string/liquid_volume" />
+
+                <TextView
+                    android:id="@+id/lelLiquidVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/stoichLiquidVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/uelLiquidVolumeResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/uelLiquidVolumeUnitSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".18"
+                    android:background="@drawable/firedynamic_button" />
+
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

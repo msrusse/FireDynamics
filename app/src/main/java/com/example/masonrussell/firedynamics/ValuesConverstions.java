@@ -1140,4 +1140,64 @@ class ValuesConverstions {
         }
         return -1;
     }
+
+    static double getGasLelValue(String material)
+    {
+        switch (material)
+        {
+            case "Methane":
+                return .05;
+            case "Propane":
+                return .021;
+        }
+        return -1;
+    }
+
+    static double getGasStoichiometricValue(String material)
+    {
+        switch (material)
+        {
+            case "Methane":
+                return .0952;
+            case "Propane":
+                return .0626;
+        }
+        return -1;
+    }
+
+    static double getGasUelValue(String material)
+    {
+        switch (material)
+        {
+            case "Methane":
+                return .15;
+            case "Propane":
+                return .095;
+        }
+        return -1;
+    }
+
+    static double getGasVaporDensityValue(String material)
+    {
+        switch (material)
+        {
+            case "Methane":
+                return 0.6407;
+            case "Propane":
+                return 1.554;
+        }
+        return -1;
+    }
+
+    static double getGasLiquidDensityValue(String material)
+    {
+        switch (material)
+        {
+            case "Methane":
+                return -1;
+            case "Propane":
+                return 580;
+        }
+        return -1;
+    }
 }

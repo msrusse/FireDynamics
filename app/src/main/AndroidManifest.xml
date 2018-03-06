@@ -27,7 +27,8 @@
         <activity android:name=".SolidIgnition" />
         <activity android:name=".TGasLayer" />
         <activity android:name=".OxygenLevels" />
-        <activity android:name=".SelfHeating"></activity>
+        <activity android:name=".SelfHeating" />
+        <activity android:name=".GasAmount"></activity>
     </application>
 
 </manifest>
