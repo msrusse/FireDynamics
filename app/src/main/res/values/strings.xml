@@ -85,4 +85,12 @@
     <string name="time_to_reduce_o2_by_14">Time to Reduce O2 by 14%</string>
     <string name="t2_fire_growth_rate">t^2 Fire Growth Rate</string>
     <string name="percent">%</string>
+    <string name="M">M</string>
+    <string name="p">P</string>
+    <string name="damkohler">Damkohler Number</string>
+    <string name="pile_volume">Volume of Pile</string>
+    <string name="pile_height">Height of Pile</string>
+    <string name="mUnits">K^2/mm^2</string>
+    <string name="k">K</string>
+    <string name="temperature">Temperature</string>
 </resources>

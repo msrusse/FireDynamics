@@ -1084,4 +1084,60 @@ class ValuesConverstions {
         }
         return -1;
     }
+
+    static double getTamburelloPValue(String material)
+    {
+        switch (material)
+        {
+            case "Ammonium Nitrate":
+                return 17921;
+            case "Animal Feedstuff":
+                return 8404;
+            case "Bagasse":
+                return 13000;
+            case "Cellulose Insulation":
+                return 13230;
+            case "Coal":
+                return 8419;
+            case "Cotton":
+                return 11282;
+            case "Forrest Floor Material I":
+                return 9862;
+            case "Plywood":
+                return 10572;
+            case "Wheat Flour":
+                return 15539;
+            case "Wood Fiberboard":
+                return 12145;
+        }
+        return -1;
+    }
+
+    static double getTamurelloMValue(String material)
+    {
+        switch (material)
+        {
+            case "Ammonium Nitrate":
+                return 43.2;
+            case "Animal Feedstuff":
+                return 26.06;
+            case "Bagasse":
+                return 33.08;
+            case "Cellulose Insulation":
+                return 32.8;
+            case "Coal":
+                return 25;
+            case "Cotton":
+                return 28.6;
+            case "Forrest Floor Material I":
+                return 27.2;
+            case "Plywood":
+                return 32.9;
+            case "Wheat Flour":
+                return 44.2;
+            case "Wood Fiberboard":
+                return 34.55;
+        }
+        return -1;
+    }
 }
