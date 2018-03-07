@@ -114,59 +114,63 @@ public class OxygenLevels extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                roomWidthDoub = Double.parseDouble(roomWidthValue.getText().toString());
-                roomWidthUnits = roomWidthUnitSpinner.getSelectedItem().toString();
-                roomLengthDoub = Double.parseDouble(roomLengthValue.getText().toString());
-                roomLengthUnits = roomLengthUnitSpinner.getSelectedItem().toString();
-                roomHeightDoub = Double.parseDouble(roomHeightValue.getText().toString());
-                roomHeightUnits = roomHeightUnitSpinner.getSelectedItem().toString();
-                initialO2Doub = Double.parseDouble(initialO2Value.getText().toString())/100;
-                roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
-                roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
-                roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
-                roomVolumeDoub = roomLengthDoub*roomWidthDoub*roomHeightDoub;
-                molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
-                o2PerCubicMeterDoub = 1000/22.4*molarMassO2PerMolePerAirDoub/1000;
-                initialWeightO2Doub = o2PerCubicMeterDoub*roomVolumeDoub;
-                kiloJoulePerKiloGramO2ConsumedDoub = 13100;
-                switch (typeOfFireSelectionSpinner.getSelectedItem().toString())
-                {
-                    case "Steady State Fire":
-                        heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
-                        timeToReduceO2By1Doub = ((((initialWeightO2Doub/initialO2Doub)/100)*kiloJoulePerKiloGramO2ConsumedDoub)/heatReleaseRateDoub);
-                        timeToReduceO2By14Doub = ((initialO2Doub-.14)*100*timeToReduceO2By1Doub);
-                        timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
-                        timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
-                        resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                        resultsLayout.setLayoutParams(resultsParams);
-                        resultsLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case "t^2 Fire":
-                        t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
-                        t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
-                        timestepDoub = Double.parseDouble(timestepValue.getText().toString());
-                        calculateTime();
-                        calculateQ();
-                        calculateTotalEnergy();
-                        calculateTotalO2Consumed();
-                        calculatePercentO2InRoom();
-                        switch (graphSelectionSpinner.getSelectedItem().toString())
-                        {
-                            case "Q Over Time":
-                                addPointsOnGraph(q);
-                                break;
-                            case "Total Energy Over Time":
-                                addPointsOnGraph(totalEnergy);
-                                break;
-                            case "Total O2 Consumed Over Time":
-                                addPointsOnGraph(totalO2Consumed);
-                                break;
-                            case "Total Percent O2 In Room":
-                                addPointsOnGraph(percentO2InRoom);
-                                break;
-                        }
-                        qOverTimeLayout.setVisibility(View.VISIBLE);
-                        break;
+                try {
+                    roomWidthDoub = Double.parseDouble(roomWidthValue.getText().toString());
+                    roomWidthUnits = roomWidthUnitSpinner.getSelectedItem().toString();
+                    roomLengthDoub = Double.parseDouble(roomLengthValue.getText().toString());
+                    roomLengthUnits = roomLengthUnitSpinner.getSelectedItem().toString();
+                    roomHeightDoub = Double.parseDouble(roomHeightValue.getText().toString());
+                    roomHeightUnits = roomHeightUnitSpinner.getSelectedItem().toString();
+                    initialO2Doub = Double.parseDouble(initialO2Value.getText().toString()) / 100;
+                    roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
+                    roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
+                    roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
+                    roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
+                    molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
+                    o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
+                    initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
+                    kiloJoulePerKiloGramO2ConsumedDoub = 13100;
+                    switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
+                        case "Steady State Fire":
+                            heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
+                            timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
+                            timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
+                            timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
+                            timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
+                            resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                            resultsLayout.setLayoutParams(resultsParams);
+                            resultsLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case "t^2 Fire":
+                            t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
+                            t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
+                            timestepDoub = Double.parseDouble(timestepValue.getText().toString());
+                            calculateTime();
+                            calculateQ();
+                            calculateTotalEnergy();
+                            calculateTotalO2Consumed();
+                            calculatePercentO2InRoom();
+                            switch (graphSelectionSpinner.getSelectedItem().toString()) {
+                                case "Q Over Time":
+                                    addPointsOnGraph(q);
+                                    break;
+                                case "Total Energy Over Time":
+                                    addPointsOnGraph(totalEnergy);
+                                    break;
+                                case "Total O2 Consumed Over Time":
+                                    addPointsOnGraph(totalO2Consumed);
+                                    break;
+                                case "Total Percent O2 In Room":
+                                    addPointsOnGraph(percentO2InRoom);
+                                    break;
+                            }
+                            qOverTimeLayout.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(OxygenLevels.this, error, Toast.LENGTH_LONG).show();
                 }
 
             }

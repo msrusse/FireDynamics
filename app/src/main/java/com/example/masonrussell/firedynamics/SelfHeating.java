@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,44 +124,44 @@ public class SelfHeating extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                volumeDoub = Double.parseDouble(volumeValue.getText().toString());
-                volumeUnits = volumeUnitSpinner.getSelectedItem().toString();
-                heightDoub = Double.parseDouble(heightValue.getText().toString());
-                heightUnits = heightUnitSpinner.getSelectedItem().toString();
-                volumeDoub = ValuesConverstions.toCubicMeters(volumeDoub, volumeUnits);
-                heightDoub = ValuesConverstions.toMeters(heightDoub, heightUnits);
-                areaDoub = volumeDoub/heightDoub;
-                radiusDoub = Math.sqrt(areaDoub)/Math.PI;
-                radiusDoub = ValuesConverstions.toMillimeters(radiusDoub, "m");
-                if (materialSelected.equals("Enter Statistics for Different Material"))
-                {
-                    mDoub = Double.parseDouble(mValue.getText().toString());
-                    pDoub = Double.parseDouble(pValue.getText().toString());
+                try {
+                    volumeDoub = Double.parseDouble(volumeValue.getText().toString());
+                    volumeUnits = volumeUnitSpinner.getSelectedItem().toString();
+                    heightDoub = Double.parseDouble(heightValue.getText().toString());
+                    heightUnits = heightUnitSpinner.getSelectedItem().toString();
+                    volumeDoub = ValuesConverstions.toCubicMeters(volumeDoub, volumeUnits);
+                    heightDoub = ValuesConverstions.toMeters(heightDoub, heightUnits);
+                    areaDoub = volumeDoub / heightDoub;
+                    radiusDoub = Math.sqrt(areaDoub) / Math.PI;
+                    radiusDoub = ValuesConverstions.toMillimeters(radiusDoub, "m");
+                    if (materialSelected.equals("Enter Statistics for Different Material")) {
+                        mDoub = Double.parseDouble(mValue.getText().toString());
+                        pDoub = Double.parseDouble(pValue.getText().toString());
+                    } else {
+                        mDoub = ValuesConverstions.getTamurelloMValue(materialSelected);
+                        pDoub = ValuesConverstions.getTamburelloPValue(materialSelected);
+                    }
+                    if (knownValueSelectionSpinner.getSelectedItem().toString().equals("Known Temperature/Unknown Damkohler")) {
+                        damkohlerResultLayout.setVisibility(View.INVISIBLE);
+                        tempDoub = Double.parseDouble(tempValue.getText().toString());
+                        tempUnits = tempUnitSpinner.getSelectedItem().toString();
+                        tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
+                        damkohlerDoub = Math.pow(radiusDoub, 2) / Math.pow(tempDoub, 2) * Math.exp(mDoub - pDoub / tempDoub);
+                        damkohlerNumberDisplay.setText(String.valueOf(damkohlerDoub));
+                        knownTempParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                        knownTempLayout.setLayoutParams(knownTempParams);
+                        damkohlerResultLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        knownTempLayout.setVisibility(View.INVISIBLE);
+                        knownTempParams.height = 0;
+                        knownTempLayout.setLayoutParams(knownTempParams);
+                        damkohlerDoub = Double.parseDouble(damkohlerValue.getText().toString());
+                        damkohlerResultLayout.setVisibility(View.VISIBLE);
+                    }
                 }
-                else
-                {
-                    mDoub = ValuesConverstions.getTamurelloMValue(materialSelected);
-                    pDoub = ValuesConverstions.getTamburelloPValue(materialSelected);
-                }
-                if (knownValueSelectionSpinner.getSelectedItem().toString().equals("Known Temperature/Unknown Damkohler"))
-                {
-                    damkohlerResultLayout.setVisibility(View.INVISIBLE);
-                    tempDoub = Double.parseDouble(tempValue.getText().toString());
-                    tempUnits = tempUnitSpinner.getSelectedItem().toString();
-                    tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
-                    damkohlerDoub = Math.pow(radiusDoub,2)/Math.pow(tempDoub,2)*Math.exp(mDoub-pDoub/tempDoub);
-                    damkohlerNumberDisplay.setText(String.valueOf(damkohlerDoub));
-                    knownTempParams.height=LinearLayout.LayoutParams.WRAP_CONTENT;
-                    knownTempLayout.setLayoutParams(knownTempParams);
-                    damkohlerResultLayout.setVisibility(View.VISIBLE);
-                }
-                else
-                {
-                    knownTempLayout.setVisibility(View.INVISIBLE);
-                    knownTempParams.height=0;
-                    knownTempLayout.setLayoutParams(knownTempParams);
-                    damkohlerDoub = Double.parseDouble(damkohlerValue.getText().toString());
-                    damkohlerResultLayout.setVisibility(View.VISIBLE);
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(SelfHeating.this, error, Toast.LENGTH_LONG).show();
                 }
             }
         });

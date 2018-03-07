@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,21 +68,27 @@ public class HRR extends AppCompatActivity {
 
         getMeasurementsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                maxBurningFlux = ValuesConverstions.FuelBurningFlux(fuelSpinner.getSelectedItem().toString());
-                heatCombustion = ValuesConverstions.FuelHeatCombustion(fuelSpinner.getSelectedItem().toString());
-                typeSelection = typeSelectionSpinner.getSelectedItem().toString();
-                typeUnits = typeUnitSpinner.getSelectedItem().toString();
-                if (typeSelection.equals("Area of Burning")) {
-                    areaDoub = Double.parseDouble(areaBurningText.getText().toString());
-                    areaDoub = ValuesConverstions.toSquareMeters(areaDoub, typeUnits);
-                } else if (typeSelection.equals("Radius")) {
-                    radiusDoub = Double.parseDouble(areaBurningText.getText().toString());
-                    radiusDoub = ValuesConverstions.toMeters(radiusDoub, typeUnits);
-                    areaDoub = Calculations.CalculateArea(radiusDoub);
+                try {
+                    maxBurningFlux = ValuesConverstions.FuelBurningFlux(fuelSpinner.getSelectedItem().toString());
+                    heatCombustion = ValuesConverstions.FuelHeatCombustion(fuelSpinner.getSelectedItem().toString());
+                    typeSelection = typeSelectionSpinner.getSelectedItem().toString();
+                    typeUnits = typeUnitSpinner.getSelectedItem().toString();
+                    if (typeSelection.equals("Area of Burning")) {
+                        areaDoub = Double.parseDouble(areaBurningText.getText().toString());
+                        areaDoub = ValuesConverstions.toSquareMeters(areaDoub, typeUnits);
+                    } else if (typeSelection.equals("Radius")) {
+                        radiusDoub = Double.parseDouble(areaBurningText.getText().toString());
+                        radiusDoub = ValuesConverstions.toMeters(radiusDoub, typeUnits);
+                        areaDoub = Calculations.CalculateArea(radiusDoub);
+                    }
+                    finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
+                    qResult.setText(String.valueOf(Math.round(finalQ)));
+                    resultLayout.setVisibility(View.VISIBLE);
                 }
-                finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
-                qResult.setText(String.valueOf(Math.round(finalQ)));
-                resultLayout.setVisibility(View.VISIBLE);
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(HRR.this, error, Toast.LENGTH_LONG).show();
+                }
 
                 qSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {

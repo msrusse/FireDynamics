@@ -69,53 +69,53 @@ public class FlashOver extends AppCompatActivity {
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                compWidth = Double.parseDouble(compWidthText.getText().toString());
-                compHeight = Double.parseDouble(compHeightText.getText().toString());
-                compLength = Double.parseDouble(compLengthText.getText().toString());
-                ventHeight = Double.parseDouble(ventHeightText.getText().toString());
-                ventWidth = Double.parseDouble(ventWidthText.getText().toString());
-                intLining = Double.parseDouble(intLiningText.getText().toString());
-                compWidthUnits = compWidthSpinner.getSelectedItem().toString();
-                compHeightUnits = compHeightSpinner.getSelectedItem().toString();
-                compLengthUnits = compLengthSpinner.getSelectedItem().toString();
-                ventHeightUnits = ventHeightSpinner.getSelectedItem().toString();
-                ventWidthUnits = ventWidthSpinner.getSelectedItem().toString();
-                intLiningUnits = intLiningSpinner.getSelectedItem().toString();
-                compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
-                compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
-                compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
-                ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
-                ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
-                intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
-                thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
-                double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
-                double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
-                qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
-                qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
-                qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
-                if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW"))
-                {
-                    qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+                try {
+                    compWidth = Double.parseDouble(compWidthText.getText().toString());
+                    compHeight = Double.parseDouble(compHeightText.getText().toString());
+                    compLength = Double.parseDouble(compLengthText.getText().toString());
+                    ventHeight = Double.parseDouble(ventHeightText.getText().toString());
+                    ventWidth = Double.parseDouble(ventWidthText.getText().toString());
+                    intLining = Double.parseDouble(intLiningText.getText().toString());
+                    compWidthUnits = compWidthSpinner.getSelectedItem().toString();
+                    compHeightUnits = compHeightSpinner.getSelectedItem().toString();
+                    compLengthUnits = compLengthSpinner.getSelectedItem().toString();
+                    ventHeightUnits = ventHeightSpinner.getSelectedItem().toString();
+                    ventWidthUnits = ventWidthSpinner.getSelectedItem().toString();
+                    intLiningUnits = intLiningSpinner.getSelectedItem().toString();
+                    compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
+                    compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
+                    compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
+                    ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
+                    ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
+                    intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
+                    thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
+                    double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
+                    double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
+                    double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
+                    qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
+                    qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
+                    qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
+                    if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW")) {
+                        qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+                    } else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                        qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+                    }
+                    if (babrauskasQSpinner.getSelectedItem().toString().equals("kW")) {
+                        qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
+                    } else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                        qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
+                    }
+                    if (qThomasSpinner.getSelectedItem().toString().equals("kW")) {
+                        qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
+                    } else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                        qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
+                    }
+                    resultLayout.setVisibility(View.VISIBLE);
                 }
-                else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                    qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(FlashOver.this, error, Toast.LENGTH_LONG).show();
                 }
-                if (babrauskasQSpinner.getSelectedItem().toString().equals("kW"))
-                {
-                    qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
-                }
-                else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                    qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
-                }
-                if (qThomasSpinner.getSelectedItem().toString().equals("kW"))
-                {
-                    qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
-                }
-                else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                    qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
-                }
-                resultLayout.setVisibility(View.VISIBLE);
                 mccaffreyQSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {
                             @Override

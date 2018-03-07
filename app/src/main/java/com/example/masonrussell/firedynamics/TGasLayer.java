@@ -65,38 +65,44 @@ public class TGasLayer extends AppCompatActivity {
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                compWidth = Double.parseDouble(compWidthText.getText().toString());
-                compHeight = Double.parseDouble(compHeightText.getText().toString());
-                compLength = Double.parseDouble(compLengthText.getText().toString());
-                ventHeight = Double.parseDouble(ventHeightText.getText().toString());
-                ventWidth = Double.parseDouble(ventWidthText.getText().toString());
-                intLining = Double.parseDouble(intLiningText.getText().toString());
-                qDoub = Double.parseDouble(qValue.getText().toString());
-                ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
-                compWidthUnits = compWidthSpinner.getSelectedItem().toString();
-                compHeightUnits = compHeightSpinner.getSelectedItem().toString();
-                compLengthUnits = compLengthSpinner.getSelectedItem().toString();
-                ventHeightUnits = ventHeightSpinner.getSelectedItem().toString();
-                ventWidthUnits = ventWidthSpinner.getSelectedItem().toString();
-                intLiningUnits = intLiningSpinner.getSelectedItem().toString();
-                qUnits = qSpinner.getSelectedItem().toString();
-                ambientTempUnits = ambientTempSpinner.getSelectedItem().toString();
-                compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
-                compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
-                compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
-                ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
-                ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
-                intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
-                qDoub = ValuesConverstions.tGasLayerEnergyToKW(qDoub, qUnits);
-                ambientTempDoub = ValuesConverstions.toDegreesKelvin(ambientTempDoub, ambientTempUnits);
-                thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
-                double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                double aoDoub = ventWidth * ventHeight;
-                double atdoub = Calculations.CalculateTGasLayerAT(compWidth, compLength, compHeight, aoDoub);
-                resultDoub = Calculations.CalculateTempOfUpperGasLayerAccordingtoMQH(qDoub, ambientTempDoub, hkdoub, aoDoub, atdoub, ventHeight);
-                resultsView.setText(String.valueOf(Math.round(resultDoub)));
-                resultUnits = resultSpinner.getSelectedItem().toString();
-                resultLayout.setVisibility(View.VISIBLE);
+                try {
+                    compWidth = Double.parseDouble(compWidthText.getText().toString());
+                    compHeight = Double.parseDouble(compHeightText.getText().toString());
+                    compLength = Double.parseDouble(compLengthText.getText().toString());
+                    ventHeight = Double.parseDouble(ventHeightText.getText().toString());
+                    ventWidth = Double.parseDouble(ventWidthText.getText().toString());
+                    intLining = Double.parseDouble(intLiningText.getText().toString());
+                    qDoub = Double.parseDouble(qValue.getText().toString());
+                    ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
+                    compWidthUnits = compWidthSpinner.getSelectedItem().toString();
+                    compHeightUnits = compHeightSpinner.getSelectedItem().toString();
+                    compLengthUnits = compLengthSpinner.getSelectedItem().toString();
+                    ventHeightUnits = ventHeightSpinner.getSelectedItem().toString();
+                    ventWidthUnits = ventWidthSpinner.getSelectedItem().toString();
+                    intLiningUnits = intLiningSpinner.getSelectedItem().toString();
+                    qUnits = qSpinner.getSelectedItem().toString();
+                    ambientTempUnits = ambientTempSpinner.getSelectedItem().toString();
+                    compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
+                    compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
+                    compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
+                    ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
+                    ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
+                    intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
+                    qDoub = ValuesConverstions.tGasLayerEnergyToKW(qDoub, qUnits);
+                    ambientTempDoub = ValuesConverstions.toDegreesKelvin(ambientTempDoub, ambientTempUnits);
+                    thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
+                    double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
+                    double aoDoub = ventWidth * ventHeight;
+                    double atdoub = Calculations.CalculateTGasLayerAT(compWidth, compLength, compHeight, aoDoub);
+                    resultDoub = Calculations.CalculateTempOfUpperGasLayerAccordingtoMQH(qDoub, ambientTempDoub, hkdoub, aoDoub, atdoub, ventHeight);
+                    resultsView.setText(String.valueOf(Math.round(resultDoub)));
+                    resultUnits = resultSpinner.getSelectedItem().toString();
+                    resultLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(TGasLayer.this, error, Toast.LENGTH_LONG).show();
+                }
                 resultSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -90,51 +90,55 @@ public class FlameHeight extends AppCompatActivity {
         getMeasurementsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qDoub = Double.parseDouble(qText.getText().toString());
-                qUnits = qUnitSpinner.getSelectedItem().toString();
-                if (qUnitSpinner.getSelectedItem().toString().equals("Btu/sec"))
-                {
-                    qDoub = Calculations.CalculateBtuPerSec(qDoub);
+                try {
+                    qDoub = Double.parseDouble(qText.getText().toString());
+                    qUnits = qUnitSpinner.getSelectedItem().toString();
+                    if (qUnitSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                        qDoub = Calculations.CalculateBtuPerSec(qDoub);
+                    }
+                    switch (typeSelectionSpinner.getSelectedItem().toString()) {
+                        case "Diameter of Pool Fire":
+                            diameterDoub = Double.parseDouble(typeSelectionText.getText().toString());
+                            diameterUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            diameterDoub = ValuesConverstions.toMeters(diameterDoub, diameterUnits);
+                            break;
+                        case "Area of Circular Pool":
+                            areaDoub = Double.parseDouble(typeSelectionText.getText().toString());
+                            areaUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            areaDoub = ValuesConverstions.toSquareMeters(areaDoub, areaUnits);
+                            diameterDoub = Calculations.CalculateDiameterFromArea(areaDoub);
+                            //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
+                            break;
+                        case "Length of Square Pool":
+                            lengthDoub = Double.parseDouble(typeSelectionText.getText().toString());
+                            lengthUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            widthDoub = Double.parseDouble(secondSquareText.getText().toString());
+                            widthUnits = secondSquareSpinner.getSelectedItem().toString();
+                            lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnits);
+                            widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnits);
+                            diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
+                            //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
+                            break;
+                        case "Width of Square Pool":
+                            widthDoub = Double.parseDouble(typeSelectionText.getText().toString());
+                            widthDoub = Double.parseDouble(secondSquareText.getText().toString());
+                            lengthDoub = Double.parseDouble(secondSquareText.getText().toString());
+                            lengthUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnits);
+                            widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnits);
+                            diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
+                            break;
+                    }
+                    lResultDoub = Calculations.CalculateFlameHeight(qDoub, diameterDoub);
+                    lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
+                    addItemsOnResultSpinner(lSpinner);
+                    resultView.setVisibility(View.VISIBLE);
+                    resultUnits = lSpinner.getSelectedItem().toString();
                 }
-                switch (typeSelectionSpinner.getSelectedItem().toString())
-                {
-                    case "Diameter of Pool Fire":
-                        diameterDoub = Double.parseDouble(typeSelectionText.getText().toString());
-                        diameterUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        diameterDoub = ValuesConverstions.toMeters(diameterDoub, diameterUnits);
-                        break;
-                    case "Area of Circular Pool":
-                        areaDoub = Double.parseDouble(typeSelectionText.getText().toString());
-                        areaUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        areaDoub = ValuesConverstions.toSquareMeters(areaDoub, areaUnits);
-                        diameterDoub = Calculations.CalculateDiameterFromArea(areaDoub);
-                        //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
-                        break;
-                    case "Length of Square Pool":
-                        lengthDoub = Double.parseDouble(typeSelectionText.getText().toString());
-                        lengthUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        widthDoub = Double.parseDouble(secondSquareText.getText().toString());
-                        widthUnits = secondSquareSpinner.getSelectedItem().toString();
-                        lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnits);
-                        widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnits);
-                        diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
-                        //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
-                        break;
-                    case "Width of Square Pool":
-                        widthDoub = Double.parseDouble(typeSelectionText.getText().toString());
-                        widthDoub = Double.parseDouble(secondSquareText.getText().toString());
-                        lengthDoub = Double.parseDouble(secondSquareText.getText().toString());
-                        lengthUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnits);
-                        widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnits);
-                        diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
-                        break;
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(FlameHeight.this, error, Toast.LENGTH_LONG).show();
                 }
-                lResultDoub = Calculations.CalculateFlameHeight(qDoub, diameterDoub);
-                lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
-                addItemsOnResultSpinner(lSpinner);
-                resultView.setVisibility(View.VISIBLE);
-                resultUnits = lSpinner.getSelectedItem().toString();
                 lSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -105,20 +106,26 @@ public class SolidIgnition extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                densityDoub = Double.parseDouble(densityValue.getText().toString());
-                densityUnits = densityUnitSpinner.getSelectedItem().toString();
-                specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
-                ignitionTempDoub = Double.parseDouble(ignitionTempValue.getText().toString());
-                ignitionTempUnits = ignitionTempUnitSpinner.getSelectedItem().toString();
-                ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
-                ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
-                thermalConductivityDoub = Double.parseDouble(thermalConductivityValue.getText().toString());
-                heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
-                heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
-                cDoub = Double.parseDouble(cValue.getText().toString());
-                resultDoub = Calculations.CalculateThermallyThickTimeToIgnition(cDoub, densityDoub, specificHeatDoub, thermalConductivityDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
-                resultView.setText(twoDigits.format(resultDoub));
-                resultLayout.setVisibility(View.VISIBLE);
+                try {
+                    densityDoub = Double.parseDouble(densityValue.getText().toString());
+                    densityUnits = densityUnitSpinner.getSelectedItem().toString();
+                    specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
+                    ignitionTempDoub = Double.parseDouble(ignitionTempValue.getText().toString());
+                    ignitionTempUnits = ignitionTempUnitSpinner.getSelectedItem().toString();
+                    ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
+                    ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
+                    thermalConductivityDoub = Double.parseDouble(thermalConductivityValue.getText().toString());
+                    heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
+                    heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
+                    cDoub = Double.parseDouble(cValue.getText().toString());
+                    resultDoub = Calculations.CalculateThermallyThickTimeToIgnition(cDoub, densityDoub, specificHeatDoub, thermalConductivityDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
+                    resultView.setText(twoDigits.format(resultDoub));
+                    resultLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(SolidIgnition.this, error, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -175,25 +182,31 @@ public class SolidIgnition extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                densityDoub = Double.parseDouble(densityValue.getText().toString());
-                densityUnits = densityUnitSpinner.getSelectedItem().toString();
-                specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
-                ignitionTempDoub = Double.parseDouble(ignitionTempValue.getText().toString());
-                ignitionTempUnits = ignitionTempUnitSpinner.getSelectedItem().toString();
-                thicknessDoub = Double.parseDouble(thicknessValue.getText().toString());
-                thicknessUnits = thicknessUnitSpinner.getSelectedItem().toString();
-                ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
-                ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
-                heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
-                heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
-                densityDoub = ValuesConverstions.densityToKilogramsPerMetersCubed(densityDoub, densityUnits);
-                thicknessDoub = ValuesConverstions.toMeters(thicknessDoub, thicknessUnits);
-                ignitionTempDoub = ValuesConverstions.toDegreesCentigrade(ignitionTempDoub, ignitionTempUnits);
-                ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
-                heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
-                resultDoub = Calculations.CalculateThermallyThinTimeToIgnition(densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
-                resultView.setText(twoDigits.format(resultDoub));
-                resultLayout.setVisibility(View.VISIBLE);
+                try {
+                    densityDoub = Double.parseDouble(densityValue.getText().toString());
+                    densityUnits = densityUnitSpinner.getSelectedItem().toString();
+                    specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
+                    ignitionTempDoub = Double.parseDouble(ignitionTempValue.getText().toString());
+                    ignitionTempUnits = ignitionTempUnitSpinner.getSelectedItem().toString();
+                    thicknessDoub = Double.parseDouble(thicknessValue.getText().toString());
+                    thicknessUnits = thicknessUnitSpinner.getSelectedItem().toString();
+                    ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
+                    ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
+                    heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
+                    heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
+                    densityDoub = ValuesConverstions.densityToKilogramsPerMetersCubed(densityDoub, densityUnits);
+                    thicknessDoub = ValuesConverstions.toMeters(thicknessDoub, thicknessUnits);
+                    ignitionTempDoub = ValuesConverstions.toDegreesCentigrade(ignitionTempDoub, ignitionTempUnits);
+                    ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
+                    heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
+                    resultDoub = Calculations.CalculateThermallyThinTimeToIgnition(densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
+                    resultView.setText(twoDigits.format(resultDoub));
+                    resultLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(SolidIgnition.this, error, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -241,27 +254,30 @@ public class SolidIgnition extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                materialSelected = materialSelectionSpinner.getSelectedItem().toString();
-                ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
-                ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
-                heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
-                heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
-                cDoub = Double.parseDouble(cValue.getText().toString());
-                thermalInertiaDoub = ValuesConverstions.getSolidIgnitionKPC(materialSelected);
-                ignitionTempDoub = ValuesConverstions.getSolidIgnitionTig(materialSelected);
-                criticalIgnitionFluxDoub = ValuesConverstions.getSolidIgnitionQCrit(materialSelected);
-                ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
-                heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
-                resultDoub = Calculations.CalculateThermallyThickTimeToIgnitionWithMaterialSelected(thermalInertiaDoub, ignitionTempDoub, criticalIgnitionFluxDoub, cDoub, ambientTempDoub, heatFluxDoub);
-                if (resultDoub == 0)
-                {
-                    resultView.setText("Below Critical Flux");
+                try {
+                    materialSelected = materialSelectionSpinner.getSelectedItem().toString();
+                    ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
+                    ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();
+                    heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
+                    heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
+                    cDoub = Double.parseDouble(cValue.getText().toString());
+                    thermalInertiaDoub = ValuesConverstions.getSolidIgnitionKPC(materialSelected);
+                    ignitionTempDoub = ValuesConverstions.getSolidIgnitionTig(materialSelected);
+                    criticalIgnitionFluxDoub = ValuesConverstions.getSolidIgnitionQCrit(materialSelected);
+                    ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
+                    heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
+                    resultDoub = Calculations.CalculateThermallyThickTimeToIgnitionWithMaterialSelected(thermalInertiaDoub, ignitionTempDoub, criticalIgnitionFluxDoub, cDoub, ambientTempDoub, heatFluxDoub);
+                    if (resultDoub == 0) {
+                        resultView.setText("Below Critical Flux");
+                    } else {
+                        resultView.setText(twoDigits.format(resultDoub));
+                    }
+                    resultLayout.setVisibility(View.VISIBLE);
                 }
-                else
-                {
-                    resultView.setText(twoDigits.format(resultDoub));
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(SolidIgnition.this, error, Toast.LENGTH_LONG).show();
                 }
-                resultLayout.setVisibility(View.VISIBLE);
             }
         });
     }

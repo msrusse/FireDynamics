@@ -50,20 +50,26 @@ public class OpenPipe extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pressureDropDoub = Double.parseDouble(pressureDropText.getText().toString());
-                pressureDropUnits = pressureDropSpinner.getSelectedItem().toString();
-                pressureDropDoub = ValuesConverstions.PressureToMbar(pressureDropDoub, pressureDropUnits);
-                pipeDiameterDoub = Double.parseDouble(pipeDiameterText.getText().toString());
-                pipeDiameterUnits = pipeDiameterSpinner.getSelectedItem().toString();
-                pipeDiameterDoub = ValuesConverstions.toMillimeters(pipeDiameterDoub, pipeDiameterUnits);
-                pipeLengthDoub = Double.parseDouble(pipeLengthText.getText().toString());
-                pipeLengthUnits = pipeLengthSpinner.getSelectedItem().toString();
-                pipeLengthDoub = ValuesConverstions.toMeters(pipeLengthDoub, pipeLengthUnits);
-                specificGravityDoub = Double.parseDouble(specificGravityText.getText().toString());
-                resultDoub = Calculations.CalculateOpenPipeQ(pressureDropDoub,pipeDiameterDoub,pipeLengthDoub,specificGravityDoub);
-                resultText.setText(twoDigits.format(resultDoub));
-                resultLayout.setVisibility(View.VISIBLE);
-                resultUnits = resultSpinner.getSelectedItem().toString();
+                try {
+                    pressureDropDoub = Double.parseDouble(pressureDropText.getText().toString());
+                    pressureDropUnits = pressureDropSpinner.getSelectedItem().toString();
+                    pressureDropDoub = ValuesConverstions.PressureToMbar(pressureDropDoub, pressureDropUnits);
+                    pipeDiameterDoub = Double.parseDouble(pipeDiameterText.getText().toString());
+                    pipeDiameterUnits = pipeDiameterSpinner.getSelectedItem().toString();
+                    pipeDiameterDoub = ValuesConverstions.toMillimeters(pipeDiameterDoub, pipeDiameterUnits);
+                    pipeLengthDoub = Double.parseDouble(pipeLengthText.getText().toString());
+                    pipeLengthUnits = pipeLengthSpinner.getSelectedItem().toString();
+                    pipeLengthDoub = ValuesConverstions.toMeters(pipeLengthDoub, pipeLengthUnits);
+                    specificGravityDoub = Double.parseDouble(specificGravityText.getText().toString());
+                    resultDoub = Calculations.CalculateOpenPipeQ(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub);
+                    resultText.setText(twoDigits.format(resultDoub));
+                    resultLayout.setVisibility(View.VISIBLE);
+                    resultUnits = resultSpinner.getSelectedItem().toString();
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(OpenPipe.this, error, Toast.LENGTH_LONG).show();
+                }
 
                 resultSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {

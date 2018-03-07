@@ -83,56 +83,56 @@ public class RadiationPoolFire extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                distanceDoub = Double.parseDouble(distance.getText().toString());
-                distanceUnitType = distanceSpinner.getSelectedItem().toString();
-                distanceDoub = ValuesConverstions.toMeters(distanceDoub, distanceUnitType);
-                switch (typeSelectionSpinner.getSelectedItem().toString())
-                {
-                    case "Length of Square Pool":
-                        lengthDoub = Double.parseDouble(typeSelection.getText().toString());
-                        widthDoub = Double.parseDouble(widthLength.getText().toString());
-                        lengthUnitType = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        widthUnitType = secondSquareUnitSpinner.getSelectedItem().toString();
-                        lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitType);
-                        widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnitType);
-                        diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
-                        ldivdDoub = distanceDoub / diameterDoub;
-                        break;
-                    case "Width of Square Pool":
-                        widthDoub = Double.parseDouble(typeSelection.getText().toString());
-                        lengthDoub = Double.parseDouble(widthLength.getText().toString());
-                        lengthUnitType = secondSquareUnitSpinner.getSelectedItem().toString();
-                        widthUnitType = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitType);
-                        widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnitType);
-                        diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
-                        ldivdDoub = distanceDoub / diameterDoub;
-                        break;
-                    case "Diameter of Pool":
-                        diameterDoub = Double.parseDouble(typeSelection.getText().toString());
-                        diameterUitType = typeSelectionUnitSpinner.getSelectedItem().toString();
-                        diameterDoub = ValuesConverstions.toMeters(diameterDoub, diameterUitType);
-                        ldivdDoub = distanceDoub / diameterDoub;
-                        break;
+                try {
+                    distanceDoub = Double.parseDouble(distance.getText().toString());
+                    distanceUnitType = distanceSpinner.getSelectedItem().toString();
+                    distanceDoub = ValuesConverstions.toMeters(distanceDoub, distanceUnitType);
+                    switch (typeSelectionSpinner.getSelectedItem().toString()) {
+                        case "Length of Square Pool":
+                            lengthDoub = Double.parseDouble(typeSelection.getText().toString());
+                            widthDoub = Double.parseDouble(widthLength.getText().toString());
+                            lengthUnitType = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            widthUnitType = secondSquareUnitSpinner.getSelectedItem().toString();
+                            lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitType);
+                            widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnitType);
+                            diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
+                            ldivdDoub = distanceDoub / diameterDoub;
+                            break;
+                        case "Width of Square Pool":
+                            widthDoub = Double.parseDouble(typeSelection.getText().toString());
+                            lengthDoub = Double.parseDouble(widthLength.getText().toString());
+                            lengthUnitType = secondSquareUnitSpinner.getSelectedItem().toString();
+                            widthUnitType = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitType);
+                            widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnitType);
+                            diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
+                            ldivdDoub = distanceDoub / diameterDoub;
+                            break;
+                        case "Diameter of Pool":
+                            diameterDoub = Double.parseDouble(typeSelection.getText().toString());
+                            diameterUitType = typeSelectionUnitSpinner.getSelectedItem().toString();
+                            diameterDoub = ValuesConverstions.toMeters(diameterDoub, diameterUitType);
+                            ldivdDoub = distanceDoub / diameterDoub;
+                            break;
+                    }
+                    heatFluxResultDoub = Calculations.CalculateHeatFluxtoTarget(distanceDoub, diameterDoub);
+                    heatFluxResult.setText(String.valueOf(Math.round(heatFluxResultDoub)));
+                    addUnitsOnResultSpinner(heatFluxSpinner);
+                    heatFluxUnitType = heatFluxSpinner.getSelectedItem().toString();
+                    resultLayout.setVisibility(View.VISIBLE);
+                    if (ldivdDoub < 0.7) {
+                        ldResult = "Too close to pool edge";
+                    } else if (ldivdDoub > 15) {
+                        ldResult = "Too far from pool edge";
+                    } else {
+                        ldResult = "OK";
+                    }
+                    ldValidTestResult.setText(ldResult);
                 }
-                heatFluxResultDoub = Calculations.CalculateHeatFluxtoTarget(distanceDoub, diameterDoub);
-                heatFluxResult.setText(String.valueOf(Math.round(heatFluxResultDoub)));
-                addUnitsOnResultSpinner(heatFluxSpinner);
-                heatFluxUnitType = heatFluxSpinner.getSelectedItem().toString();
-                resultLayout.setVisibility(View.VISIBLE);
-                if (ldivdDoub < 0.7)
-                {
-                    ldResult = "Too close to pool edge";
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(RadiationPoolFire.this, error, Toast.LENGTH_LONG).show();
                 }
-                else if (ldivdDoub > 15)
-                {
-                    ldResult = "Too far from pool edge";
-                }
-                else
-                {
-                    ldResult = "OK";
-                }
-                ldValidTestResult.setText(ldResult);
                 heatFluxSpinner.setOnItemSelectedListener(
                         new AdapterView.OnItemSelectedListener() {
                             @Override

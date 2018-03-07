@@ -45,12 +45,18 @@ public class T2Fires extends AppCompatActivity {
         getResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                t1Doub = Double.parseDouble(t1Value.getText().toString());
-                peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
-                timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
-                alphaDoub = 1000/Math.pow(t1Doub,2);
-                getValues();
-                resultLayout.setVisibility(View.VISIBLE);
+                try {
+                    t1Doub = Double.parseDouble(t1Value.getText().toString());
+                    peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
+                    timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
+                    alphaDoub = 1000 / Math.pow(t1Doub, 2);
+                    getValues();
+                    resultLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(T2Fires.this, error, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

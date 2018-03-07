@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -54,26 +55,32 @@ public class Conduction extends AppCompatActivity {
         getResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lengthDoub = Double.parseDouble(lengthResult.getText().toString());
-                hotSideDoub = Double.parseDouble(hotSideResult.getText().toString());
-                coldSideDoub = Double.parseDouble(coldSideResult.getText().toString());
-                materialString = materialSpinner.getSelectedItem().toString();
-                lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitSpinner.getSelectedItem().toString());
-                hotSideDoub = ValuesConverstions.toDegreesCentigrade(hotSideDoub, hotSideUnitSpinner.getSelectedItem().toString());
-                coldSideDoub = ValuesConverstions.toDegreesCentigrade(coldSideDoub, coldSideUnitSpinner.getSelectedItem().toString());
-                thermalConductivityDoub = ValuesConverstions.ConductionThermalConductivity(materialString);
-                specificHeatDoub = ValuesConverstions.ConductionSpecificHeat(materialString);
-                densityDoub = ValuesConverstions.ConductionDensity(materialString);
-                thermalDiffusivityDoub = getThermalDiffusivity(thermalConductivityDoub, specificHeatDoub, densityDoub);
-                thermalIntertiaDoub = ValuesConverstions.ConductionThermalInertia(materialString);
-                thermalConductivityDoub = thermalConductivityDoub / 1000;
-                heatFluxDoub = Calculations.CalculateConductiveHeatFlux(lengthDoub, thermalConductivityDoub, hotSideDoub, coldSideDoub);
-                heatFluxResult.setText(fourDigits.format(heatFluxDoub));
-                currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
-                thermalPenTimeDoub = Calculations.CalculateConductiveThermalPenTime(lengthDoub, thermalDiffusivityDoub);
-                thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
-                currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
-                resultLayout.setVisibility(View.VISIBLE);
+                try {
+                    lengthDoub = Double.parseDouble(lengthResult.getText().toString());
+                    hotSideDoub = Double.parseDouble(hotSideResult.getText().toString());
+                    coldSideDoub = Double.parseDouble(coldSideResult.getText().toString());
+                    materialString = materialSpinner.getSelectedItem().toString();
+                    lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitSpinner.getSelectedItem().toString());
+                    hotSideDoub = ValuesConverstions.toDegreesCentigrade(hotSideDoub, hotSideUnitSpinner.getSelectedItem().toString());
+                    coldSideDoub = ValuesConverstions.toDegreesCentigrade(coldSideDoub, coldSideUnitSpinner.getSelectedItem().toString());
+                    thermalConductivityDoub = ValuesConverstions.ConductionThermalConductivity(materialString);
+                    specificHeatDoub = ValuesConverstions.ConductionSpecificHeat(materialString);
+                    densityDoub = ValuesConverstions.ConductionDensity(materialString);
+                    thermalDiffusivityDoub = getThermalDiffusivity(thermalConductivityDoub, specificHeatDoub, densityDoub);
+                    thermalIntertiaDoub = ValuesConverstions.ConductionThermalInertia(materialString);
+                    thermalConductivityDoub = thermalConductivityDoub / 1000;
+                    heatFluxDoub = Calculations.CalculateConductiveHeatFlux(lengthDoub, thermalConductivityDoub, hotSideDoub, coldSideDoub);
+                    heatFluxResult.setText(fourDigits.format(heatFluxDoub));
+                    currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
+                    thermalPenTimeDoub = Calculations.CalculateConductiveThermalPenTime(lengthDoub, thermalDiffusivityDoub);
+                    thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
+                    currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
+                    resultLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(Conduction.this, error, Toast.LENGTH_LONG).show();
+                }
                 heatFluxResultSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

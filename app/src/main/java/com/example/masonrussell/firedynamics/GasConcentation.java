@@ -56,17 +56,23 @@ public class GasConcentation extends AppCompatActivity {
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                airchangeDoub = Double.parseDouble(airchangesResult.getText().toString());
-                leakageRateDoub = Double.parseDouble(leakageRateResult.getText().toString());
-                gasVolumeDoub = Double.parseDouble(gasVolumeResult.getText().toString());
-                timestepDoub = Double.parseDouble(timestepResult.getText().toString());
-                timestepDoub = ValuesConverstions.timeToHours(timestepDoub, timestepUnits);
-                leakageRateUnits = leakageRateUnitSpinner.getSelectedItem().toString();
-                gasVolumeUnits = gasVolumeUnitSpinner.getSelectedItem().toString();
-                gasVolumeDoub = ValuesConverstions.toCubicMeters(gasVolumeDoub, gasVolumeUnits);
-                leakageRateDoub = ValuesConverstions.FlowtoMetersCubedPerHour(leakageRateDoub, leakageRateUnits);
-                getValues();
-                resultsLayout.setVisibility(View.VISIBLE);
+                try {
+                    airchangeDoub = Double.parseDouble(airchangesResult.getText().toString());
+                    leakageRateDoub = Double.parseDouble(leakageRateResult.getText().toString());
+                    gasVolumeDoub = Double.parseDouble(gasVolumeResult.getText().toString());
+                    timestepDoub = Double.parseDouble(timestepResult.getText().toString());
+                    timestepDoub = ValuesConverstions.timeToHours(timestepDoub, timestepUnits);
+                    leakageRateUnits = leakageRateUnitSpinner.getSelectedItem().toString();
+                    gasVolumeUnits = gasVolumeUnitSpinner.getSelectedItem().toString();
+                    gasVolumeDoub = ValuesConverstions.toCubicMeters(gasVolumeDoub, gasVolumeUnits);
+                    leakageRateDoub = ValuesConverstions.FlowtoMetersCubedPerHour(leakageRateDoub, leakageRateUnits);
+                    getValues();
+                    resultsLayout.setVisibility(View.VISIBLE);
+                }
+                catch (Exception ex) {
+                    String error = "Please Fill the Empty Fields";
+                    Toast.makeText(GasConcentation.this, error, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
