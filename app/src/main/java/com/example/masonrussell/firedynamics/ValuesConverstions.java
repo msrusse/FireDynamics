@@ -1248,15 +1248,15 @@ class ValuesConverstions {
         switch (currentUnits)
         {
             case "ft^3":
-                return (currentVolume/0.0283168)*0.00378541;
-            case "gallon":
+                return (currentVolume*0.0283168)/0.00378541;
+            case "gallons":
                 return currentVolume;
             case "in^3":
-                return (currentVolume/0.0000163870562770569)*0.00378541;
-            case "liter":
-                return (currentVolume/0.001)*0.00378541;
+                return (currentVolume*0.0000163870562770569)/0.00378541;
+            case "liters":
+                return (currentVolume*0.001)/0.00378541;
             case "m^3":
-                return currentVolume*0.00378541;
+                return currentVolume/0.00378541;
         }
         return -1;
     }
@@ -1266,15 +1266,15 @@ class ValuesConverstions {
         switch (currentUnits)
         {
             case "ft^3":
-                return (currentVolume/0.0283168)*0.0000163870562770569;
-            case "gallon":
-                return (currentVolume/0.00378541)*0.0000163870562770569;
+                return (currentVolume*0.0283168)/0.0000163870562770569;
+            case "gallons":
+                return (currentVolume*0.00378541)/0.0000163870562770569;
             case "in^3":
                 return currentVolume;
-            case "liter":
-                return (currentVolume/0.001)*0.0000163870562770569;
+            case "liters":
+                return (currentVolume*0.001)/0.0000163870562770569;
             case "m^3":
-                return currentVolume*0.0000163870562770569;
+                return currentVolume/0.0000163870562770569;
         }
         return -1;
     }
@@ -1284,15 +1284,15 @@ class ValuesConverstions {
         switch (currentUnits)
         {
             case "ft^3":
-                return (currentVolume/0.0283168)*0.001;
-            case "gallon":
-                return (currentVolume/0.00378541)*0.001;
+                return (currentVolume*0.0283168)/0.001;
+            case "gallons":
+                return (currentVolume*0.00378541)/0.001;
             case "in^3":
-                return (currentVolume/0.0000163870562770569)*0.001;
-            case "liter":
+                return (currentVolume*0.0000163870562770569)/0.001;
+            case "liters":
                 return currentVolume;
             case "m^3":
-                return currentVolume*0.001;
+                return currentVolume/0.001;
         }
         return -1;
     }
@@ -1303,14 +1303,33 @@ class ValuesConverstions {
         {
             case "ft^3":
                 return currentVolume;
-            case "gallon":
-                return (currentVolume/0.00378541)*0.0283168;
+            case "gallons":
+                return (currentVolume*0.00378541)/0.0283168;
             case "in^3":
-                return (currentVolume/0.0000163870562770569)*0.0283168;
-            case "liter":
-                return (currentVolume/0.001)*0.0283168;
+                return (currentVolume*0.0000163870562770569)/0.0283168;
+            case "liters":
+                return (currentVolume*0.001)/0.0283168;
             case "m^3":
-                return currentVolume*0.0283168;
+                return currentVolume/0.0283168;
+        }
+        return -1;
+    }
+
+    static double gasAmountToCubicMeters(double currentVolume, String currentUnits)
+    {
+
+        switch (currentUnits)
+        {
+            case "ft^3":
+                return currentVolume * 0.0283168;
+            case "gallons":
+                return currentVolume * 0.00378541;
+            case "in^3":
+                return currentVolume * 0.0000163870562770569;
+            case "liters":
+                return currentVolume * 0.001;
+            case "m^3":
+                return currentVolume;
         }
         return -1;
     }

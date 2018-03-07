@@ -279,8 +279,9 @@
         <TableLayout
             android:id="@+id/resultsTable"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="fill">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -296,21 +297,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
                     android:text="@string/lel"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
                     android:text="@string/stoich"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
                     android:text="@string/uel"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -320,7 +324,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill">
 
                 <TextView
                     android:layout_width="0dp"
@@ -335,7 +340,9 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center|fill_vertical"
+                    android:gravity="center_vertical"/>
 
                 <TextView
                     android:id="@+id/stoichGasVolumeResult"
@@ -344,7 +351,8 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/uelGasVolumeResult"
@@ -353,7 +361,8 @@
                     android:layout_weight=".21"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <Spinner
                     android:id="@+id/gasVolumeUnitSpinner"
@@ -373,7 +382,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_vertical">
 
                 <TextView
                     android:layout_width="0dp"
@@ -388,7 +398,8 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/stoichGasWeightResult"
@@ -397,7 +408,8 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/uelGasWeightResult"
@@ -406,7 +418,8 @@
                     android:layout_weight=".21"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <Spinner
                     android:id="@+id/gasWeightUnitSpinner"
@@ -426,13 +439,15 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="fill_vertical">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".28"
-                    android:text="@string/liquid_volume" />
+                    android:text="@string/liquid_volume"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/lelLiquidVolumeResult"
@@ -441,7 +456,8 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/stoichLiquidVolumeResult"
@@ -450,7 +466,8 @@
                     android:layout_weight=".18"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <TextView
                     android:id="@+id/uelLiquidVolumeResult"
@@ -459,7 +476,8 @@
                     android:layout_weight=".21"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="fill_vertical"/>
 
                 <Spinner
                     android:id="@+id/uelLiquidVolumeUnitSpinner"

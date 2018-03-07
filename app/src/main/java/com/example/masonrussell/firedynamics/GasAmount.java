@@ -235,9 +235,9 @@ public class GasAmount extends AppCompatActivity {
                         switch (gasVolumeResultSpinner.getSelectedItem().toString())
                         {
                             case "m^3":
-                                lelGasVolumeDoub = ValuesConverstions.toCubicMeters(lelGasVolumeDoub, gasVolumeUnits);
-                                stoichGasVolumeDoub = ValuesConverstions.toCubicMeters(stoichGasVolumeDoub, gasVolumeUnits);
-                                uelGasVolumeDoub = ValuesConverstions.toCubicMeters(uelGasVolumeDoub, gasVolumeUnits);
+                                lelGasVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(lelGasVolumeDoub, gasVolumeUnits);
+                                stoichGasVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(stoichGasVolumeDoub, gasVolumeUnits);
+                                uelGasVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(uelGasVolumeDoub, gasVolumeUnits);
                                 lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
                                 stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
                                 uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
@@ -332,13 +332,13 @@ public class GasAmount extends AppCompatActivity {
                         switch (liquidVolumeResultSpinner.getSelectedItem().toString())
                         {
                             case "m^3":
-                                lelLiquidVolumeDoub = ValuesConverstions.toCubicMeters(lelLiquidVolumeDoub, liquidVolumeUnits);
-                                stoichLiquidVolumeDoub = ValuesConverstions.toCubicMeters(stoichLiquidVolumeDoub, liquidVolumeUnits);
-                                uelLiquidVolumeDoub = ValuesConverstions.toCubicMeters(uelLiquidVolumeDoub, liquidVolumeUnits);
+                                lelLiquidVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(lelLiquidVolumeDoub, liquidVolumeUnits);
+                                stoichLiquidVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(stoichLiquidVolumeDoub, liquidVolumeUnits);
+                                uelLiquidVolumeDoub = ValuesConverstions.gasAmountToCubicMeters(uelLiquidVolumeDoub, liquidVolumeUnits);
                                 lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
                                 stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
                                 uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                                gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+                                liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "ft^3":
                                 lelLiquidVolumeDoub = ValuesConverstions.volumeToCubicFeet(lelLiquidVolumeDoub, liquidVolumeUnits);
@@ -347,7 +347,7 @@ public class GasAmount extends AppCompatActivity {
                                 lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
                                 stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
                                 uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                                gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+                                liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "in^3":
                                 lelLiquidVolumeDoub = ValuesConverstions.volumeToCubicInches(lelLiquidVolumeDoub, liquidVolumeUnits);
@@ -356,7 +356,7 @@ public class GasAmount extends AppCompatActivity {
                                 lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
                                 stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
                                 uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                                gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+                                liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "liters":
                                 lelLiquidVolumeDoub = ValuesConverstions.volumeToLiters(lelLiquidVolumeDoub, liquidVolumeUnits);
@@ -365,7 +365,7 @@ public class GasAmount extends AppCompatActivity {
                                 lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
                                 stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
                                 uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                                gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+                                liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
                                 break;
                             case "gallons":
                                 lelLiquidVolumeDoub = ValuesConverstions.volumeToUSGallons(lelLiquidVolumeDoub, liquidVolumeUnits);
@@ -374,7 +374,7 @@ public class GasAmount extends AppCompatActivity {
                                 lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
                                 stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
                                 uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                                gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+                                liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
                                 break;
                         }
                     }
