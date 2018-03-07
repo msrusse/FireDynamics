@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/room_area"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/areaValue"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/height_from_leak"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/heightValue"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/lel"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/lelValue"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/stoichiometric"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/stoichValue"
@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/uel"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/uelValue"
@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/vapor_density"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/vaporDensityValue"
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/liquid_density"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/liquidDensityValue"
@@ -333,29 +333,42 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/stoichGasVolumeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/uelGasVolumeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:layout_weight=".21"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/gasVolumeUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
+                    android:layout_weight=".15"
                     android:background="@drawable/firedynamic_button" />
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="3dp">
+
+                <TextView android:layout_height="3dp" />
             </TableRow>
 
             <TableRow
@@ -373,29 +386,42 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/stoichGasWeightResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/uelGasWeightResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:layout_weight=".21"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/gasWeightUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
+                    android:layout_weight=".15"
                     android:background="@drawable/firedynamic_button" />
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+
+                <TextView android:layout_height="3dp" />
             </TableRow>
 
             <TableRow
@@ -413,27 +439,33 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/stoichLiquidVolumeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/uelLiquidVolumeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
-                    android:textAlignment="center" />
+                    android:layout_weight=".21"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/uelLiquidVolumeUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".18"
+                    android:layout_weight=".15"
                     android:background="@drawable/firedynamic_button" />
 
             </TableRow>
@@ -445,4 +477,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

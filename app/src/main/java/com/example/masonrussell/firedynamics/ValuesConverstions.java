@@ -127,10 +127,10 @@ class ValuesConverstions {
         switch (currentUnits)
         {
             case "ft^2":
-                meters = measurement * 0.3048780488;
+                meters = measurement * (1/Math.pow(3.28,2));
                 break;
             case "in^2":
-                meters = measurement * 0.02540650407;
+                meters = measurement * 0.00064549;
                 break;
             case "mm^2":
                 meters = measurement * 0.001;
@@ -1197,6 +1197,120 @@ class ValuesConverstions {
                 return -1;
             case "Propane":
                 return 580;
+        }
+        return -1;
+    }
+
+    static double massToKilograms(double currentMass, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "g":
+                return currentMass*.0001;
+            case "kg":
+                return currentMass;
+            case "lb":
+                return currentMass*0.453592;
+        }
+        return -1;
+    }
+
+    static double massToPounds(double currentMass, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "g":
+                return (currentMass*0.001)/0.453592;
+            case "kg":
+                return currentMass/0.453592;
+            case "lb":
+                return currentMass;
+        }
+        return -1;
+    }
+
+    static double massToGrams(double currentMass, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "g":
+                return currentMass;
+            case "kg":
+                return currentMass/0.001;
+            case "lb":
+                return (currentMass*0.453592)/0.001;
+        }
+        return -1;
+    }
+
+    static double volumeToUSGallons(double currentVolume, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "ft^3":
+                return (currentVolume/0.0283168)*0.00378541;
+            case "gallon":
+                return currentVolume;
+            case "in^3":
+                return (currentVolume/0.0000163870562770569)*0.00378541;
+            case "liter":
+                return (currentVolume/0.001)*0.00378541;
+            case "m^3":
+                return currentVolume*0.00378541;
+        }
+        return -1;
+    }
+
+    static double volumeToCubicInches(double currentVolume, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "ft^3":
+                return (currentVolume/0.0283168)*0.0000163870562770569;
+            case "gallon":
+                return (currentVolume/0.00378541)*0.0000163870562770569;
+            case "in^3":
+                return currentVolume;
+            case "liter":
+                return (currentVolume/0.001)*0.0000163870562770569;
+            case "m^3":
+                return currentVolume*0.0000163870562770569;
+        }
+        return -1;
+    }
+
+    static double volumeToLiters(double currentVolume, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "ft^3":
+                return (currentVolume/0.0283168)*0.001;
+            case "gallon":
+                return (currentVolume/0.00378541)*0.001;
+            case "in^3":
+                return (currentVolume/0.0000163870562770569)*0.001;
+            case "liter":
+                return currentVolume;
+            case "m^3":
+                return currentVolume*0.001;
+        }
+        return -1;
+    }
+
+    static double volumeToCubicFeet(double currentVolume, String currentUnits)
+    {
+        switch (currentUnits)
+        {
+            case "ft^3":
+                return currentVolume;
+            case "gallon":
+                return (currentVolume/0.00378541)*0.0283168;
+            case "in^3":
+                return (currentVolume/0.0000163870562770569)*0.0283168;
+            case "liter":
+                return (currentVolume/0.001)*0.0283168;
+            case "m^3":
+                return currentVolume*0.0283168;
         }
         return -1;
     }
