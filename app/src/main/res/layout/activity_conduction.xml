@@ -28,7 +28,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/length"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/lengthResult"
@@ -39,7 +39,8 @@
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/lengthSpinner"
@@ -66,7 +67,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/hot_side"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/hotSideResult"
@@ -77,7 +78,8 @@
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/hotSideSpinner"
@@ -104,7 +106,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/cold_side"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/coldSideResult"
@@ -116,7 +118,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/coldSideSpinner"
@@ -176,18 +179,19 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_weight=".5"
+                    android:layout_weight=".6"
                     android:text="@string/heat_flux"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/heatFluxResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".3"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
+                    android:layout_weight=".22"
                     android:textAlignment="center"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -213,18 +217,19 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_weight=".5"
+                    android:layout_weight=".6"
                     android:text="@string/thermal_pen_time"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/thermalPenTimeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
-                    android:layout_weight=".3"
+                    android:layout_weight=".22"
                     android:textAlignment="center"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner

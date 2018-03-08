@@ -10,31 +10,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="16dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompLengthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/comp_length"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compLengthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/compLengthSpinner"
@@ -48,26 +54,31 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/comp_width"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/compWidthSpinner"
@@ -81,26 +92,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompHeightView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/comp_height"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/compHeightSpinner"
@@ -114,26 +130,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ventWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/vent_width"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ventWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/ventWidthSpinner"
@@ -147,26 +168,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ventHieghtText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/vent_height"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ventHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/ventHeightSpinner"
@@ -180,26 +206,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/intLiningThickView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/int_lining_thick"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/intLiningText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/intLiningSpinner"
@@ -213,6 +244,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <Spinner
@@ -227,26 +259,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/qView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/q"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/qValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/qSpinner"
@@ -260,26 +297,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ambeintTempView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:gravity="center_vertical"
                 android:text="@string/ambient_temp"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ambientTempValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/ambientTempSpinner"
@@ -294,6 +336,7 @@
             android:id="@+id/getFlashoverButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
@@ -304,6 +347,7 @@
             android:id="@+id/resultLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="300dp">
 
@@ -316,17 +360,21 @@
                     android:id="@+id/resultText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight=".6"
+                    android:gravity="center_vertical"
                     android:text="T"
-                    android:textSize="30sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/resultView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".3"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight=".22"
+                    android:gravity="center_vertical"
                     android:textAlignment="center"
-                    android:textSize="30sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner

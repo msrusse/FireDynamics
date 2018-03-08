@@ -24,17 +24,18 @@
                 android:id="@+id/airChangesView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
-                android:layout_weight=".60"
+                android:layout_weight=".6"
                 android:text="@string/airchanges"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/airChangesValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_weight=".17"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
@@ -46,8 +47,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight=".23"
-                android:text="@string/changes_per_hour" />
+                android:layout_weight=".18"
+                android:text="@string/changes_per_hour"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -61,18 +63,19 @@
             <TextView
                 android:id="@+id/leakageRateView"
                 android:layout_width="0dp"
-                android:layout_marginEnd="8dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/leakage_rate"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/leakageRateValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".17"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
@@ -83,7 +86,7 @@
                 android:id="@+id/leakageRateUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".23"
+                android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
@@ -98,17 +101,18 @@
                 android:id="@+id/gasVolumeView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/gas_filled_room_volume"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/gasVolumeValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_weight=".17"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
@@ -119,7 +123,7 @@
                 android:id="@+id/gasVolumeUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".23"
+                android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
@@ -134,19 +138,20 @@
                 android:id="@+id/timestepView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/timestep"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/timestepValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".17"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
-                android:layout_marginEnd="8dp"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
                 android:textAlignment="center" />
@@ -155,8 +160,9 @@
                 android:id="@+id/timestepUnits"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".23"
-                android:text="@string/minutes" />
+                android:layout_weight=".18"
+                android:text="@string/minutes"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -174,6 +180,7 @@
             android:id="@+id/resultLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="300dp">
 

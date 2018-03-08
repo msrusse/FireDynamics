@@ -10,12 +10,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="18dp">
 
         <Spinner
             android:id="@+id/calculationSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
@@ -27,36 +31,40 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_weight="1"
                 android:text="@string/thermally_thick_ignition_with_materials"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Spinner
             android:id="@+id/materialSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/cView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".78"
                 android:text="@string/c"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/cValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".32"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
@@ -74,15 +82,17 @@
                 android:id="@+id/ambientTempView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".65"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/ambient_temp"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ambientTempValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".17"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
@@ -101,21 +111,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/heatFluxView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".65"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/heat_flux_exposure"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/heatFluxValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".17"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
@@ -135,6 +149,7 @@
             android:id="@+id/getMeasurementsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/background_light"
             android:text="@string/get_calculation" />
 
@@ -148,14 +163,16 @@
                 android:id="@+id/resultView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".60"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/heat_flux_exposure"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/resultDisplayView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight=".22"
                 android:ems="10"
                 android:labelFor="@+id/compHeightText"
@@ -169,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/seconds"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

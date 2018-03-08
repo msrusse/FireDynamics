@@ -10,26 +10,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/pileVolumeView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/pile_volume"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/pileVolumeValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".32"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
@@ -54,15 +60,18 @@
                 android:id="@+id/pileHeightView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/pile_height"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/pileHeightValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".32"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
@@ -82,27 +91,31 @@
             android:id="@+id/materialSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
             android:id="@+id/mLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/mView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/M"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/mValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
@@ -113,8 +126,10 @@
                 android:id="@+id/mUnitDisplay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:text="@string/mUnits"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -124,21 +139,24 @@
             android:id="@+id/pLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/pUnitView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/p"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/pValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
@@ -151,6 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/k"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -159,27 +178,31 @@
             android:id="@+id/knownValueSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
             android:id="@+id/knownTempLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tempView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/temperature"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/tempValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
@@ -191,33 +214,34 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
-                android:textStyle="bold"
-                android:background="@drawable/firedynamic_button"/>
+                android:background="@drawable/firedynamic_button"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/damkohlerNumLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/damkohlerNumLayout">
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/damkohlerNumView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".82"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".78"
                 android:text="@string/damkohler"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/damkohlerNumValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".18"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
-                android:text=""
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -225,6 +249,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <Button
@@ -242,6 +267,7 @@
             android:id="@+id/damkohlerResultLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -253,9 +279,10 @@
                     android:id="@+id/damkohlerResultViewTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".7"
                     android:text="@string/damkohler"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -264,7 +291,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".3"
                     android:textAlignment="textEnd"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -274,6 +301,7 @@
             android:id="@+id/tempResultsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -285,18 +313,20 @@
                     android:id="@+id/tempResultViewTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".7"
                     android:text="@string/temperature"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tempResultDisplay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".12"
                     android:textAlignment="textEnd"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -304,10 +334,10 @@
                     android:layout_width="0dp"
                     android:layout_height="32dp"
                     android:layout_weight=".18"
+                    android:background="@drawable/firedynamic_button"
                     android:textAlignment="textEnd"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/firedynamic_button"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

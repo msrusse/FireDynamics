@@ -16,6 +16,7 @@
             android:id="@+id/calculationSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
     </LinearLayout>
 
