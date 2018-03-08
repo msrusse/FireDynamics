@@ -9,27 +9,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompLengthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_weight=".6"
+                android:layout_marginEnd="8dp"
                 android:text="@string/comp_length"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compLengthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
@@ -40,6 +46,7 @@
                 android:id="@+id/compLengthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -48,21 +55,24 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/comp_width"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
@@ -73,6 +83,7 @@
                 android:id="@+id/compWidthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -81,21 +92,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/CompHeightView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/comp_height"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/compHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
@@ -106,6 +120,7 @@
                 android:id="@+id/compHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -114,21 +129,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ventWidthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/vent_width"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ventWidthText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
@@ -139,6 +157,7 @@
                 android:id="@+id/ventWidthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -147,21 +166,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ventHieghtText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/vent_height"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/ventHeightText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
@@ -172,6 +194,7 @@
                 android:id="@+id/ventHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -180,21 +203,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/intLiningThickView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/int_lining_thick"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/intLiningText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
@@ -205,6 +231,7 @@
                 android:id="@+id/intLiningSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -213,6 +240,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <Spinner
@@ -228,6 +256,7 @@
             android:id="@+id/getFlashoverButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
@@ -237,26 +266,31 @@
             android:id="@+id/resultLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="300dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/mccaffreyQText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight=".5"
                     android:text="@string/q_mccaffrey_kw"
-                    android:textSize="30sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/mccaffreyQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".3"
                     android:textAlignment="center"
                     android:textSize="30sp"
@@ -274,20 +308,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/babrauskasQText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".5"
                     android:text="@string/q_babrauskas_kw"
-                    android:textSize="30sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/babrauskasQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".3"
                     android:textAlignment="center"
                     android:textSize="30sp"
@@ -310,15 +348,18 @@
                 <TextView
                     android:id="@+id/thomasQText"
                     android:layout_width="0dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight=".5"
                     android:text="@string/q_thomas_kw"
-                    android:textSize="30sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/thomasQResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".3"
                     android:textAlignment="center"
                     android:textSize="30sp"

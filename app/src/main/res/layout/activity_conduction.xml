@@ -10,18 +10,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/lengthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight=".6"
                 android:text="@string/length"
                 android:textSize="24sp" />
 
@@ -29,17 +34,18 @@
                 android:id="@+id/lengthResult"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
-                android:text=""
                 android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/lengthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -48,13 +54,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/hotSideView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight=".6"
                 android:text="@string/hot_side"
                 android:textSize="24sp" />
 
@@ -62,11 +72,11 @@
                 android:id="@+id/hotSideResult"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
-                android:text=""
                 android:textAlignment="center" />
 
             <Spinner
@@ -74,6 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/firedynamic_button" />
 
         </LinearLayout>
@@ -81,13 +92,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/coldSideView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight=".6"
                 android:text="@string/cold_side"
                 android:textSize="24sp" />
 
@@ -95,7 +110,8 @@
                 android:id="@+id/coldSideResult"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".12"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
@@ -105,6 +121,7 @@
             <Spinner
                 android:id="@+id/coldSideSpinner"
                 android:layout_width="0dp"
+                android:layout_marginEnd="16dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
@@ -114,12 +131,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/materialSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:background="@android:drawable/editbox_dropdown_light_frame"
                 android:gravity="center" />
@@ -132,12 +152,15 @@
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/resultLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="300dp">
 
@@ -150,6 +173,9 @@
                     android:id="@+id/heatFluxResultView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_weight=".5"
                     android:text="@string/heat_flux"
                     android:textSize="24sp" />
@@ -159,6 +185,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".3"
+                    android:layout_marginEnd="8dp"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -167,6 +194,7 @@
                     android:id="@+id/heatFluxResultSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_weight=".2"
                     android:background="@drawable/firedynamic_button"
                     android:gravity="center" />
@@ -175,12 +203,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
 
                 <TextView
                     android:id="@+id/thermalPenTimeResultView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_weight=".5"
                     android:text="@string/thermal_pen_time"
                     android:textSize="24sp" />
@@ -189,6 +221,7 @@
                     android:id="@+id/thermalPenTimeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".3"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -197,6 +230,7 @@
                 <Spinner
                     android:id="@+id/thermalPenTimeResultSpinner"
                     android:layout_width="0dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".2"
                     android:background="@drawable/firedynamic_button"
