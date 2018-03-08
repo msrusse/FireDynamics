@@ -124,7 +124,7 @@ public class SolidIgnition extends AppCompatActivity {
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
-                    Toast.makeText(SolidIgnition.this, error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(SolidIgnition.this, ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });

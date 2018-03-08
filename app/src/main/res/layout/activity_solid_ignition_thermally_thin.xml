@@ -295,7 +295,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/seconds"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

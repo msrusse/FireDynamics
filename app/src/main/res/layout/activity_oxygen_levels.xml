@@ -317,19 +317,18 @@
                     android:layout_weight=".6"
                     android:gravity="fill_vertical"
                     android:text="@string/time_to_reduce_o2_by_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/timetoReduceO2By1Result"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_vertical|fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="textEnd"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
 
                 <TextView
                     android:id="@+id/timetoReduceO2By1Seconds"

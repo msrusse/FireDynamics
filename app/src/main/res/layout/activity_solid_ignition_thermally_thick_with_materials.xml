@@ -178,7 +178,7 @@
                 android:labelFor="@+id/compHeightText"
                 android:text=""
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/resultUnitSpinner"
