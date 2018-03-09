@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".FlashOver" />
         <activity android:name=".HRR" />
@@ -28,7 +23,14 @@
         <activity android:name=".TGasLayer" />
         <activity android:name=".OxygenLevels" />
         <activity android:name=".SelfHeating" />
-        <activity android:name=".GasAmount"></activity>
+        <activity android:name=".GasAmount" />
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
