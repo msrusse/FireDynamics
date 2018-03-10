@@ -48,6 +48,7 @@
                 android:id="@+id/pressureDropSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -86,6 +87,7 @@
                 android:id="@+id/pipeDiameterSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -124,6 +126,7 @@
                 android:id="@+id/pipeLengthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -209,6 +212,7 @@
                     android:id="@+id/qResultSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
             </LinearLayout>

@@ -48,6 +48,7 @@
             <Spinner
                 android:id="@+id/compLengthSpinner"
                 android:layout_width="0dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
@@ -87,6 +88,7 @@
             <Spinner
                 android:id="@+id/compWidthSpinner"
                 android:layout_width="0dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
@@ -127,6 +129,7 @@
                 android:id="@+id/compHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
@@ -167,6 +170,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -206,6 +210,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -246,6 +251,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -261,6 +267,7 @@
                 android:id="@+id/materialSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:background="@android:drawable/editbox_dropdown_light_frame"
                 android:gravity="center" />
@@ -319,6 +326,7 @@
                     android:id="@+id/mccaffreyQSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".2"
                     android:background="@drawable/firedynamic_button"
                     android:gravity="center" />
@@ -358,6 +366,7 @@
                     android:id="@+id/babrauskasQSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".2"
                     android:background="@drawable/firedynamic_button"
                     android:gravity="center" />
@@ -397,6 +406,7 @@
                     android:id="@+id/thomasQSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".2"
                     android:background="@drawable/firedynamic_button"
                     android:gravity="center" />

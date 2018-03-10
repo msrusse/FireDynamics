@@ -48,6 +48,7 @@
                 android:id="@+id/pileVolumeSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -86,6 +87,7 @@
                 android:id="@+id/pileHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -218,6 +220,7 @@
                 android:id="@+id/tempUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button"
                 android:textStyle="bold" />

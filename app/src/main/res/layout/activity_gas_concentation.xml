@@ -91,6 +91,7 @@
                 android:id="@+id/leakageRateUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -130,6 +131,7 @@
                 android:id="@+id/gasVolumeUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -48,6 +48,7 @@
                 android:id="@+id/roomWidthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -86,6 +87,7 @@
                 android:id="@+id/roomLengthSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -124,6 +126,7 @@
                 android:id="@+id/roomHeightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -174,6 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
@@ -234,6 +238,7 @@
                     android:id="@+id/t2FireGrowthRateSelection"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight="1"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:gravity="center" />
@@ -287,6 +292,7 @@
                     android:id="@+id/graphSelectionSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight="1"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:gravity="center" />
@@ -340,10 +346,9 @@
                     android:id="@+id/timetoReduceO2By1Result"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|fill_vertical"
+                    android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
-                    android:textAlignment="textEnd"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="normal" />
@@ -384,7 +389,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
-                    android:textAlignment="textEnd"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
@@ -395,7 +399,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight=".18"
                     android:text="@string/seconds"
-                    android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -430,4 +433,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

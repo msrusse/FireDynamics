@@ -24,6 +24,7 @@
             <Spinner
                 android:id="@+id/fuelSpinner"
                 android:layout_width="0dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
@@ -46,6 +47,7 @@
                     android:id="@+id/typeSelectionSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
@@ -69,6 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -81,7 +84,8 @@
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/background_light"
                 android:text="@string/get_calculation"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/resultLayout"
@@ -122,6 +126,7 @@
                         android:id="@+id/qSpinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
                         android:layout_weight=".18"
                         android:background="@drawable/firedynamic_button"
                         android:gravity="center" />

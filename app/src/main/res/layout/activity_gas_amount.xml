@@ -19,6 +19,7 @@
             android:id="@+id/typeOfGasSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
         <LinearLayout
@@ -55,6 +56,7 @@
                 android:id="@+id/areaSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -93,6 +95,7 @@
                 android:id="@+id/heightSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -432,6 +435,7 @@
                     android:id="@+id/gasVolumeUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -492,6 +496,7 @@
                     android:id="@+id/gasWeightUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -553,6 +558,7 @@
                     android:id="@+id/uelLiquidVolumeUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 

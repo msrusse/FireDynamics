@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="16dp"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
@@ -101,6 +102,7 @@
                 android:id="@+id/densityUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -216,6 +218,7 @@
                 android:id="@+id/ignitionTempUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -253,6 +256,7 @@
                 android:id="@+id/ambientTempUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -290,6 +294,7 @@
                 android:id="@+id/heatFluxUnitSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
                 android:background="@drawable/firedynamic_button" />
 
@@ -302,7 +307,8 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/background_light"
             android:text="@string/get_calculation"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/resultLayout"

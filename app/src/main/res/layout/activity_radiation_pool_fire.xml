@@ -54,6 +54,7 @@
                     android:id="@+id/targetDistanceSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -70,6 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:background="@android:drawable/editbox_dropdown_light_frame" />
@@ -91,6 +93,7 @@
                     android:id="@+id/typeUnitSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -130,6 +133,7 @@
                     android:id="@+id/secondSquareSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight=".18"
                     android:background="@drawable/firedynamic_button" />
 
@@ -142,7 +146,8 @@
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/background_light"
                 android:text="@string/get_calculation"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/resultView"
@@ -183,6 +188,7 @@
                         android:id="@+id/heatFluxSpinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
                         android:layout_gravity="center_vertical"
                         android:layout_weight=".18"
                         android:background="@drawable/firedynamic_button"
