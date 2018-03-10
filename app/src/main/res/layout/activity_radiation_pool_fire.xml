@@ -34,6 +34,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/target_distance"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <EditText
@@ -46,7 +47,8 @@
                     android:inputType="number|numberDecimal"
                     android:labelFor="@+id/compLengthText"
                     android:text=""
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
                     android:id="@+id/targetDistanceSpinner"
@@ -82,7 +84,8 @@
                     android:inputType="number|numberDecimal"
                     android:labelFor="@+id/compLengthText"
                     android:text=""
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
                     android:id="@+id/typeUnitSpinner"
@@ -107,6 +110,7 @@
                     android:layout_gravity="center_vertical|fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <EditText
@@ -119,7 +123,8 @@
                     android:inputType="number|numberDecimal"
                     android:labelFor="@+id/compLengthText"
                     android:text=""
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
                     android:id="@+id/secondSquareSpinner"
@@ -136,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/background_light"
-                android:text="@string/get_calculation" />
+                android:text="@string/get_calculation"
+                android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
                 android:id="@+id/resultView"
@@ -158,6 +164,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight=".6"
                         android:text="@string/heat_flux"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
 
                     <TextView
@@ -168,6 +175,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight=".22"
                         android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -195,6 +203,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight=".6"
                         android:text="@string/ld_valid"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
 
                     <TextView
@@ -203,6 +212,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp" />
                 </LinearLayout>
 

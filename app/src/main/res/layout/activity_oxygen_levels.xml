@@ -29,18 +29,20 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/room_width"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/roomWidthValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight=".22"
                 android:ems="10"
-                android:layout_marginEnd="8dp"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/roomWidthSpinner"
@@ -64,6 +66,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/room_length"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -76,7 +79,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/roomLengthSpinner"
@@ -100,19 +104,21 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/room_height"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/roomHeightValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".22"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/roomHeightSpinner"
@@ -136,19 +142,21 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/initial_oxygen_percent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/initialO2Value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".22"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/initialO2Percent"
@@ -156,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/percent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -181,6 +190,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/q"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -193,7 +203,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/heatReleaseRateSpinner"
@@ -201,6 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/kw"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -239,6 +251,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/timestep"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <EditText
@@ -251,7 +264,8 @@
                     android:inputType="number|numberDecimal"
                     android:labelFor="@+id/compWidthText"
                     android:text=""
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/timestepSeconds"
@@ -259,6 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".18"
                     android:text="@string/seconds"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -293,6 +308,7 @@
                 android:backgroundTint="@android:color/white"
                 android:text="@string/get_calculation"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -317,6 +333,7 @@
                     android:layout_weight=".6"
                     android:gravity="fill_vertical"
                     android:text="@string/time_to_reduce_o2_by_1"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -327,6 +344,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="normal" />
 
@@ -337,6 +355,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight=".18"
                     android:text="@string/seconds"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -355,6 +374,7 @@
                     android:layout_weight=".6"
                     android:gravity="fill_vertical"
                     android:text="@string/time_to_reduce_o2_by_14"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -365,6 +385,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -375,6 +396,7 @@
                     android:layout_weight=".18"
                     android:text="@string/seconds"
                     android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>

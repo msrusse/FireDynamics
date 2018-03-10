@@ -28,6 +28,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/length"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -40,6 +41,7 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
@@ -67,6 +69,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/hot_side"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -79,6 +82,7 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
@@ -106,6 +110,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/cold_side"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -119,6 +124,7 @@
                 android:labelFor="@+id/intLiningText"
                 android:text=""
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
@@ -181,6 +187,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight=".6"
                     android:text="@string/heat_flux"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -191,6 +198,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -219,6 +227,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight=".6"
                     android:text="@string/thermal_pen_time"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -229,6 +238,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

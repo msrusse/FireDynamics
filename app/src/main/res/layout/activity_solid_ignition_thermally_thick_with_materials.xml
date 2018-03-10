@@ -35,6 +35,7 @@
                 android:layout_weight="1"
                 android:text="@string/thermally_thick_ignition_with_materials"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -58,6 +59,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".78"
                 android:text="@string/c"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -69,7 +71,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
 
@@ -85,6 +88,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/ambient_temp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -97,7 +101,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/ambientTempUnitSpinner"
@@ -122,6 +127,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/heat_flux_exposure"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -134,7 +140,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/heatFluxUnitSpinner"
@@ -151,7 +158,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/background_light"
-            android:text="@string/get_calculation" />
+            android:text="@string/get_calculation"
+            android:textColor="@color/colorPrimaryDark" />
 
         <LinearLayout
             android:id="@+id/resultLayout"
@@ -166,6 +174,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/heat_flux_exposure"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <TextView
@@ -178,6 +187,7 @@
                 android:labelFor="@+id/compHeightText"
                 android:text=""
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <TextView
@@ -186,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/seconds"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>

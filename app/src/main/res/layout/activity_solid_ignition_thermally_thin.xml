@@ -34,6 +34,7 @@
                 android:layout_weight="1"
                 android:text="@string/thermally_thin_ignition"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -50,6 +51,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/density"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -62,7 +64,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/densityUnitSpinner"
@@ -86,6 +89,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/specific_heat"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -98,7 +102,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/specificHeatUnits"
@@ -106,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/kilojoules_per_kilogram_kelvin"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -123,6 +129,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/thickness"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -135,7 +142,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/thicknessUnitSpinner"
@@ -159,6 +167,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/ignition_temp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -171,7 +180,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/ignitionTempUnitSpinner"
@@ -195,6 +205,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/ambient_temp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -207,7 +218,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/ambientTempUnitSpinner"
@@ -231,6 +243,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/heat_flux_exposure"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -243,7 +256,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/heatFluxUnitSpinner"
@@ -260,7 +274,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/background_light"
-            android:text="@string/get_calculation" />
+            android:text="@string/get_calculation"
+            android:textColor="@color/colorPrimaryDark" />
 
         <LinearLayout
             android:id="@+id/resultLayout"
@@ -276,6 +291,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/time_to_ignition"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <TextView
@@ -287,6 +303,7 @@
                 android:labelFor="@+id/compHeightText"
                 android:text=""
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <TextView
@@ -295,6 +312,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/seconds"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>

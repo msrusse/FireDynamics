@@ -5,40 +5,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button flashover, hrr, flameHeight, t2Fire, radiationPool, conduction, solidIgnition, openPipe, gasConcentration, gasAmount, oxygenLevels, selfHeating, tGasLayer;
+    LinearLayout flashoverLayout, hrrLayout, flameHeightLayout, t2FireLayout, radiationPoolLayout, conductionLayout, solidIgnitionLayout, openPipeLayout, gasConcentrationLayout, gasAmountLayout, oxygenLevelsLayout, selfHeatingLayout, tGasLayerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        flashover = findViewById(R.id.qflashoverButton);
-        hrr = findViewById(R.id.hrrButton);
-        flameHeight = findViewById(R.id.flameHeightButton);
-        t2Fire = findViewById(R.id.t2FiresButton);
-        radiationPool = findViewById(R.id.radiationPoolButton);
-        conduction = findViewById(R.id.conductionButton);
-        solidIgnition = findViewById(R.id.solidIgnitionButton);
-        openPipe = findViewById(R.id.openPipeButton);
-        gasConcentration = findViewById(R.id.gasConButton);
-        gasAmount = findViewById(R.id.gasAmountButton);
-        oxygenLevels = findViewById(R.id.oxygenLevelButton);
-        selfHeating = findViewById(R.id.selfHeatingButton);
-        tGasLayer = findViewById(R.id.tGasLayersButton);
+        flashoverLayout = findViewById(R.id.qFlashoverLayout);
+        hrrLayout = findViewById(R.id.hrrLayout);
+        flameHeightLayout = findViewById(R.id.flameHeightLayout);
+        t2FireLayout = findViewById(R.id.t2FiresLayout);
+        radiationPoolLayout = findViewById(R.id.radiationPoolLayout);
+        conductionLayout = findViewById(R.id.conductionLayout);
+        solidIgnitionLayout = findViewById(R.id.solidIgnitionLayout);
+        openPipeLayout = findViewById(R.id.openPipeLayout);
+        gasConcentrationLayout = findViewById(R.id.gasConLayout);
+        gasAmountLayout = findViewById(R.id.gasAmountLayout);
+        oxygenLevelsLayout = findViewById(R.id.oxygenLevelLayout);
+        selfHeatingLayout = findViewById(R.id.selfHeatingLayout);
+        tGasLayerLayout = findViewById(R.id.tGasLayersLayout);
 
-        flashover.setOnClickListener(new View.OnClickListener()
-        {
+        flashoverLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                 Intent intent = new Intent(getApplicationContext(), FlashOver.class);
-                 startActivity(intent);
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FlashOver.class);
+                startActivity(intent);
             }
         });
 
-        hrr.setOnClickListener(new View.OnClickListener()
+        hrrLayout.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        flameHeight.setOnClickListener(new View.OnClickListener() {
+        flameHeightLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), FlameHeight.class);
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        radiationPool.setOnClickListener(new View.OnClickListener() {
+        radiationPoolLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RadiationPoolFire.class);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        openPipe.setOnClickListener(new View.OnClickListener() {
+        openPipeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OpenPipe.class);
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        t2Fire.setOnClickListener(new View.OnClickListener(){
+        t2FireLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), T2Fires.class);
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        conduction.setOnClickListener(new View.OnClickListener() {
+        conductionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Conduction.class);
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        gasConcentration.setOnClickListener(new View.OnClickListener() {
+        gasConcentrationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GasConcentation.class);
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        solidIgnition.setOnClickListener(new View.OnClickListener() {
+        solidIgnitionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SolidIgnition.class);
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tGasLayer.setOnClickListener(new View.OnClickListener(){
+        tGasLayerLayout.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v)
                 {
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         });
 
-        oxygenLevels.setOnClickListener(new View.OnClickListener() {
+        oxygenLevelsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OxygenLevels.class);
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        selfHeating.setOnClickListener(new View.OnClickListener() {
+        selfHeatingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SelfHeating.class);
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        gasAmount.setOnClickListener(new View.OnClickListener() {
+        gasAmountLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GasAmount.class);

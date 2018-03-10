@@ -28,6 +28,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/pressure_drop"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -40,7 +41,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/pressureDropSpinner"
@@ -64,6 +66,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/pipe_diameter"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -76,7 +79,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/pipeDiameterSpinner"
@@ -100,6 +104,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/pipe_length"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -112,7 +117,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/pipeLengthSpinner"
@@ -136,6 +142,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".78"
                 android:text="@string/specific_gas_gravity"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -147,7 +154,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
 
@@ -155,10 +163,11 @@
             android:id="@+id/getMeasurementsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -181,6 +190,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/q"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -191,6 +201,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

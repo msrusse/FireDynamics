@@ -29,6 +29,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/comp_length"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -41,7 +42,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/compLengthSpinner"
@@ -66,6 +68,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/comp_width"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -78,7 +81,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/compWidthSpinner"
@@ -103,6 +107,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/comp_height"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -115,7 +120,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/compHeightSpinner"
@@ -140,6 +146,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/vent_width"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -152,7 +159,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/ventWidthSpinner"
@@ -177,6 +185,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/vent_height"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -189,7 +198,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/ventHeightSpinner"
@@ -215,6 +225,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/int_lining_thick"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -227,7 +238,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/intLiningSpinner"
@@ -262,6 +274,7 @@
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -286,6 +299,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/q_mccaffrey_kw"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -297,6 +311,7 @@
                     android:layout_weight=".22"
                     android:gravity="center_vertical|fill_vertical"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -323,6 +338,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/q_babrauskas_kw"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -334,6 +350,7 @@
                     android:layout_weight=".22"
                     android:gravity="center_vertical|fill_vertical"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -360,6 +377,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:text="@string/q_thomas_kw"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
@@ -372,7 +390,8 @@
                     android:gravity="center_vertical|fill_vertical"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
                     android:id="@+id/thomasQSpinner"

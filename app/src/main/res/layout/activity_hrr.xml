@@ -55,13 +55,14 @@
                     android:id="@+id/areaText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:ems="10"
                     android:inputType="number|numberDecimal"
-                    android:layout_marginEnd="8dp"
                     android:labelFor="@+id/compLengthText"
                     android:text=""
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
                     android:id="@+id/typeUnitSpinner"
@@ -79,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/background_light"
-                android:text="@string/get_calculation" />
+                android:text="@string/get_calculation"
+                android:textColor="@color/colorPrimaryDark" />
 
             <LinearLayout
                 android:id="@+id/resultLayout"
@@ -101,6 +103,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight=".6"
                         android:text="@string/q"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
 
                     <TextView
@@ -111,6 +114,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_weight=".22"
                         android:textAlignment="center"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

@@ -32,22 +32,24 @@
                 android:id="@+id/areaView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/room_area"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/areaValue"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".22"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/areaSpinner"
@@ -68,22 +70,24 @@
                 android:id="@+id/heightView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/height_from_leak"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/heightValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".22"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/heightSpinner"
@@ -105,22 +109,24 @@
                 android:id="@+id/lelView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/lel"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/lelValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".22"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/lelUnitDisplay"
@@ -128,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/percent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -147,6 +154,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/stoichiometric"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -159,7 +167,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/stoichPercent"
@@ -167,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/percent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -182,9 +192,10 @@
                 android:id="@+id/uelView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/uel"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -197,7 +208,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/uelPercent"
@@ -205,6 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/percent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -223,6 +236,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/vapor_density"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -235,7 +249,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/vaporDensityUnits"
@@ -243,6 +258,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/kgPerCubicMeter"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -258,9 +274,10 @@
                 android:id="@+id/liquidDensityView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".6"
                 android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
                 android:text="@string/liquid_density"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -273,7 +290,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventWidthText"
                 android:text=""
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/liquidDensityUnits"
@@ -281,6 +299,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/kgPerCubicMeter"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -299,6 +318,7 @@
                 android:backgroundTint="@android:color/white"
                 android:text="@string/get_calculation"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -328,7 +348,8 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:text="@string/lel"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -337,7 +358,8 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:text="@string/stoich"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -346,7 +368,8 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:text="@string/uel"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -366,18 +389,20 @@
                     android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".28"
-                    android:text="@string/gas_volume" />
+                    android:text="@string/gas_volume"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/lelGasVolumeResult"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical|center"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center|fill_vertical"
-                    android:gravity="center_vertical"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/stoichGasVolumeResult"
@@ -387,6 +412,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -398,6 +424,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -422,7 +449,8 @@
                     android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".28"
-                    android:text="@string/gas_weight" />
+                    android:text="@string/gas_weight"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/lelGasWeightResult"
@@ -432,6 +460,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -443,6 +472,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -452,8 +482,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
-                    android:layout_weight=".21"
+                    android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -479,7 +510,8 @@
                     android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".28"
-                    android:text="@string/liquid_volume" />
+                    android:text="@string/liquid_volume"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/lelLiquidVolumeResult"
@@ -489,6 +521,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -500,6 +533,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -509,8 +543,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
-                    android:layout_weight=".21"
+                    android:layout_weight=".18"
                     android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

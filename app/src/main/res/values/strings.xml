@@ -10,7 +10,7 @@
     <string name="flashover">Q-Flashover</string>
     <string name="hrr">HRR</string>
     <string name="flame_height">Flame Height</string>
-    <string name="t2_fires">T2 Fires</string>
+    <string name="t2_fires">t2 Fires</string>
     <string name="radiation_pool">Radiation Pool Fire</string>
     <string name="conduction">Conduction</string>
     <string name="solid_ignition">Solid Ignition</string>
@@ -105,4 +105,17 @@
     <string name="gas_volume">Volume of Gas</string>
     <string name="gas_weight">Weight of Gas</string>
     <string name="liquid_volume">Volume of Liquid</string>
+    <string name="flashover_desc">Predict fire size required for flashover</string>
+    <string name="hrr_desc">Predict fire size</string>
+    <string name="flame_height_desc">Predict flame height</string>
+    <string name="t2_fires_desc">Predict the size of an exponentially growing fire</string>
+    <string name="radiation_poolfire_desc">Predict radiant flux from a pool fire</string>
+    <string name="conduction_desc">Predict conductive heat flux through a material</string>
+    <string name="solid_ignition_desc">Predict ignition time</string>
+    <string name="open_pipe_desc">Predict gas flow rate through a leak in an open ended pipe</string>
+    <string name="gas_concentration_desc">Predict gas concentration in a space due to a leak</string>
+    <string name="gas_amount_desc">Predict required amount of a gas needed to reach LEL/UEL</string>
+    <string name="oxygen_levels_desc">Predict the amount of oxygen consumed by a fire in a room</string>
+    <string name="self_heating_desc">Predict critical pile size and temperature for spontaneous combustion</string>
+    <string name="t_gaslayer_desc">Predict the temperature of the upper gas layer in a compartment fire</string>
 </resources>

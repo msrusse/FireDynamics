@@ -28,6 +28,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/airchanges"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -40,7 +41,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/airChangesUnits"
@@ -49,6 +51,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight=".18"
                 android:text="@string/changes_per_hour"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -68,6 +71,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/leakage_rate"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -80,7 +84,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/leakageRateUnitSpinner"
@@ -105,6 +110,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/gas_filled_room_volume"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -117,7 +123,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compHeightText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/gasVolumeUnitSpinner"
@@ -142,6 +149,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".6"
                 android:text="@string/timestep"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <EditText
@@ -154,7 +162,8 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/timestepUnits"
@@ -162,6 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/minutes"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -170,10 +180,11 @@
             android:id="@+id/getResultsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
-            android:layout_marginBottom="16dp"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <LinearLayout
