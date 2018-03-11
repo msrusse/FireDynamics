@@ -1,8 +1,11 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +43,7 @@ public class GasConcentation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_concentation);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getResultsButton = findViewById(R.id.getResultsButton);
         resultsLayout = findViewById(R.id.resultLayout);
         leakageRateUnitSpinner = findViewById(R.id.leakageRateUnitSpinner);
@@ -57,6 +61,8 @@ public class GasConcentation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultsLayout.getWindowToken(), 0);
                     airchangeDoub = Double.parseDouble(airchangesResult.getText().toString());
                     leakageRateDoub = Double.parseDouble(leakageRateResult.getText().toString());
                     gasVolumeDoub = Double.parseDouble(gasVolumeResult.getText().toString());

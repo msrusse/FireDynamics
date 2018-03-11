@@ -1,9 +1,12 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,6 +44,7 @@ public class OxygenLevels extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oxygen_levels);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         roomWidthValue = findViewById(R.id.roomWidthValue);
         roomLengthValue = findViewById(R.id.roomLengthValue);
         roomHeightValue = findViewById(R.id.roomHeightValue);
@@ -98,7 +102,7 @@ public class OxygenLevels extends AppCompatActivity {
                         steadyStateFireParams.height = 0;
                         steadyStateFireLayout.setLayoutParams(steadyStateFireParams);
                         steadyStateFireLayout.setVisibility(View.INVISIBLE);
-                        t2Params.height = LinearLayout.LayoutParams.MATCH_PARENT;
+                        t2Params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
                         t2FireLayout.setLayoutParams(t2Params);
                         t2FireLayout.setVisibility(View.VISIBLE);
                         break;
@@ -115,6 +119,8 @@ public class OxygenLevels extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultsLayout.getWindowToken(), 0);
                     roomWidthDoub = Double.parseDouble(roomWidthValue.getText().toString());
                     roomWidthUnits = roomWidthUnitSpinner.getSelectedItem().toString();
                     roomLengthDoub = Double.parseDouble(roomLengthValue.getText().toString());

@@ -1,8 +1,11 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +33,7 @@ public class Conduction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conduction);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         final DecimalFormat twoDigits = new DecimalFormat("0.00");
         final DecimalFormat fourDigits = new DecimalFormat("0.0000");
         materialSpinner = findViewById(R.id.materialSpinner);
@@ -56,6 +60,8 @@ public class Conduction extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     lengthDoub = Double.parseDouble(lengthResult.getText().toString());
                     hotSideDoub = Double.parseDouble(hotSideResult.getText().toString());
                     coldSideDoub = Double.parseDouble(coldSideResult.getText().toString());

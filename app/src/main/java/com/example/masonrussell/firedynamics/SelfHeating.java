@@ -1,9 +1,12 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +35,7 @@ public class SelfHeating extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_heating);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         damkohlerResultLayout = findViewById(R.id.damkohlerResultLayout);
         knownTempLayout = findViewById(R.id.knownTempLayout);
         damkohlerResultLayout.setVisibility(View.INVISIBLE);
@@ -88,6 +92,8 @@ public class SelfHeating extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(damkohlerResultLayout.getWindowToken(), 0);
                     volumeDoub = Double.parseDouble(volumeValue.getText().toString());
                     volumeUnits = volumeUnitSpinner.getSelectedItem().toString();
                     heightDoub = Double.parseDouble(heightValue.getText().toString());

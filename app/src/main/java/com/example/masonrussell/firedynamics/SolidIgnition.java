@@ -1,8 +1,11 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +34,7 @@ public class SolidIgnition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solid_ignition);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         calculationSelectionSpinner = findViewById(R.id.calculationSelectionSpinner);
         addItemsOnSelectionSpinner(calculationSelectionSpinner);
         calculationSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -107,6 +111,8 @@ public class SolidIgnition extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     densityDoub = Double.parseDouble(densityValue.getText().toString());
                     densityUnits = densityUnitSpinner.getSelectedItem().toString();
                     specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
@@ -124,7 +130,7 @@ public class SolidIgnition extends AppCompatActivity {
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
-                    Toast.makeText(SolidIgnition.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(SolidIgnition.this, error, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -183,6 +189,8 @@ public class SolidIgnition extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     densityDoub = Double.parseDouble(densityValue.getText().toString());
                     densityUnits = densityUnitSpinner.getSelectedItem().toString();
                     specificHeatDoub = Double.parseDouble(specificHeatValue.getText().toString());
@@ -255,6 +263,8 @@ public class SolidIgnition extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     materialSelected = materialSelectionSpinner.getSelectedItem().toString();
                     ambientTempDoub = Double.parseDouble(ambientTempValue.getText().toString());
                     ambientTempUnits = ambientTempUnitSpinner.getSelectedItem().toString();

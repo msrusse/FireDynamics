@@ -1,9 +1,12 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +34,7 @@ public class RadiationPoolFire extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radiation_pool_fire);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         final DecimalFormat twoDigits = new DecimalFormat("0.00");
         typeSelection = findViewById(R.id.typeSelectionText);
         secondSquareText = findViewById(R.id.secondSquareView);
@@ -84,6 +88,8 @@ public class RadiationPoolFire extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     distanceDoub = Double.parseDouble(distance.getText().toString());
                     distanceUnitType = distanceSpinner.getSelectedItem().toString();
                     distanceDoub = ValuesConverstions.toMeters(distanceDoub, distanceUnitType);

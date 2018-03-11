@@ -1,8 +1,11 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +33,7 @@ public class FlameHeight extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flame_height);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         final DecimalFormat twoDigits = new DecimalFormat("0.00");
         getMeasurementsButton = findViewById(R.id.getMeasurementsButton);
         lResult = findViewById(R.id.lResult);
@@ -91,6 +95,8 @@ public class FlameHeight extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultView.getWindowToken(), 0);
                     qDoub = Double.parseDouble(qText.getText().toString());
                     qUnits = qUnitSpinner.getSelectedItem().toString();
                     if (qUnitSpinner.getSelectedItem().toString().equals("Btu/sec")) {

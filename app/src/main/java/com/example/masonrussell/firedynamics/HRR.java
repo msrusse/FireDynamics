@@ -1,10 +1,13 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.icu.text.Normalizer;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +34,7 @@ public class HRR extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hrr);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         resultLayout = findViewById(R.id.resultLayout);
         getMeasurementsButton = findViewById(R.id.getMeasurementsButton);
         areaBurningText = findViewById(R.id.areaText);
@@ -69,6 +73,8 @@ public class HRR extends AppCompatActivity {
         getMeasurementsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     maxBurningFlux = ValuesConverstions.FuelBurningFlux(fuelSpinner.getSelectedItem().toString());
                     heatCombustion = ValuesConverstions.FuelHeatCombustion(fuelSpinner.getSelectedItem().toString());
                     typeSelection = typeSelectionSpinner.getSelectedItem().toString();

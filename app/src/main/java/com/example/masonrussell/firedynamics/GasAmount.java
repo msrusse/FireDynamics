@@ -1,9 +1,12 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +37,7 @@ public class GasAmount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_amount);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         gasSelectionSpinner = findViewById(R.id.typeOfGasSpinner);
         areaUnitSpinner = findViewById(R.id.areaSpinner);
         heightUnitSpinner = findViewById(R.id.heightSpinner);
@@ -130,6 +134,8 @@ public class GasAmount extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultsTable.getWindowToken(), 0);
                     areaDoub = Double.parseDouble(areaValue.getText().toString());
                     heightDoub = Double.parseDouble(heightValue.getText().toString());
                     areaUnits = areaUnitSpinner.getSelectedItem().toString();

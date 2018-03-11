@@ -1,8 +1,11 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +37,7 @@ public class FlashOver extends AppCompatActivity {
         final DecimalFormat threeDigits = new DecimalFormat("0.000");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_over);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         resultLayout = findViewById(R.id.resultLayout);
         calculateButton = findViewById(R.id.getFlashoverButton);
         compWidthSpinner = findViewById(R.id.compWidthSpinner);
@@ -70,6 +74,8 @@ public class FlashOver extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     compWidth = Double.parseDouble(compWidthText.getText().toString());
                     compHeight = Double.parseDouble(compHeightText.getText().toString());
                     compLength = Double.parseDouble(compLengthText.getText().toString());
