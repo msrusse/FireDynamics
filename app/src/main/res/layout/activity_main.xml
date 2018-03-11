@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/flashover_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -67,8 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/hrr_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -98,8 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/flame_height_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -129,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/t2_fires_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -160,8 +160,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/radiation_poolfire_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -191,8 +191,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/conduction_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -222,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:paddingEnd="16dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/solid_ignition_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -252,8 +252,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingEnd="16dp"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/open_pipe_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -284,7 +284,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:paddingEnd="16dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/gas_concentration_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -315,7 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:paddingEnd="16dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/gas_amount_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -345,8 +345,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingEnd="16dp"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/oxygen_levels_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -376,7 +376,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:paddingEnd="16dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
                 android:text="@string/self_heating_desc"
                 android:textColor="@color/colorPrimaryDark" />
@@ -406,8 +406,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/t_gaslayer_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
