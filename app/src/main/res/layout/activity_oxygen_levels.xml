@@ -356,7 +356,7 @@
                 <TextView
                     android:id="@+id/timetoReduceO2By1Seconds"
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight=".18"
                     android:text="@string/seconds"
@@ -372,9 +372,9 @@
 
                 <TextView
                     android:id="@+id/timetoReduceO2By14View"
-                    android:layout_width="197dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".6"
                     android:gravity="fill_vertical"
@@ -386,7 +386,7 @@
                     android:id="@+id/timetoReduceO2By14Result"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="fill_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textColor="@color/colorPrimaryDark"
@@ -402,29 +402,6 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/qOverTimeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="300dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.jjoe64.graphview.GraphView
-                    android:id="@+id/resultsGraph"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="16dp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </LinearLayout>
