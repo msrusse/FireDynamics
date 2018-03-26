@@ -99,6 +99,7 @@ public class T2Fires extends AppCompatActivity {
         {
             dp[x] = new DataPoint(time.get(x),hrr.get(x));
         }
+        resultsGraph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(15);
