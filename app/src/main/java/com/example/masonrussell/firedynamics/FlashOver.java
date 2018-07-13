@@ -31,10 +31,6 @@ public class FlashOver extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final DecimalFormat twoDigits = new DecimalFormat("0.00");
-        final DecimalFormat fiveDigits = new DecimalFormat("0.00000");
-        final DecimalFormat fourDigits = new DecimalFormat("0.0000");
-        final DecimalFormat threeDigits = new DecimalFormat("0.000");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_over);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

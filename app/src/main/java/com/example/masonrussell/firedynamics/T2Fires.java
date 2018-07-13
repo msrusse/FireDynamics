@@ -3,6 +3,8 @@ package com.example.masonrussell.firedynamics;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -13,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -46,25 +50,32 @@ public class T2Fires extends AppCompatActivity {
         getResults = findViewById(R.id.getMeasurementsButton);
         resultLayout.setVisibility(View.INVISIBLE);
 
-        getResults.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
-                    t1Doub = Double.parseDouble(t1Value.getText().toString());
-                    peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
-                    timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
-                    alphaDoub = 1000 / Math.pow(t1Doub, 2);
-                    getValues();
-                    resultLayout.setVisibility(View.VISIBLE);
+        try {
+
+            getResults.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!TextUtils.isEmpty(t1Value.getText()) && !TextUtils.isEmpty(peakHrrValue.getText()) && !TextUtils.isEmpty(timeIntervalValue.getText())) {
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
+                        t1Doub = Double.parseDouble(t1Value.getText().toString());
+                        peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
+                        timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
+                        alphaDoub = 1000 / Math.pow(t1Doub, 2);
+                        ValueClassStorage.T2Fires t2Fires = new ValueClassStorage().new T2Fires(t1Doub, peakHrrDoub, timeIntervalDoub);
+                        getValues();
+                        resultLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        String error = "Please Fill the Empty Fields";
+                        Toast.makeText(T2Fires.this, error, Toast.LENGTH_LONG).show();
+                    }
                 }
-                catch (Exception ex) {
-                    String error = "Please Fill the Empty Fields";
-                    Toast.makeText(T2Fires.this, error, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+            });
+        }
+        catch (Exception ex)
+        {
+            Log.d("T2Fires", ex.getMessage());
+        }
     }
 
     void getValues()
