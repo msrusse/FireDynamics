@@ -876,6 +876,8 @@ public class OxygenLevels extends AppCompatActivity {
                             }
                             break;
                     }
+                    ValueClassStorage.OxygenLevels oxygenLevels = new ValueClassStorage().new OxygenLevels(roomWidthDoub, roomLengthDoub, roomHeightDoub, initialO2Doub, heatReleaseRateDoub, timestepDoub, typeOfFireSelectionSpinner.getSelectedItem().toString(), t2FireGrowthRateSpinner.getSelectedItem().toString(), graphSelectionSpinner.getSelectedItem().toString());
+                    ValueClassStorage.oxygenLevels = oxygenLevels;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

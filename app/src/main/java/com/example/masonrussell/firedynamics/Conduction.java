@@ -81,6 +81,8 @@ public class Conduction extends AppCompatActivity {
                     thermalPenTimeDoub = Calculations.CalculateConductiveThermalPenTime(lengthDoub, thermalDiffusivityDoub);
                     thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
                     currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
+                    ValueClassStorage.Conduction conduction = new ValueClassStorage().new Conduction(lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenTimeDoub);
+                    ValueClassStorage.conduction = conduction;
                     resultLayout.setVisibility(View.VISIBLE);
                 }
                 catch (Exception ex) {

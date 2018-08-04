@@ -229,6 +229,8 @@ public class GasAmount extends AppCompatActivity {
                             uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
                             uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
                         }
+                        ValueClassStorage.GasAmount gasAmount = new ValueClassStorage().new GasAmount(gasSelected, areaDoub, heightDoub, lelDoub, stoichDoub, uelDoub, vaporDensityDoub, liquidDensityDoub);
+                        ValueClassStorage.gasAmount = gasAmount;
                         resultsTable.setVisibility(View.VISIBLE);
                     }
                 } catch (Exception ex) {

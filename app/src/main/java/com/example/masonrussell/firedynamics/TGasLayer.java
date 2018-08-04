@@ -24,7 +24,7 @@ public class TGasLayer extends AppCompatActivity {
     public Spinner qSpinner, ambientTempSpinner, resultSpinner, intLiningSpinner, materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
     public EditText intLiningText, ventWidthText, ventHeightText, compWidthText, compLengthText, compHeightText, qValue, ambientTempValue;
     public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth, qDoub, ambientTempDoub, resultDoub;
-    public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits, qUnits, ambientTempUnits, resultUnits;
+    public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits, qUnits, ambientTempUnits, resultUnits, selectedMaterial;
     public Button calculateButton;
     public LinearLayout resultLayout;
     public TextView resultsView;
@@ -88,6 +88,7 @@ public class TGasLayer extends AppCompatActivity {
                     intLiningUnits = intLiningSpinner.getSelectedItem().toString();
                     qUnits = qSpinner.getSelectedItem().toString();
                     ambientTempUnits = ambientTempSpinner.getSelectedItem().toString();
+                    selectedMaterial = materialSpinner.getSelectedItem().toString();
                     compWidth = ValuesConverstions.toMeters(compWidth, compWidthUnits);
                     compHeight = ValuesConverstions.toMeters(compHeight, compHeightUnits);
                     compLength = ValuesConverstions.toMeters(compLength, compLengthUnits);
@@ -96,7 +97,7 @@ public class TGasLayer extends AppCompatActivity {
                     intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                     qDoub = ValuesConverstions.tGasLayerEnergyToKW(qDoub, qUnits);
                     ambientTempDoub = ValuesConverstions.toDegreesKelvin(ambientTempDoub, ambientTempUnits);
-                    thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
+                    thermalConductivity = ValuesConverstions.thermalConductivity(selectedMaterial);
                     double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
                     double aoDoub = ventWidth * ventHeight;
                     double atdoub = Calculations.CalculateTGasLayerAT(compWidth, compLength, compHeight, aoDoub);
@@ -104,6 +105,8 @@ public class TGasLayer extends AppCompatActivity {
                     resultsView.setText(String.valueOf(Math.round(resultDoub)));
                     resultUnits = resultSpinner.getSelectedItem().toString();
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.TGasLayer tGasLayer = new ValueClassStorage().new TGasLayer(compLength, compWidth, compHeight, ventWidth, ventHeight, intLining, qDoub, ambientTempDoub, selectedMaterial);
+                    ValueClassStorage.tGasLayer = tGasLayer;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

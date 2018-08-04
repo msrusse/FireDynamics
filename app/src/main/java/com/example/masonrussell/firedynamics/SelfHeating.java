@@ -92,7 +92,7 @@ public class SelfHeating extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(damkohlerResultLayout.getWindowToken(), 0);
                     volumeDoub = Double.parseDouble(volumeValue.getText().toString());
                     volumeUnits = volumeUnitSpinner.getSelectedItem().toString();
@@ -110,14 +110,15 @@ public class SelfHeating extends AppCompatActivity {
                         mDoub = ValuesConverstions.getTamurelloMValue(materialSelected);
                         pDoub = ValuesConverstions.getTamburelloPValue(materialSelected);
                     }
-                        tempDoub = Double.parseDouble(tempValue.getText().toString());
-                        tempUnits = tempUnitSpinner.getSelectedItem().toString();
-                        tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
-                        damkohlerDoub = Math.pow(radiusDoub, 2) / Math.pow(tempDoub, 2) * Math.exp(mDoub - pDoub / tempDoub);
-                        damkohlerNumberDisplay.setText(twoDigits.format(damkohlerDoub));
-                        damkohlerResultLayout.setVisibility(View.VISIBLE);
-                }
-                catch (Exception ex) {
+                    tempDoub = Double.parseDouble(tempValue.getText().toString());
+                    tempUnits = tempUnitSpinner.getSelectedItem().toString();
+                    tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
+                    damkohlerDoub = Math.pow(radiusDoub, 2) / Math.pow(tempDoub, 2) * Math.exp(mDoub - pDoub / tempDoub);
+                    damkohlerNumberDisplay.setText(twoDigits.format(damkohlerDoub));
+                    damkohlerResultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.SelfHeating selfHeating = new ValueClassStorage().new SelfHeating(volumeDoub, heightDoub, materialSelected, tempDoub, mDoub, pDoub);
+                    ValueClassStorage.selfHeating = selfHeating;
+                } catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(SelfHeating.this, error, Toast.LENGTH_LONG).show();
                 }

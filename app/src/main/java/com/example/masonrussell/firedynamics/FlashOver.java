@@ -24,7 +24,7 @@ public class FlashOver extends AppCompatActivity {
     public Spinner mccaffreyQSpinner, babrauskasQSpinner, qThomasSpinner, intLiningSpinner, materialSpinner, ventWidthSpinner, ventHeightSpinner, compWidthSpinner, compLengthSpinner, compHeightSpinner;
     public EditText intLiningText, ventWidthText, ventHeightText, compWidthText, compLengthText, compHeightText;
     public double intLining, thermalConductivity, compWidth, compLength, compHeight, ventHeight, ventWidth, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub;
-    public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits;
+    public String intLiningUnits, compWidthUnits, compLengthUnits, compHeightUnits, ventHeightUnits, ventWidthUnits, intLiningMaterial;
     public Button calculateButton;
     public LinearLayout resultLayout;
     public TextView qMccaffrey, qBabrauskas, qThomas;
@@ -90,7 +90,8 @@ public class FlashOver extends AppCompatActivity {
                     ventHeight = ValuesConverstions.toMeters(ventHeight, ventHeightUnits);
                     ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
                     intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
-                    thermalConductivity = ValuesConverstions.thermalConductivity(materialSpinner.getSelectedItem().toString());
+                    intLiningMaterial = materialSpinner.getSelectedItem().toString();
+                    thermalConductivity = ValuesConverstions.thermalConductivity(intLiningMaterial);
                     double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
                     double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
                     double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
@@ -112,7 +113,9 @@ public class FlashOver extends AppCompatActivity {
                     } else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
                         qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
                     }
+                    ValueClassStorage.QFlashover qFlashover = new ValueClassStorage().new QFlashover(compWidth, compLength, compHeight, ventWidth, ventHeight, intLining, intLiningMaterial, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub);
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.qFlashover = qFlashover;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

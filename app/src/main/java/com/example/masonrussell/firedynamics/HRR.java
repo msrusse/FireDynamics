@@ -27,7 +27,7 @@ public class HRR extends AppCompatActivity {
     public TextView qResult;
     public Spinner typeSelectionSpinner, typeUnitSpinner, fuelSpinner, qSpinner;
     public double maxBurningFlux, heatCombustion, areaDoub, radiusDoub, finalQ;
-    public String typeSelection, typeUnits;
+    public String typeSelection, typeUnits, selectedMaterial;
     public LinearLayout resultLayout;
 
     @Override
@@ -75,8 +75,9 @@ public class HRR extends AppCompatActivity {
                 try {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
-                    maxBurningFlux = ValuesConverstions.FuelBurningFlux(fuelSpinner.getSelectedItem().toString());
-                    heatCombustion = ValuesConverstions.FuelHeatCombustion(fuelSpinner.getSelectedItem().toString());
+                    selectedMaterial = fuelSpinner.getSelectedItem().toString();
+                    maxBurningFlux = ValuesConverstions.FuelBurningFlux(selectedMaterial);
+                    heatCombustion = ValuesConverstions.FuelHeatCombustion(selectedMaterial);
                     typeSelection = typeSelectionSpinner.getSelectedItem().toString();
                     typeUnits = typeUnitSpinner.getSelectedItem().toString();
                     if (typeSelection.equals("Area of Burning")) {
@@ -90,6 +91,8 @@ public class HRR extends AppCompatActivity {
                     finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
                     qResult.setText(String.valueOf(Math.round(finalQ)));
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.HRR hrr = new ValueClassStorage().new HRR(areaDoub, radiusDoub, selectedMaterial);
+                    ValueClassStorage.hrr = hrr;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

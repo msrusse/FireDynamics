@@ -18,7 +18,7 @@
         <activity android:name=".OpenPipe" />
         <activity android:name=".T2Fires" />
         <activity android:name=".Conduction" />
-        <activity android:name=".GasConcentation" />
+        <activity android:name=".GasConcentration" />
         <activity android:name=".SolidIgnition" />
         <activity android:name=".TGasLayer" />
         <activity android:name=".OxygenLevels" />

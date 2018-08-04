@@ -134,6 +134,8 @@ public class RadiationPoolFire extends AppCompatActivity {
                         ldResult = "OK";
                     }
                     ldValidTestResult.setText(ldResult);
+                    ValueClassStorage.RadiationPoolFire radiationPoolFire = new ValueClassStorage().new RadiationPoolFire(distanceDoub, diameterDoub, lengthDoub, widthDoub, heatFluxResultDoub, ldResult);
+                    ValueClassStorage.radiationPoolFire = radiationPoolFire;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

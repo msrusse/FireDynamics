@@ -71,6 +71,8 @@ public class OpenPipe extends AppCompatActivity {
                     resultText.setText(twoDigits.format(resultDoub));
                     resultLayout.setVisibility(View.VISIBLE);
                     resultUnits = resultSpinner.getSelectedItem().toString();
+                    ValueClassStorage.OpenPipe openPipe = new ValueClassStorage().new OpenPipe(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub, resultDoub);
+                    ValueClassStorage.openPipe = openPipe;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";

@@ -737,21 +737,6 @@ class ValuesConverstions {
         return kgPerMetersCubed;
     }
 
-    static double densityToPoundsPerFeetCubed(double currentDensity, String currentUnits)
-    {
-        double lbPerFeetCubed = currentDensity;
-        switch (currentUnits)
-        {
-            case "kg/m^3":
-                lbPerFeetCubed = currentDensity * 16.0185;
-                break;
-            case "lb/ft^3":
-                lbPerFeetCubed = currentDensity;
-                break;
-        }
-        return lbPerFeetCubed;
-    }
-
     static double getSolidIgnitionKPC(String material)
     {
         double kpc = 0;

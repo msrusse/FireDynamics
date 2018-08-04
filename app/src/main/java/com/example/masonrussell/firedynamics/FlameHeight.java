@@ -57,33 +57,33 @@ public class FlameHeight extends AppCompatActivity {
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (typeSelectionSpinner.getSelectedItem().toString().equals("Diameter of Pool Fire"))
-                        {
-                            addItemsOnUnitSpinner(typeSelectionUnitSpinner);
-                            secondSquareLayout.setVisibility(View.INVISIBLE);
-                        }
-                        else if (typeSelectionSpinner.getSelectedItem().toString().equals("Area of Circular Pool"))
-                        {
-                            addItemsOnUnitSquaredSpinner(typeSelectionUnitSpinner);
-                            secondSquareLayout.setVisibility(View.INVISIBLE);
-                        }
-                        else if (typeSelectionSpinner.getSelectedItem().toString().equals("Length of Square Pool"))
-                        {
-                            addItemsOnUnitSpinner(typeSelectionUnitSpinner);
-                            addItemsOnUnitSpinner(secondSquareSpinner);
-                            String toDisplay = "Width of Pool";
-                            secondSquareView.setText(toDisplay);
-                            secondSquareLayout.setVisibility(View.VISIBLE);
-                        }
-                        else
-                        {
-                            addItemsOnUnitSpinner(typeSelectionUnitSpinner);
-                            addItemsOnUnitSpinner(secondSquareSpinner);
-                            String toDisplay = "Length of Pool";
-                            secondSquareView.setText(toDisplay);
-                            secondSquareLayout.setVisibility(View.VISIBLE);
+                        String toDisplay;
+                        switch (typeSelectionSpinner.getSelectedItem().toString()) {
+                            case "Diameter of Pool Fire":
+                                addItemsOnUnitSpinner(typeSelectionUnitSpinner);
+                                secondSquareLayout.setVisibility(View.INVISIBLE);
+                                break;
+                            case "Area of Circular Pool":
+                                addItemsOnUnitSquaredSpinner(typeSelectionUnitSpinner);
+                                secondSquareLayout.setVisibility(View.INVISIBLE);
+                                break;
+                            case "Length of Square Pool":
+                                addItemsOnUnitSpinner(typeSelectionUnitSpinner);
+                                addItemsOnUnitSpinner(secondSquareSpinner);
+                                toDisplay = "Width of Pool";
+                                secondSquareView.setText(toDisplay);
+                                secondSquareLayout.setVisibility(View.VISIBLE);
+                                break;
+                            default:
+                                addItemsOnUnitSpinner(typeSelectionUnitSpinner);
+                                addItemsOnUnitSpinner(secondSquareSpinner);
+                                toDisplay = "Length of Pool";
+                                secondSquareView.setText(toDisplay);
+                                secondSquareLayout.setVisibility(View.VISIBLE);
+                                break;
                         }
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -95,7 +95,7 @@ public class FlameHeight extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(resultView.getWindowToken(), 0);
                     qDoub = Double.parseDouble(qText.getText().toString());
                     qUnits = qUnitSpinner.getSelectedItem().toString();
@@ -139,17 +139,17 @@ public class FlameHeight extends AppCompatActivity {
                     lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
                     addItemsOnResultSpinner(lSpinner);
                     resultView.setVisibility(View.VISIBLE);
+                    ValueClassStorage.FlameHeight flameHeight = new ValueClassStorage().new FlameHeight(qDoub, diameterDoub, areaDoub, lengthDoub, widthDoub, lResultDoub);
+                    ValueClassStorage.flameHeight = flameHeight;
                     resultUnits = lSpinner.getSelectedItem().toString();
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(FlameHeight.this, error, Toast.LENGTH_LONG).show();
                 }
                 lSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        switch (lSpinner.getSelectedItem().toString())
-                        {
+                        switch (lSpinner.getSelectedItem().toString()) {
                             case ("m"):
                                 lResultDoub = ValuesConverstions.toMeters(lResultDoub, resultUnits);
                                 lResult.setText(twoDigits.format(lResultDoub));
@@ -187,8 +187,7 @@ public class FlameHeight extends AppCompatActivity {
         });
     }
 
-    public void addItemsOnUnitSpinner(Spinner spinnerToMake)
-    {
+    public void addItemsOnUnitSpinner(Spinner spinnerToMake) {
         List<String> list = new ArrayList<>();
         list.add("m");
         list.add("ft");
@@ -200,8 +199,7 @@ public class FlameHeight extends AppCompatActivity {
         spinnerToMake.setAdapter(dataAdapter);
     }
 
-    public void addItemsOnResultSpinner(Spinner spinnerToMake)
-    {
+    public void addItemsOnResultSpinner(Spinner spinnerToMake) {
         List<String> list = new ArrayList<>();
         list.add("m");
         list.add("ft");
@@ -211,8 +209,7 @@ public class FlameHeight extends AppCompatActivity {
         spinnerToMake.setAdapter(dataAdapter);
     }
 
-    public void addItemsOnUnitSquaredSpinner(Spinner spinnerToMake)
-    {
+    public void addItemsOnUnitSquaredSpinner(Spinner spinnerToMake) {
         List<String> list = new ArrayList<>();
         list.add("ft^2");
         list.add("in^2");
@@ -224,8 +221,7 @@ public class FlameHeight extends AppCompatActivity {
         spinnerToMake.setAdapter(dataAdapter);
     }
 
-    public void addQUnits(Spinner spinnerToMake)
-    {
+    public void addQUnits(Spinner spinnerToMake) {
         List<String> list = new ArrayList<>();
         list.add("kW");
         list.add("Btu/sec");
@@ -234,8 +230,7 @@ public class FlameHeight extends AppCompatActivity {
         spinnerToMake.setAdapter(dataAdapter);
     }
 
-    public void addDiameterSelections(Spinner spinnerToMake)
-    {
+    public void addDiameterSelections(Spinner spinnerToMake) {
         List<String> list = new ArrayList<>();
         list.add("Diameter of Pool Fire");
         list.add("Area of Circular Pool");

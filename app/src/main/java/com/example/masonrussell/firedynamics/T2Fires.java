@@ -63,6 +63,7 @@ public class T2Fires extends AppCompatActivity {
                         timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
                         alphaDoub = 1000 / Math.pow(t1Doub, 2);
                         ValueClassStorage.T2Fires t2Fires = new ValueClassStorage().new T2Fires(t1Doub, peakHrrDoub, timeIntervalDoub);
+                        ValueClassStorage.t2Fires = t2Fires;
                         getValues();
                         resultLayout.setVisibility(View.VISIBLE);
                     } else {
@@ -110,7 +111,6 @@ public class T2Fires extends AppCompatActivity {
         {
             dp[x] = new DataPoint(time.get(x),hrr.get(x));
         }
-        resultsGraph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(15);

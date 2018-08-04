@@ -10,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,11 +21,10 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.Series;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GasConcentation extends AppCompatActivity {
+public class GasConcentration extends AppCompatActivity {
 
     public Button getResultsButton;
     public LinearLayout resultsLayout;
@@ -74,10 +71,12 @@ public class GasConcentation extends AppCompatActivity {
                     leakageRateDoub = ValuesConverstions.FlowtoMetersCubedPerHour(leakageRateDoub, leakageRateUnits);
                     getValues();
                     resultsLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.GasConcentration gasConcentration = new ValueClassStorage().new GasConcentration(airchangeDoub, leakageRateDoub, gasVolumeDoub, timestepDoub);
+                    ValueClassStorage.gasConcentration = gasConcentration;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
-                    Toast.makeText(GasConcentation.this, error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(GasConcentration.this, error, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -122,7 +121,7 @@ public class GasConcentation extends AppCompatActivity {
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
-                Toast.makeText(GasConcentation.this, String.valueOf(dataPoint), Toast.LENGTH_LONG).show();
+                Toast.makeText(GasConcentration.this, String.valueOf(dataPoint), Toast.LENGTH_LONG).show();
             }
         });
     }

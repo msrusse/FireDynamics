@@ -127,6 +127,8 @@ public class SolidIgnition extends AppCompatActivity {
                     resultDoub = Calculations.CalculateThermallyThickTimeToIgnition(cDoub, densityDoub, specificHeatDoub, thermalConductivityDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
                     resultView.setText(twoDigits.format(resultDoub));
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThick", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
+                    ValueClassStorage.solidIgnition = solidIgnition;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -210,6 +212,8 @@ public class SolidIgnition extends AppCompatActivity {
                     resultDoub = Calculations.CalculateThermallyThinTimeToIgnition(densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
                     resultView.setText(twoDigits.format(resultDoub));
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThin", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
+                    ValueClassStorage.solidIgnition = solidIgnition;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -283,6 +287,8 @@ public class SolidIgnition extends AppCompatActivity {
                         resultView.setText(twoDigits.format(resultDoub));
                     }
                     resultLayout.setVisibility(View.VISIBLE);
+                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThickWithMaterials", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
+                    ValueClassStorage.solidIgnition = solidIgnition;
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
