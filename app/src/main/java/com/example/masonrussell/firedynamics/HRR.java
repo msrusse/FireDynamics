@@ -29,6 +29,7 @@ public class HRR extends AppCompatActivity {
     public double maxBurningFlux, heatCombustion, areaDoub, radiusDoub, finalQ;
     public String typeSelection, typeUnits, selectedMaterial;
     public LinearLayout resultLayout;
+    private List<String> fuelSelectionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class HRR extends AppCompatActivity {
         addItemsOnFuelSpinner(fuelSpinner);
         addSelectionsOnSpinner(typeSelectionSpinner);
         addFinalUnitsSpinner(qSpinner);
-
         typeSelectionSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -69,6 +69,7 @@ public class HRR extends AppCompatActivity {
                     }
                 }
         );
+        if (ValueClassStorage.hrr != null) getLastHrr(ValueClassStorage.hrr);
 
         getMeasurementsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -76,8 +77,6 @@ public class HRR extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     selectedMaterial = fuelSpinner.getSelectedItem().toString();
-                    maxBurningFlux = ValuesConverstions.FuelBurningFlux(selectedMaterial);
-                    heatCombustion = ValuesConverstions.FuelHeatCombustion(selectedMaterial);
                     typeSelection = typeSelectionSpinner.getSelectedItem().toString();
                     typeUnits = typeUnitSpinner.getSelectedItem().toString();
                     if (typeSelection.equals("Area of Burning")) {
@@ -88,11 +87,7 @@ public class HRR extends AppCompatActivity {
                         radiusDoub = ValuesConverstions.toMeters(radiusDoub, typeUnits);
                         areaDoub = Calculations.CalculateArea(radiusDoub);
                     }
-                    finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
-                    qResult.setText(String.valueOf(Math.round(finalQ)));
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.HRR hrr = new ValueClassStorage().new HRR(areaDoub, radiusDoub, selectedMaterial);
-                    ValueClassStorage.hrr = hrr;
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -118,6 +113,27 @@ public class HRR extends AppCompatActivity {
                 );
             }
         });
+    }
+
+    private void getLastHrr(ValueClassStorage.HRR hrr)
+    {
+        selectedMaterial = hrr.material;
+        fuelSpinner.setSelection(fuelSelectionList.indexOf(selectedMaterial));
+        areaDoub = hrr.areaDoub;
+        areaBurningText.setText(String.valueOf(areaDoub));
+        typeUnitSpinner.setSelection(2);
+        getResults();
+    }
+
+    private void getResults()
+    {
+        maxBurningFlux = ValuesConverstions.FuelBurningFlux(selectedMaterial);
+        heatCombustion = ValuesConverstions.FuelHeatCombustion(selectedMaterial);
+        finalQ = Calculations.CalculateHRRQ(maxBurningFlux, heatCombustion, areaDoub);
+        qResult.setText(String.valueOf(Math.round(finalQ)));
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.HRR hrr = new ValueClassStorage().new HRR(areaDoub, radiusDoub, selectedMaterial);
+        ValueClassStorage.hrr = hrr;
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)
@@ -148,18 +164,18 @@ public class HRR extends AppCompatActivity {
 
     public void addItemsOnFuelSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("Cellulose");
-        list.add("Gasoline");
-        list.add("Heptane");
-        list.add("Methanol");
-        list.add("PMMA");
-        list.add("Polyethylene");
-        list.add("Polypropylene");
-        list.add("Polystyrene");
-        list.add("PVC");
-        list.add("Wood");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        fuelSelectionList = new ArrayList<>();
+        fuelSelectionList.add("Cellulose");
+        fuelSelectionList.add("Gasoline");
+        fuelSelectionList.add("Heptane");
+        fuelSelectionList.add("Methanol");
+        fuelSelectionList.add("PMMA");
+        fuelSelectionList.add("Polyethylene");
+        fuelSelectionList.add("Polypropylene");
+        fuelSelectionList.add("Polystyrene");
+        fuelSelectionList.add("PVC");
+        fuelSelectionList.add("Wood");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fuelSelectionList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }

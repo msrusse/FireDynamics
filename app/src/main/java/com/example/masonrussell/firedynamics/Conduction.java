@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,20 +23,22 @@ import java.util.List;
 public class Conduction extends AppCompatActivity {
 
     public Spinner materialSpinner, lengthUnitSpinner, hotSideUnitSpinner, coldSideUnitSpinner, heatFluxResultSpinner, thermalPenTimeResultSpinner;
+    public List<String> thermalPenTimeList, heatFluxResultList, materialList;
     public LinearLayout resultLayout;
     public EditText lengthResult, hotSideResult, coldSideResult;
-    public TextView heatFluxResult, thermalPenTimeResult;
-    public Button getResults;
-    public String materialString, currentHeatFluxUnits, currentThermalPenTimeUnits;
-    public double lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenTimeDoub, thermalConductivityDoub, specificHeatDoub, densityDoub, thermalDiffusivityDoub, thermalIntertiaDoub;
+    private TextView heatFluxResult, thermalPenTimeResult;
+    private Button getResults;
+    private String materialString, currentHeatFluxUnits, currentThermalPenTimeUnits;
+    private double lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenTimeDoub, thermalConductivityDoub, specificHeatDoub, densityDoub, thermalDiffusivityDoub, thermalIntertiaDoub;
+    private DecimalFormat twoDigits, fourDigits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conduction);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        final DecimalFormat twoDigits = new DecimalFormat("0.00");
-        final DecimalFormat fourDigits = new DecimalFormat("0.0000");
+        twoDigits = new DecimalFormat("0.00");
+        fourDigits = new DecimalFormat("0.0000");
         materialSpinner = findViewById(R.id.materialSpinner);
         lengthUnitSpinner = findViewById(R.id.lengthSpinner);
         hotSideUnitSpinner= findViewById(R.id.hotSideSpinner);
@@ -56,6 +59,7 @@ public class Conduction extends AppCompatActivity {
         addItemsOnMaterialSpinner(materialSpinner);
         addItemsOnHeatFluxResultsSpinner(heatFluxResultSpinner);
         addItemsOnThermalPenTimeResultSpinner(thermalPenTimeResultSpinner);
+        if (ValueClassStorage.conduction != null) setLastCalculation(ValueClassStorage.conduction);
         getResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,24 +70,7 @@ public class Conduction extends AppCompatActivity {
                     hotSideDoub = Double.parseDouble(hotSideResult.getText().toString());
                     coldSideDoub = Double.parseDouble(coldSideResult.getText().toString());
                     materialString = materialSpinner.getSelectedItem().toString();
-                    lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitSpinner.getSelectedItem().toString());
-                    hotSideDoub = ValuesConverstions.toDegreesCentigrade(hotSideDoub, hotSideUnitSpinner.getSelectedItem().toString());
-                    coldSideDoub = ValuesConverstions.toDegreesCentigrade(coldSideDoub, coldSideUnitSpinner.getSelectedItem().toString());
-                    thermalConductivityDoub = ValuesConverstions.ConductionThermalConductivity(materialString);
-                    specificHeatDoub = ValuesConverstions.ConductionSpecificHeat(materialString);
-                    densityDoub = ValuesConverstions.ConductionDensity(materialString);
-                    thermalDiffusivityDoub = getThermalDiffusivity(thermalConductivityDoub, specificHeatDoub, densityDoub);
-                    thermalIntertiaDoub = ValuesConverstions.ConductionThermalInertia(materialString);
-                    thermalConductivityDoub = thermalConductivityDoub / 1000;
-                    heatFluxDoub = Calculations.CalculateConductiveHeatFlux(lengthDoub, thermalConductivityDoub, hotSideDoub, coldSideDoub);
-                    heatFluxResult.setText(fourDigits.format(heatFluxDoub));
-                    currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
-                    thermalPenTimeDoub = Calculations.CalculateConductiveThermalPenTime(lengthDoub, thermalDiffusivityDoub);
-                    thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
-                    currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
-                    ValueClassStorage.Conduction conduction = new ValueClassStorage().new Conduction(lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenTimeDoub);
-                    ValueClassStorage.conduction = conduction;
-                    resultLayout.setVisibility(View.VISIBLE);
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -145,6 +132,42 @@ public class Conduction extends AppCompatActivity {
 
     }
 
+    private void setLastCalculation(ValueClassStorage.Conduction conduction)
+    {
+        lengthResult.setText(String.valueOf(conduction.lengthDoub));
+        lengthDoub = conduction.lengthDoub;
+        lengthUnitSpinner.setSelection(2);
+        hotSideResult.setText(String.valueOf(conduction.hotSideDoub));
+        hotSideDoub = conduction.hotSideDoub;
+        coldSideResult.setText(String.valueOf(conduction.coldSideDoub));
+        coldSideDoub = conduction.coldSideDoub;
+        materialSpinner.setSelection(materialList.indexOf(conduction.materialSelected));
+        materialString = conduction.materialSelected;
+        getResults();
+    }
+
+    private void getResults()
+    {
+        lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnitSpinner.getSelectedItem().toString());
+        hotSideDoub = ValuesConverstions.toDegreesCentigrade(hotSideDoub, hotSideUnitSpinner.getSelectedItem().toString());
+        coldSideDoub = ValuesConverstions.toDegreesCentigrade(coldSideDoub, coldSideUnitSpinner.getSelectedItem().toString());
+        thermalConductivityDoub = ValuesConverstions.ConductionThermalConductivity(materialString);
+        specificHeatDoub = ValuesConverstions.ConductionSpecificHeat(materialString);
+        densityDoub = ValuesConverstions.ConductionDensity(materialString);
+        thermalDiffusivityDoub = getThermalDiffusivity(thermalConductivityDoub, specificHeatDoub, densityDoub);
+        thermalIntertiaDoub = ValuesConverstions.ConductionThermalInertia(materialString);
+        thermalConductivityDoub = thermalConductivityDoub / 1000;
+        heatFluxDoub = Calculations.CalculateConductiveHeatFlux(lengthDoub, thermalConductivityDoub, hotSideDoub, coldSideDoub);
+        heatFluxResult.setText(fourDigits.format(heatFluxDoub));
+        currentHeatFluxUnits = heatFluxResultSpinner.getSelectedItem().toString();
+        thermalPenTimeDoub = Calculations.CalculateConductiveThermalPenTime(lengthDoub, thermalDiffusivityDoub);
+        thermalPenTimeResult.setText(twoDigits.format(thermalPenTimeDoub));
+        currentThermalPenTimeUnits = thermalPenTimeResultSpinner.getSelectedItem().toString();
+        ValueClassStorage.Conduction conduction = new ValueClassStorage().new Conduction(lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenTimeDoub, materialSpinner.getSelectedItem().toString());
+        ValueClassStorage.conduction = conduction;
+        resultLayout.setVisibility(View.VISIBLE);
+    }
+
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)
     {
         List<String> list = new ArrayList<>();
@@ -172,43 +195,43 @@ public class Conduction extends AppCompatActivity {
 
     public void addItemsOnThermalPenTimeResultSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("sec");
-        list.add("min");
-        list.add("hour");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        thermalPenTimeList = new ArrayList<>();
+        thermalPenTimeList.add("sec");
+        thermalPenTimeList.add("min");
+        thermalPenTimeList.add("hour");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, thermalPenTimeList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }
 
     public void addItemsOnHeatFluxResultsSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("kW/m^2");
-        list.add("Btu/sec/ft^2");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        heatFluxResultList = new ArrayList<>();
+        heatFluxResultList.add("kW/m^2");
+        heatFluxResultList.add("Btu/sec/ft^2");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, heatFluxResultList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }
 
     public void addItemsOnMaterialSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("Air");
-        list.add("Asbestos");
-        list.add("Brick");
-        list.add("Concrete (high)");
-        list.add("Concrete (low)");
-        list.add("Copper");
-        list.add("Fiber Insulating Board");
-        list.add("Glass (plate)");
-        list.add("Gypsum Plaster");
-        list.add("Oak");
-        list.add("PMMA");
-        list.add("Polyurethance Foam");
-        list.add("Steel (mild)");
-        list.add("Yellow Pine");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        materialList = new ArrayList<>();
+        materialList.add("Air");
+        materialList.add("Asbestos");
+        materialList.add("Brick");
+        materialList.add("Concrete (high)");
+        materialList.add("Concrete (low)");
+        materialList.add("Copper");
+        materialList.add("Fiber Insulating Board");
+        materialList.add("Glass (plate)");
+        materialList.add("Gypsum Plaster");
+        materialList.add("Oak");
+        materialList.add("PMMA");
+        materialList.add("Polyurethance Foam");
+        materialList.add("Steel (mild)");
+        materialList.add("Yellow Pine");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, materialList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }

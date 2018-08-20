@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:background="@color/colorOrange"
         android:orientation="vertical">
+
         <LinearLayout
+            android:id="@+id/qFlashoverLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/qFlashoverLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -24,9 +24,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/flashover"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
@@ -43,11 +43,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/hrrLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hrrLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -55,9 +54,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
-                android:paddingEnd="16dp"
                 android:text="@string/hrr"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
@@ -77,8 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/flameHeightLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -108,8 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/t2FiresLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -139,8 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radiationPoolLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -170,8 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/conductionLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -201,8 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/solidIgnitionLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -232,8 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/openPipeLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -263,8 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gasConLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -294,8 +286,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gasAmountLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -325,8 +316,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/oxygenLevelLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -356,8 +346,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/selfHeatingLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -386,8 +375,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tGasLayersLayout"
-            android:background="@drawable/main_button"
-            android:onClick="onClick"
+            android:background="@mipmap/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">

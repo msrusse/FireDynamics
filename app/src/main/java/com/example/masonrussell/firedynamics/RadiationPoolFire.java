@@ -84,6 +84,21 @@ public class RadiationPoolFire extends AppCompatActivity {
                     }
                 }
         );
+        if (ValueClassStorage.radiationPoolFire != null)
+        {
+            ValueClassStorage.RadiationPoolFire radiationPoolFire = ValueClassStorage.radiationPoolFire;
+            distanceDoub = radiationPoolFire.targetDistanceDoub;
+            diameterDoub = radiationPoolFire.diameterDoub;
+            ldivdDoub = distanceDoub / diameterDoub;
+            distance.setText(String.valueOf(distanceDoub));
+            typeSelection.setText(String.valueOf(diameterDoub));
+            typeSelectionSpinner.setSelection(0);
+            distanceSpinner.setSelection(2);
+            typeSelectionUnitSpinner.setSelection(2);
+            getResults();
+        }
+
+
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,21 +136,7 @@ public class RadiationPoolFire extends AppCompatActivity {
                             ldivdDoub = distanceDoub / diameterDoub;
                             break;
                     }
-                    heatFluxResultDoub = Calculations.CalculateHeatFluxtoTarget(distanceDoub, diameterDoub);
-                    heatFluxResult.setText(String.valueOf(Math.round(heatFluxResultDoub)));
-                    addUnitsOnResultSpinner(heatFluxSpinner);
-                    heatFluxUnitType = heatFluxSpinner.getSelectedItem().toString();
-                    resultLayout.setVisibility(View.VISIBLE);
-                    if (ldivdDoub < 0.7) {
-                        ldResult = "Too close to pool edge";
-                    } else if (ldivdDoub > 15) {
-                        ldResult = "Too far from pool edge";
-                    } else {
-                        ldResult = "OK";
-                    }
-                    ldValidTestResult.setText(ldResult);
-                    ValueClassStorage.RadiationPoolFire radiationPoolFire = new ValueClassStorage().new RadiationPoolFire(distanceDoub, diameterDoub, lengthDoub, widthDoub, heatFluxResultDoub, ldResult);
-                    ValueClassStorage.radiationPoolFire = radiationPoolFire;
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -168,6 +169,25 @@ public class RadiationPoolFire extends AppCompatActivity {
                 );
             }
         });
+    }
+
+    private void getResults()
+    {
+        heatFluxResultDoub = Calculations.CalculateHeatFluxtoTarget(distanceDoub, diameterDoub);
+        heatFluxResult.setText(String.valueOf(Math.round(heatFluxResultDoub)));
+        addUnitsOnResultSpinner(heatFluxSpinner);
+        heatFluxUnitType = heatFluxSpinner.getSelectedItem().toString();
+        resultLayout.setVisibility(View.VISIBLE);
+        if (ldivdDoub < 0.7) {
+            ldResult = "Too close to pool edge";
+        } else if (ldivdDoub > 15) {
+            ldResult = "Too far from pool edge";
+        } else {
+            ldResult = "OK";
+        }
+        ldValidTestResult.setText(ldResult);
+        ValueClassStorage.RadiationPoolFire radiationPoolFire = new ValueClassStorage().new RadiationPoolFire(distanceDoub, diameterDoub);
+        ValueClassStorage.radiationPoolFire = radiationPoolFire;
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)

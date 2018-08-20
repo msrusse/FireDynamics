@@ -246,83 +246,7 @@ public class OxygenLevels extends AppCompatActivity {
                                                         roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
                                                         roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
                                                         roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
-                                                        roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
-                                                        molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
-                                                        o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
-                                                        initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
-                                                        kiloJoulePerKiloGramO2ConsumedDoub = 13100;
-                                                        switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
-                                                            case "Steady State Fire":
-                                                                heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
-                                                                timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
-                                                                timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
-                                                                timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
-                                                                timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
-                                                                resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                                                resultsLayout.setLayoutParams(resultsParams);
-                                                                resultsLayout.setVisibility(View.VISIBLE);
-                                                                break;
-                                                            case "t^2 Fire":
-                                                                t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
-                                                                t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
-                                                                timestepDoub = Double.parseDouble(timestepValue.getText().toString());
-                                                                calculateTime();
-                                                                calculateQ();
-                                                                calculateTotalEnergy();
-                                                                calculateTotalO2Consumed();
-                                                                calculatePercentO2InRoom();
-                                                                switch (graphSelectionSpinner.getSelectedItem().toString()) {
-                                                                    case "Q Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(q);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Energy Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalEnergy);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total O2 Consumed Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalO2Consumed);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Percent O2 In Room":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(percentO2InRoom);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                }
-                                                                break;
-                                                        }
+                                                        getResults();
                                                     }
                                                     catch (Exception ex) {
                                                         String error = "Please Fill the Empty Fields";
@@ -425,83 +349,7 @@ public class OxygenLevels extends AppCompatActivity {
                                                         roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
                                                         roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
                                                         roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
-                                                        roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
-                                                        molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
-                                                        o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
-                                                        initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
-                                                        kiloJoulePerKiloGramO2ConsumedDoub = 13100;
-                                                        switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
-                                                            case "Steady State Fire":
-                                                                heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
-                                                                timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
-                                                                timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
-                                                                timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
-                                                                timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
-                                                                resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                                                resultsLayout.setLayoutParams(resultsParams);
-                                                                resultsLayout.setVisibility(View.VISIBLE);
-                                                                break;
-                                                            case "t^2 Fire":
-                                                                t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
-                                                                t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
-                                                                timestepDoub = Double.parseDouble(timestepValue.getText().toString());
-                                                                calculateTime();
-                                                                calculateQ();
-                                                                calculateTotalEnergy();
-                                                                calculateTotalO2Consumed();
-                                                                calculatePercentO2InRoom();
-                                                                switch (graphSelectionSpinner.getSelectedItem().toString()) {
-                                                                    case "Q Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(q);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Energy Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalEnergy);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total O2 Consumed Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalO2Consumed);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Percent O2 In Room":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(percentO2InRoom);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                }
-                                                                break;
-                                                        }
+                                                        getResults();
                                                     }
                                                     catch (Exception ex) {
                                                         String error = "Please Fill the Empty Fields";
@@ -605,83 +453,7 @@ public class OxygenLevels extends AppCompatActivity {
                                                         roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
                                                         roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
                                                         roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
-                                                        roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
-                                                        molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
-                                                        o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
-                                                        initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
-                                                        kiloJoulePerKiloGramO2ConsumedDoub = 13100;
-                                                        switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
-                                                            case "Steady State Fire":
-                                                                heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
-                                                                timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
-                                                                timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
-                                                                timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
-                                                                timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
-                                                                resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                                                resultsLayout.setLayoutParams(resultsParams);
-                                                                resultsLayout.setVisibility(View.VISIBLE);
-                                                                break;
-                                                            case "t^2 Fire":
-                                                                t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
-                                                                t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
-                                                                timestepDoub = Double.parseDouble(timestepValue.getText().toString());
-                                                                calculateTime();
-                                                                calculateQ();
-                                                                calculateTotalEnergy();
-                                                                calculateTotalO2Consumed();
-                                                                calculatePercentO2InRoom();
-                                                                switch (graphSelectionSpinner.getSelectedItem().toString()) {
-                                                                    case "Q Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(q);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Energy Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalEnergy);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total O2 Consumed Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalO2Consumed);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Percent O2 In Room":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(percentO2InRoom);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                }
-                                                                break;
-                                                        }
+                                                        getResults();
                                                     }
                                                     catch (Exception ex) {
                                                         String error = "Please Fill the Empty Fields";
@@ -785,83 +557,7 @@ public class OxygenLevels extends AppCompatActivity {
                                                         roomWidthDoub = ValuesConverstions.toMeters(roomWidthDoub, roomWidthUnits);
                                                         roomLengthDoub = ValuesConverstions.toMeters(roomLengthDoub, roomLengthUnits);
                                                         roomHeightDoub = ValuesConverstions.toMeters(roomHeightDoub, roomHeightUnits);
-                                                        roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
-                                                        molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
-                                                        o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
-                                                        initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
-                                                        kiloJoulePerKiloGramO2ConsumedDoub = 13100;
-                                                        switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
-                                                            case "Steady State Fire":
-                                                                heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
-                                                                timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
-                                                                timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
-                                                                timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
-                                                                timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
-                                                                resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                                                resultsLayout.setLayoutParams(resultsParams);
-                                                                resultsLayout.setVisibility(View.VISIBLE);
-                                                                break;
-                                                            case "t^2 Fire":
-                                                                t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
-                                                                t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
-                                                                timestepDoub = Double.parseDouble(timestepValue.getText().toString());
-                                                                calculateTime();
-                                                                calculateQ();
-                                                                calculateTotalEnergy();
-                                                                calculateTotalO2Consumed();
-                                                                calculatePercentO2InRoom();
-                                                                switch (graphSelectionSpinner.getSelectedItem().toString()) {
-                                                                    case "Q Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(q);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Energy Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalEnergy);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total O2 Consumed Over Time":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(totalO2Consumed);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                    case "Total Percent O2 In Room":
-                                                                        setContentView(R.layout.activity_oxygen_levels_result_graph);
-                                                                        returnButton = findViewById(R.id.button);
-                                                                        resultsGraph = findViewById(R.id.resultsGraph);
-                                                                        addPointsOnGraph(percentO2InRoom);
-                                                                        returnButton.setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View v) {
-                                                                                setContentView(R.layout.activity_oxygen_levels);
-                                                                            }
-                                                                        });
-                                                                        break;
-                                                                }
-                                                                break;
-                                                        }
+                                                        getResults();
                                                     }
                                                     catch (Exception ex) {
                                                         String error = "Please Fill the Empty Fields";
@@ -886,6 +582,89 @@ public class OxygenLevels extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getResults()
+    {
+
+
+        roomVolumeDoub = roomLengthDoub * roomWidthDoub * roomHeightDoub;
+        molarMassO2PerMolePerAirDoub = oxygenMolecularWeightDoub * initialO2Doub;
+        o2PerCubicMeterDoub = 1000 / 22.4 * molarMassO2PerMolePerAirDoub / 1000;
+        initialWeightO2Doub = o2PerCubicMeterDoub * roomVolumeDoub;
+        kiloJoulePerKiloGramO2ConsumedDoub = 13100;
+        switch (typeOfFireSelectionSpinner.getSelectedItem().toString()) {
+            case "Steady State Fire":
+                heatReleaseRateDoub = Double.parseDouble(heatReleaseRateValue.getText().toString());
+                timeToReduceO2By1Doub = ((((initialWeightO2Doub / initialO2Doub) / 100) * kiloJoulePerKiloGramO2ConsumedDoub) / heatReleaseRateDoub);
+                timeToReduceO2By14Doub = ((initialO2Doub - .14) * 100 * timeToReduceO2By1Doub);
+                timeToReduceO2By1Result.setText(String.valueOf(Math.round(timeToReduceO2By1Doub)));
+                timeToReduce02By14Result.setText(String.valueOf(Math.round(timeToReduceO2By14Doub)));
+                resultsParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                resultsLayout.setLayoutParams(resultsParams);
+                resultsLayout.setVisibility(View.VISIBLE);
+                break;
+            case "t^2 Fire":
+                t2FireGrowthRate = t2FireGrowthRateSpinner.getSelectedItem().toString();
+                t2AlphaValueDoub = ValuesConverstions.t2GrowthRateAlphaValue(t2FireGrowthRate);
+                timestepDoub = Double.parseDouble(timestepValue.getText().toString());
+                calculateTime();
+                calculateQ();
+                calculateTotalEnergy();
+                calculateTotalO2Consumed();
+                calculatePercentO2InRoom();
+                switch (graphSelectionSpinner.getSelectedItem().toString()) {
+                    case "Q Over Time":
+                        setContentView(R.layout.activity_oxygen_levels_result_graph);
+                        returnButton = findViewById(R.id.button);
+                        resultsGraph = findViewById(R.id.resultsGraph);
+                        addPointsOnGraph(q);
+                        returnButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.activity_oxygen_levels);
+                            }
+                        });
+                        break;
+                    case "Total Energy Over Time":
+                        setContentView(R.layout.activity_oxygen_levels_result_graph);
+                        returnButton = findViewById(R.id.button);
+                        resultsGraph = findViewById(R.id.resultsGraph);
+                        addPointsOnGraph(totalEnergy);
+                        returnButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.activity_oxygen_levels);
+                            }
+                        });
+                        break;
+                    case "Total O2 Consumed Over Time":
+                        setContentView(R.layout.activity_oxygen_levels_result_graph);
+                        returnButton = findViewById(R.id.button);
+                        resultsGraph = findViewById(R.id.resultsGraph);
+                        addPointsOnGraph(totalO2Consumed);
+                        returnButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.activity_oxygen_levels);
+                            }
+                        });
+                        break;
+                    case "Total Percent O2 In Room":
+                        setContentView(R.layout.activity_oxygen_levels_result_graph);
+                        returnButton = findViewById(R.id.button);
+                        resultsGraph = findViewById(R.id.resultsGraph);
+                        addPointsOnGraph(percentO2InRoom);
+                        returnButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.activity_oxygen_levels);
+                            }
+                        });
+                        break;
+                }
+                break;
+        }
     }
 
     public void addSelectionsOnFireTypeSpinner(Spinner spinnerToMake)

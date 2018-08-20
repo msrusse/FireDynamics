@@ -79,6 +79,56 @@ public class GasAmount extends AppCompatActivity {
         addUnitsOnVolumeSpinner(liquidVolumeResultSpinner);
         addUnitsOnWeightSpinner(weightResultSpinner);
         addOptionsOnGasTypeSpinner(gasSelectionSpinner);
+        if (ValueClassStorage.gasAmount != null)
+        {
+            ValueClassStorage.GasAmount gasAmount = ValueClassStorage.gasAmount;
+            areaDoub = gasAmount.areaDoub;
+            heightDoub = gasAmount.heightDoub;
+            lelDoub = gasAmount.lelDoub;
+            stoichDoub = gasAmount.stoichiometricDoub;
+            uelDoub = gasAmount.uelDoub;
+            vaporDensityDoub = gasAmount.vaporDensityDoub;
+            liquidDensityDoub = gasAmount.liquidDensityDoub;
+            gasSelected = gasAmount.material;
+            areaUnitSpinner.setSelection(2);
+            heightUnitSpinner.setSelection(2);
+            areaValue.setText(String.valueOf(areaDoub));
+            heightValue.setText(String.valueOf(heightDoub));
+            switch (gasSelected)
+            {
+                case "Propane":
+                case "Methane":
+                    lelLayoutParams.height = 0;
+                    uelLayoutParams.height = 0;
+                    stoichLayoutParams.height = 0;
+                    vaporDensityLayoutParams.height = 0;
+                    liquidDensityLayourParams.height = 0;
+                    lelLayout.setLayoutParams(lelLayoutParams);
+                    uelLayout.setLayoutParams(uelLayoutParams);
+                    stoichLayout.setLayoutParams(stoichLayoutParams);
+                    vaporDensityLayout.setLayoutParams(vaporDensityLayoutParams);
+                    liquidDensityLayout.setLayoutParams(liquidDensityLayourParams);
+                    break;
+                default:
+                    lelLayoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    uelLayoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    stoichLayoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    vaporDensityLayoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    liquidDensityLayourParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    lelLayout.setLayoutParams(lelLayoutParams);
+                    uelLayout.setLayoutParams(uelLayoutParams);
+                    stoichLayout.setLayoutParams(stoichLayoutParams);
+                    vaporDensityLayout.setLayoutParams(vaporDensityLayoutParams);
+                    liquidDensityLayout.setLayoutParams(liquidDensityLayourParams);
+                    lelValue.setText(String.valueOf(lelDoub));
+                    stoichValue.setText(String.valueOf(stoichDoub));
+                    uelValue.setText(String.valueOf(uelDoub));
+                    vaporDensityValue.setText(String.valueOf(vaporDensityDoub));
+                    liquidDensityValue.setText(String.valueOf(liquidDensityDoub));
+                    break;
+            }
+            getResults();
+        }
 
         gasSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -86,17 +136,6 @@ public class GasAmount extends AppCompatActivity {
                 gasSelected = gasSelectionSpinner.getSelectedItem().toString();
                 switch (gasSelected) {
                     case "Propane":
-                        lelLayoutParams.height = 0;
-                        uelLayoutParams.height = 0;
-                        stoichLayoutParams.height = 0;
-                        vaporDensityLayoutParams.height = 0;
-                        liquidDensityLayourParams.height = 0;
-                        lelLayout.setLayoutParams(lelLayoutParams);
-                        uelLayout.setLayoutParams(uelLayoutParams);
-                        stoichLayout.setLayoutParams(stoichLayoutParams);
-                        vaporDensityLayout.setLayoutParams(vaporDensityLayoutParams);
-                        liquidDensityLayout.setLayoutParams(liquidDensityLayourParams);
-                        break;
                     case "Methane":
                         lelLayoutParams.height = 0;
                         uelLayoutParams.height = 0;
@@ -142,97 +181,7 @@ public class GasAmount extends AppCompatActivity {
                     heightUnits = heightUnitSpinner.getSelectedItem().toString();
                     areaDoub = ValuesConverstions.toSquareMeters(areaDoub, areaUnits);
                     heightDoub = ValuesConverstions.toMeters(heightDoub, heightUnits);
-                    volumeDoub = areaDoub * heightDoub;
-                    gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
-                    gasWeightUnits = weightResultSpinner.getSelectedItem().toString();
-                    liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
-
-                    if (gasSelected.equals("Propane") || gasSelected.equals("Methane")) {
-                        lelDoub = ValuesConverstions.getGasLelValue(gasSelected);
-                        stoichDoub = ValuesConverstions.getGasStoichiometricValue(gasSelected);
-                        uelDoub = ValuesConverstions.getGasUelValue(gasSelected);
-                        vaporDensityDoub = ValuesConverstions.getGasVaporDensityValue(gasSelected);
-                        liquidDensityDoub = ValuesConverstions.getGasLiquidDensityValue(gasSelected);
-                        lelGasVolumeDoub = lelDoub * volumeDoub;
-                        lelWeightDoub = lelGasVolumeDoub * vaporDensityDoub;
-                        lelLiquidVolumeDoub = lelWeightDoub / liquidDensityDoub;
-                        stoichGasVolumeDoub = stoichDoub * volumeDoub;
-                        stoichWeightDoub = stoichGasVolumeDoub * vaporDensityDoub;
-                        stoichLiquidVolumeDoub = stoichWeightDoub / liquidDensityDoub;
-                        uelGasVolumeDoub = uelDoub * volumeDoub;
-                        uelWeightDoub = uelGasVolumeDoub * vaporDensityDoub;
-                        uelLiquidVolumeDoub = uelWeightDoub / liquidDensityDoub;
-                        if (liquidDensityDoub == -1) {
-                            lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
-                            lelWeightResult.setText(fourDigits.format(lelWeightDoub));
-                            lelLiquidVolumeResult.setText("N/A");
-                            stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
-                            stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
-                            stoichLiquidVolumeResult.setText("N/A");
-                            uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
-                            uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
-                            uelLiquidVolumeResult.setText("N/A");
-                        } else {
-
-                            lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
-                            lelWeightResult.setText(fourDigits.format(lelWeightDoub));
-                            lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
-                            stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
-                            stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
-                            stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
-                            uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
-                            uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
-                            uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                        }
-                        resultsTable.setVisibility(View.VISIBLE);
-                    } else {
-                        try {
-                            lelDoub = Double.parseDouble(lelValue.getText().toString()) / 100;
-                            stoichDoub = Double.parseDouble(stoichValue.getText().toString()) / 100;
-                            uelDoub = Double.parseDouble(uelValue.getText().toString()) / 100;
-                            vaporDensityDoub = Double.parseDouble(vaporDensityValue.getText().toString());
-                        } catch (Exception ex) {
-                            Toast.makeText(GasAmount.this, ex.toString(), Toast.LENGTH_LONG).show();
-                        }
-                        try {
-                            liquidDensityDoub = Double.parseDouble(liquidDensityValue.getText().toString());
-                        } catch (Exception ex) {
-                        }
-                        lelGasVolumeDoub = lelDoub * volumeDoub;
-                        lelWeightDoub = lelGasVolumeDoub * vaporDensityDoub;
-                        stoichGasVolumeDoub = stoichDoub * volumeDoub;
-                        stoichWeightDoub = stoichGasVolumeDoub * vaporDensityDoub;
-                        uelGasVolumeDoub = uelDoub * volumeDoub;
-                        uelWeightDoub = uelGasVolumeDoub * vaporDensityDoub;
-
-                        if (liquidDensityDoub == null || liquidDensityDoub == -1) {
-                            lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
-                            lelWeightResult.setText(fourDigits.format(lelWeightDoub));
-                            lelLiquidVolumeResult.setText("N/A");
-                            stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
-                            stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
-                            stoichLiquidVolumeResult.setText("N/A");
-                            uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
-                            uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
-                            uelLiquidVolumeResult.setText("N/A");
-                        } else {
-                            lelLiquidVolumeDoub = lelWeightDoub / liquidDensityDoub;
-                            stoichLiquidVolumeDoub = stoichWeightDoub / liquidDensityDoub;
-                            uelLiquidVolumeDoub = uelWeightDoub / liquidDensityDoub;
-                            lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
-                            lelWeightResult.setText(fourDigits.format(lelWeightDoub));
-                            lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
-                            stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
-                            stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
-                            stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
-                            uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
-                            uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
-                            uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
-                        }
-                        ValueClassStorage.GasAmount gasAmount = new ValueClassStorage().new GasAmount(gasSelected, areaDoub, heightDoub, lelDoub, stoichDoub, uelDoub, vaporDensityDoub, liquidDensityDoub);
-                        ValueClassStorage.gasAmount = gasAmount;
-                        resultsTable.setVisibility(View.VISIBLE);
-                    }
+                    getResults();
                 } catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(GasAmount.this, error, Toast.LENGTH_LONG).show();
@@ -394,6 +343,99 @@ public class GasAmount extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void getResults()
+    {
+        volumeDoub = areaDoub * heightDoub;
+        gasVolumeUnits = gasVolumeResultSpinner.getSelectedItem().toString();
+        gasWeightUnits = weightResultSpinner.getSelectedItem().toString();
+        liquidVolumeUnits = liquidVolumeResultSpinner.getSelectedItem().toString();
+        if (gasSelected.equals("Propane") || gasSelected.equals("Methane")) {
+            lelDoub = ValuesConverstions.getGasLelValue(gasSelected);
+            stoichDoub = ValuesConverstions.getGasStoichiometricValue(gasSelected);
+            uelDoub = ValuesConverstions.getGasUelValue(gasSelected);
+            vaporDensityDoub = ValuesConverstions.getGasVaporDensityValue(gasSelected);
+            liquidDensityDoub = ValuesConverstions.getGasLiquidDensityValue(gasSelected);
+            lelGasVolumeDoub = lelDoub * volumeDoub;
+            lelWeightDoub = lelGasVolumeDoub * vaporDensityDoub;
+            lelLiquidVolumeDoub = lelWeightDoub / liquidDensityDoub;
+            stoichGasVolumeDoub = stoichDoub * volumeDoub;
+            stoichWeightDoub = stoichGasVolumeDoub * vaporDensityDoub;
+            stoichLiquidVolumeDoub = stoichWeightDoub / liquidDensityDoub;
+            uelGasVolumeDoub = uelDoub * volumeDoub;
+            uelWeightDoub = uelGasVolumeDoub * vaporDensityDoub;
+            uelLiquidVolumeDoub = uelWeightDoub / liquidDensityDoub;
+            if (liquidDensityDoub == -1) {
+                lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
+                lelWeightResult.setText(fourDigits.format(lelWeightDoub));
+                lelLiquidVolumeResult.setText("N/A");
+                stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
+                stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
+                stoichLiquidVolumeResult.setText("N/A");
+                uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
+                uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
+                uelLiquidVolumeResult.setText("N/A");
+            } else {
+
+                lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
+                lelWeightResult.setText(fourDigits.format(lelWeightDoub));
+                lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
+                stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
+                stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
+                stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
+                uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
+                uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
+                uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
+            }
+        } else {
+            try {
+                lelDoub = Double.parseDouble(lelValue.getText().toString()) / 100;
+                stoichDoub = Double.parseDouble(stoichValue.getText().toString()) / 100;
+                uelDoub = Double.parseDouble(uelValue.getText().toString()) / 100;
+                vaporDensityDoub = Double.parseDouble(vaporDensityValue.getText().toString());
+            } catch (Exception ex) {
+                Toast.makeText(GasAmount.this, ex.toString(), Toast.LENGTH_LONG).show();
+            }
+            try {
+                liquidDensityDoub = Double.parseDouble(liquidDensityValue.getText().toString());
+            } catch (Exception ex) {
+            }
+            lelGasVolumeDoub = lelDoub * volumeDoub;
+            lelWeightDoub = lelGasVolumeDoub * vaporDensityDoub;
+            stoichGasVolumeDoub = stoichDoub * volumeDoub;
+            stoichWeightDoub = stoichGasVolumeDoub * vaporDensityDoub;
+            uelGasVolumeDoub = uelDoub * volumeDoub;
+            uelWeightDoub = uelGasVolumeDoub * vaporDensityDoub;
+
+            if (liquidDensityDoub == null || liquidDensityDoub == -1) {
+                lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
+                lelWeightResult.setText(fourDigits.format(lelWeightDoub));
+                lelLiquidVolumeResult.setText("N/A");
+                stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
+                stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
+                stoichLiquidVolumeResult.setText("N/A");
+                uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
+                uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
+                uelLiquidVolumeResult.setText("N/A");
+            } else {
+                lelLiquidVolumeDoub = lelWeightDoub / liquidDensityDoub;
+                stoichLiquidVolumeDoub = stoichWeightDoub / liquidDensityDoub;
+                uelLiquidVolumeDoub = uelWeightDoub / liquidDensityDoub;
+                lelGasVolumeResult.setText(fourDigits.format(lelGasVolumeDoub));
+                lelWeightResult.setText(fourDigits.format(lelWeightDoub));
+                lelLiquidVolumeResult.setText(fourDigits.format(lelLiquidVolumeDoub));
+                stoichGasVolumeResult.setText(fourDigits.format(stoichGasVolumeDoub));
+                stoichWeightResult.setText(fourDigits.format(stoichWeightDoub));
+                stoichLiquidVolumeResult.setText(fourDigits.format(stoichLiquidVolumeDoub));
+                uelGasVolumeResult.setText(fourDigits.format(uelGasVolumeDoub));
+                uelWeightVolumeResult.setText(fourDigits.format(uelWeightDoub));
+                uelLiquidVolumeResult.setText(fourDigits.format(uelLiquidVolumeDoub));
+            }
+        }
+        ValueClassStorage.GasAmount gasAmount = new ValueClassStorage().new GasAmount(gasSelected, areaDoub, heightDoub, lelDoub, stoichDoub, uelDoub, vaporDensityDoub, liquidDensityDoub);
+        ValueClassStorage.gasAmount = gasAmount;
+        resultsTable.setVisibility(View.VISIBLE);
     }
 
     public void addUnitsOnSpinner(Spinner spinnerToMake) {

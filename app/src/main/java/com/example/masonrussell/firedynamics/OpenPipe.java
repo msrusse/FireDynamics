@@ -28,13 +28,14 @@ public class OpenPipe extends AppCompatActivity {
     public TextView resultText;
     public String pressureDropUnits, pipeDiameterUnits, pipeLengthUnits, resultUnits;
     public LinearLayout resultLayout;
+    private DecimalFormat twoDigits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_pipe);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        final DecimalFormat twoDigits = new DecimalFormat("0.00");
+        twoDigits = new DecimalFormat("0.00");
         pressureDropSpinner = findViewById(R.id.pressureDropSpinner);
         pipeDiameterSpinner = findViewById(R.id.pipeDiameterSpinner);
         pipeLengthSpinner = findViewById(R.id.pipeLengthSpinner);
@@ -51,6 +52,19 @@ public class OpenPipe extends AppCompatActivity {
         addItemsOnUnitSpinner(pipeDiameterSpinner);
         addItemsOnUnitSpinner(pipeLengthSpinner);
         addItemsOnPressureSpinner(pressureDropSpinner);
+        if (ValueClassStorage.openPipe != null)
+        {
+            ValueClassStorage.OpenPipe openPipe = ValueClassStorage.openPipe;
+            pressureDropDoub = openPipe.pressureDropDoub;
+            pipeDiameterDoub = openPipe.pipeDiameterDoub;
+            pipeLengthDoub = openPipe.lengthDoub;
+            specificGravityDoub = openPipe.specificGravityDoub;
+            pressureDropText.setText(String.valueOf(pressureDropDoub));
+            pipeDiameterText.setText(String.valueOf(pipeDiameterDoub));
+            pipeLengthText.setText(String.valueOf(pipeLengthDoub));
+            specificGravityText.setText(String.valueOf(specificGravityDoub));
+            getResults();
+        }
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,12 +81,7 @@ public class OpenPipe extends AppCompatActivity {
                     pipeLengthUnits = pipeLengthSpinner.getSelectedItem().toString();
                     pipeLengthDoub = ValuesConverstions.toMeters(pipeLengthDoub, pipeLengthUnits);
                     specificGravityDoub = Double.parseDouble(specificGravityText.getText().toString());
-                    resultDoub = Calculations.CalculateOpenPipeQ(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub);
-                    resultText.setText(twoDigits.format(resultDoub));
-                    resultLayout.setVisibility(View.VISIBLE);
-                    resultUnits = resultSpinner.getSelectedItem().toString();
-                    ValueClassStorage.OpenPipe openPipe = new ValueClassStorage().new OpenPipe(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub, resultDoub);
-                    ValueClassStorage.openPipe = openPipe;
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -116,6 +125,16 @@ public class OpenPipe extends AppCompatActivity {
                 );
             }
         });
+    }
+
+    private void getResults()
+    {
+        resultDoub = Calculations.CalculateOpenPipeQ(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub);
+        resultText.setText(twoDigits.format(resultDoub));
+        resultLayout.setVisibility(View.VISIBLE);
+        resultUnits = resultSpinner.getSelectedItem().toString();
+        ValueClassStorage.OpenPipe openPipe = new ValueClassStorage().new OpenPipe(pressureDropDoub, pipeDiameterDoub, pipeLengthDoub, specificGravityDoub, resultDoub);
+        ValueClassStorage.openPipe = openPipe;
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)

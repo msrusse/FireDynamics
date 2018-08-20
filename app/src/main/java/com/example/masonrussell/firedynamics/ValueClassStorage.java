@@ -77,40 +77,39 @@ public class ValueClassStorage {
     public class Conduction
     {
         double lengthDoub, hotSideDoub, coldSideDoub, heatFluxDoub, thermalPenetrationTimeDoub;
+        String materialSelected;
 
-        public Conduction(double lengthDoub, double hotSideDoub, double coldSideDoub, double heatFluxDoub, double thermalPenetrationTimeDoub)
+        public Conduction(double lengthDoub, double hotSideDoub, double coldSideDoub, double heatFluxDoub, double thermalPenetrationTimeDoub, String materialSelected)
         {
             this.lengthDoub = lengthDoub;
             this.hotSideDoub = hotSideDoub;
             this.coldSideDoub = coldSideDoub;
             this.heatFluxDoub = heatFluxDoub;
             this.thermalPenetrationTimeDoub = thermalPenetrationTimeDoub;
+            this.materialSelected = materialSelected;
         }
 
-        public Map<String, Double> getValues()
+        public Map<String, Object> getValues()
         {
-            return new HashMap<String, Double>(){{
+            return new HashMap<String, Object>(){{
                 put("lengthDoub", lengthDoub);
                 put("hotSideDoub", hotSideDoub);
                 put("coldSideDoub", coldSideDoub);
                 put("heatFluxDoub", heatFluxDoub);
                 put("thermalPenetrationTimeDoub", thermalPenetrationTimeDoub);
+                put("selectedMaterial", materialSelected);
             }};
         }
     }
 
     public class FlameHeight
     {
-        double qHeatReleaseDoub, diameterDoub, areaDoub, lengthDoub, widthDoub, lDoub;
+        double qHeatReleaseDoub, diameterDoub;
 
-        public FlameHeight(double qHeatReleaseDoub, double diameterDoub, double areaDoub, double lengthDoub, double widthDoub, double lDoub)
+        public FlameHeight(double qHeatReleaseDoub, double diameterDoub)
         {
             this.qHeatReleaseDoub = qHeatReleaseDoub;
             this.diameterDoub = diameterDoub;
-            this.areaDoub = areaDoub;
-            this.lengthDoub = lengthDoub;
-            this.widthDoub = widthDoub;
-            this.lDoub = lDoub;
         }
 
         public Map<String, Double> getValues()
@@ -118,27 +117,18 @@ public class ValueClassStorage {
             return new HashMap<String, Double>(){{
               put("qHeatRelease", qHeatReleaseDoub);
               put("diameter", diameterDoub);
-              put("area", areaDoub);
-              put("length", lengthDoub);
-              put("width", widthDoub);
-              put("l", lDoub);
             }};
         }
     }
 
     public class RadiationPoolFire
     {
-        double targetDistanceDoub, diameterDoub, lengthDoub, widthDoub, heatFluxDoub;
-        String lDValidity;
+        double targetDistanceDoub, diameterDoub;
 
-        public RadiationPoolFire(double targetDistanceDoub, double diameterDoub, double lengthDoub, double widthDoub, double heatFluxDoub, String lDValidity)
+        public RadiationPoolFire(double targetDistanceDoub, double diameterDoub)
         {
             this.targetDistanceDoub = targetDistanceDoub;
             this.diameterDoub = diameterDoub;
-            this.lengthDoub = lengthDoub;
-            this.widthDoub = widthDoub;
-            this.heatFluxDoub = heatFluxDoub;
-            this.lDValidity = lDValidity;
         }
 
         public Map<String, Object> getValues()
@@ -146,10 +136,6 @@ public class ValueClassStorage {
             return new HashMap<String, Object>(){{
                 put("targetDistance", targetDistanceDoub);
                 put("diameter", diameterDoub);
-                put("length", lengthDoub);
-                put("width", widthDoub);
-                put("heatFlux", heatFluxDoub);
-                put("lDValidity", lDValidity);
             }};
         }
     }
@@ -157,9 +143,9 @@ public class ValueClassStorage {
     public class SolidIgnition
     {
         String ignitionType, material;
-        double densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxExposureDoub, cDoub;
+        double densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxExposureDoub, cDoub, thermalConductivityDoub;
 
-        public SolidIgnition(String ignitionType, double densityDoub, double specificHeatDoub, double thicknessDoub, double ignitionTempDoub, double ambientTempDoub, double heatFluxExposureDoub, double cDoub, String material)
+        public SolidIgnition(String ignitionType, double densityDoub, double specificHeatDoub, double thicknessDoub, double ignitionTempDoub, double ambientTempDoub, double heatFluxExposureDoub, double cDoub, String material, double thermalConductivityDoub)
         {
             this.ignitionType = ignitionType;
             this.densityDoub = densityDoub;
@@ -170,6 +156,7 @@ public class ValueClassStorage {
             this.heatFluxExposureDoub = heatFluxExposureDoub;
             this.cDoub = cDoub;
             this.material = material;
+            this.thermalConductivityDoub = thermalConductivityDoub;
         }
 
         public Map<String, Object> getValues()
@@ -184,6 +171,7 @@ public class ValueClassStorage {
                 put("heatFluxExposure", heatFluxExposureDoub);
                 put("cDoub", cDoub);
                 put("material", material);
+                put("thermalConductivity", thermalConductivityDoub);
             }};
         }
     }

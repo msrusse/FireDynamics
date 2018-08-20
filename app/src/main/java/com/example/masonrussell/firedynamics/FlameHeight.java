@@ -3,6 +3,7 @@ package com.example.masonrussell.firedynamics;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -28,13 +29,14 @@ public class FlameHeight extends AppCompatActivity {
     public LinearLayout secondSquareLayout, resultView;
     public double diameterDoub, areaDoub, lengthDoub, widthDoub, qDoub, lResultDoub;
     public String diameterUnits, areaUnits, lengthUnits, widthUnits, qUnits, resultUnits;
+    private DecimalFormat twoDigits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flame_height);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        final DecimalFormat twoDigits = new DecimalFormat("0.00");
+        twoDigits = new DecimalFormat("0.00");
         getMeasurementsButton = findViewById(R.id.getMeasurementsButton);
         lResult = findViewById(R.id.lResult);
         lSpinner = findViewById(R.id.lSpinner);
@@ -52,6 +54,16 @@ public class FlameHeight extends AppCompatActivity {
         resultView.setVisibility(View.INVISIBLE);
         addQUnits(qUnitSpinner);
         addDiameterSelections(typeSelectionSpinner);
+        if(ValueClassStorage.flameHeight != null)
+        {
+            ValueClassStorage.FlameHeight flameHeight = ValueClassStorage.flameHeight;
+            diameterDoub = flameHeight.diameterDoub;
+            qDoub = flameHeight.qHeatReleaseDoub;
+            typeSelectionSpinner.setSelection(0);
+            typeSelectionText.setText(String.valueOf(diameterDoub));
+            qText.setText(String.valueOf(qDoub));
+            getResults();
+        }
 
         typeSelectionSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
@@ -113,7 +125,6 @@ public class FlameHeight extends AppCompatActivity {
                             areaUnits = typeSelectionUnitSpinner.getSelectedItem().toString();
                             areaDoub = ValuesConverstions.toSquareMeters(areaDoub, areaUnits);
                             diameterDoub = Calculations.CalculateDiameterFromArea(areaDoub);
-                            //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
                             break;
                         case "Length of Square Pool":
                             lengthDoub = Double.parseDouble(typeSelectionText.getText().toString());
@@ -123,7 +134,6 @@ public class FlameHeight extends AppCompatActivity {
                             lengthDoub = ValuesConverstions.toMeters(lengthDoub, lengthUnits);
                             widthDoub = ValuesConverstions.toMeters(widthDoub, widthUnits);
                             diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
-                            //Toast.makeText(FlameHeight.this, String.valueOf(diameterDoub), Toast.LENGTH_LONG).show();
                             break;
                         case "Width of Square Pool":
                             widthDoub = Double.parseDouble(typeSelectionText.getText().toString());
@@ -135,13 +145,7 @@ public class FlameHeight extends AppCompatActivity {
                             diameterDoub = Calculations.CalculateDiameterFromLengthWidth(lengthDoub, widthDoub);
                             break;
                     }
-                    lResultDoub = Calculations.CalculateFlameHeight(qDoub, diameterDoub);
-                    lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
-                    addItemsOnResultSpinner(lSpinner);
-                    resultView.setVisibility(View.VISIBLE);
-                    ValueClassStorage.FlameHeight flameHeight = new ValueClassStorage().new FlameHeight(qDoub, diameterDoub, areaDoub, lengthDoub, widthDoub, lResultDoub);
-                    ValueClassStorage.flameHeight = flameHeight;
-                    resultUnits = lSpinner.getSelectedItem().toString();
+                    getResults();
                 } catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(FlameHeight.this, error, Toast.LENGTH_LONG).show();
@@ -185,6 +189,17 @@ public class FlameHeight extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void getResults()
+    {
+        lResultDoub = Calculations.CalculateFlameHeight(qDoub, diameterDoub);
+        lResult.setText(String.valueOf(twoDigits.format(lResultDoub)));
+        addItemsOnResultSpinner(lSpinner);
+        resultView.setVisibility(View.VISIBLE);
+        ValueClassStorage.FlameHeight flameHeight = new ValueClassStorage().new FlameHeight(qDoub, diameterDoub);
+        ValueClassStorage.flameHeight = flameHeight;
+        resultUnits = lSpinner.getSelectedItem().toString();
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake) {

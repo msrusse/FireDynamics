@@ -28,6 +28,7 @@ public class FlashOver extends AppCompatActivity {
     public Button calculateButton;
     public LinearLayout resultLayout;
     public TextView qMccaffrey, qBabrauskas, qThomas;
+    public List<String> materialsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,31 @@ public class FlashOver extends AppCompatActivity {
         addFinalUnitsSpinner(qThomasSpinner);
         addFinalUnitsSpinner(babrauskasQSpinner);
         addFinalUnitsSpinner(mccaffreyQSpinner);
+        if (ValueClassStorage.qFlashover != null)
+        {
+            ValueClassStorage.QFlashover flashover = ValueClassStorage.qFlashover;
+            compWidth = flashover.compartmentWidth;
+            compHeight = flashover.compartmentHeight;
+            compLength = flashover.compartmentLength;
+            ventHeight = flashover.ventHeight;
+            ventWidth = flashover.ventWidth;
+            intLining = flashover.interiorLiningThickness;
+            intLiningMaterial = flashover.interiorLiningMaterial;
+            compWidthText.setText(String.valueOf(compWidth));
+            compHeightText.setText(String.valueOf(compHeight));
+            compLengthText.setText(String.valueOf(compLength));
+            ventHeightText.setText(String.valueOf(ventHeight));
+            ventWidthText.setText(String.valueOf(ventWidth));
+            intLiningText.setText(String.valueOf(intLining));
+            materialSpinner.setSelection(materialsList.indexOf(flashover.interiorLiningMaterial));
+            compWidthSpinner.setSelection(2);
+            compHeightSpinner.setSelection(2);
+            compLengthSpinner.setSelection(2);
+            ventHeightSpinner.setSelection(2);
+            ventWidthSpinner.setSelection(2);
+            intLiningSpinner.setSelection(2);
+            getResults();
+        }
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -91,96 +117,103 @@ public class FlashOver extends AppCompatActivity {
                     ventWidth = ValuesConverstions.toMeters(ventWidth, ventHeightUnits);
                     intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                     intLiningMaterial = materialSpinner.getSelectedItem().toString();
-                    thermalConductivity = ValuesConverstions.thermalConductivity(intLiningMaterial);
-                    double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                    double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
-                    double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
-                    qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
-                    qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
-                    qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
-                    if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW")) {
-                        qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
-                    } else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                        qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
-                    }
-                    if (babrauskasQSpinner.getSelectedItem().toString().equals("kW")) {
-                        qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
-                    } else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                        qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
-                    }
-                    if (qThomasSpinner.getSelectedItem().toString().equals("kW")) {
-                        qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
-                    } else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                        qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
-                    }
-                    ValueClassStorage.QFlashover qFlashover = new ValueClassStorage().new QFlashover(compWidth, compLength, compHeight, ventWidth, ventHeight, intLining, intLiningMaterial, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub);
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.qFlashover = qFlashover;
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(FlashOver.this, error, Toast.LENGTH_LONG).show();
                 }
-                mccaffreyQSpinner.setOnItemSelectedListener(
-                        new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW"))
-                                {
-                                    qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
-                                }
-                                else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                                    qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
-                                }
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        }
-                );
-                babrauskasQSpinner.setOnItemSelectedListener(
-                        new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                if (babrauskasQSpinner.getSelectedItem().toString().equals("kW"))
-                                {
-                                    qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
-                                }
-                                else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                                    qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
-                                }
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        }
-                );
-                qThomasSpinner.setOnItemSelectedListener(
-                        new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                if (qThomasSpinner.getSelectedItem().toString().equals("kW"))
-                                {
-                                    qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
-                                }
-                                else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
-                                    qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
-                                }
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        }
-                );
                 //Toast.makeText(FlashOver.this, String.valueOf(qThomasDoub), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void getResults()
+    {
+        thermalConductivity = ValuesConverstions.thermalConductivity(intLiningMaterial);
+        double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
+        double avdoub = Calculations.CalculateAv(ventWidth, ventHeight);
+        double atdoub = Calculations.CalculateAT(compWidth, compLength, compHeight, ventWidth, ventHeight);
+        qMccaffreyDoub = Calculations.CalculateMccaffreyQ(hkdoub, atdoub, avdoub, ventHeight);
+        qBabrauskasDoub = Calculations.CalculateBarbraukas(avdoub, ventHeight);
+        qThomasDoub = Calculations.CalculateThomas(avdoub, atdoub, ventHeight);
+        if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW")) {
+            qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+        } else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+            qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+        }
+        if (babrauskasQSpinner.getSelectedItem().toString().equals("kW")) {
+            qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
+        } else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+            qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
+        }
+        if (qThomasSpinner.getSelectedItem().toString().equals("kW")) {
+            qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
+        } else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+            qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
+        }
+        ValueClassStorage.QFlashover qFlashover = new ValueClassStorage().new QFlashover(compWidth, compLength, compHeight, ventWidth, ventHeight, intLining, intLiningMaterial, qMccaffreyDoub, qBabrauskasDoub, qThomasDoub);
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.qFlashover = qFlashover;
+
+        mccaffreyQSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (mccaffreyQSpinner.getSelectedItem().toString().equals("kW"))
+                        {
+                            qMccaffrey.setText(String.valueOf(Math.round(qMccaffreyDoub)));
+                        }
+                        else if (mccaffreyQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                            qMccaffrey.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qMccaffreyDoub))));
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
+        babrauskasQSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (babrauskasQSpinner.getSelectedItem().toString().equals("kW"))
+                        {
+                            qBabrauskas.setText(String.valueOf(Math.round(qBabrauskasDoub)));
+                        }
+                        else if (babrauskasQSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                            qBabrauskas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qBabrauskasDoub))));
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
+        qThomasSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (qThomasSpinner.getSelectedItem().toString().equals("kW"))
+                        {
+                            qThomas.setText(String.valueOf(Math.round(qThomasDoub)));
+                        }
+                        else if (qThomasSpinner.getSelectedItem().toString().equals("Btu/sec")) {
+                            qThomas.setText(String.valueOf(Math.round(Calculations.CalculateBtuPerSec(qThomasDoub))));
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
+        //Toast.makeText(FlashOver.this, String.valueOf(qThomasDoub), Toast.LENGTH_LONG).show();
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)
@@ -198,24 +231,24 @@ public class FlashOver extends AppCompatActivity {
 
     public void addItemsOnMaterialSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("Aerated Concrete");
-        list.add("Alumina Silicate Block");
-        list.add("Aluminum (pure)");
-        list.add("Brick");
-        list.add("Brick/Concrete Block");
-        list.add("Calcium Silicate Board");
-        list.add("Chipboard");
-        list.add("Concrete");
-        list.add("Expended Polystyrene");
-        list.add("Fiber Insulation Board");
-        list.add("Glass Fiber Insulation");
-        list.add("Glass Plate");
-        list.add("Gypsum Board");
-        list.add("Plasterboard");
-        list.add("Plywood");
-        list.add("Steel (0.5% Carbon)");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+
+        materialsList.add("Aerated Concrete");
+        materialsList.add("Alumina Silicate Block");
+        materialsList.add("Aluminum (pure)");
+        materialsList.add("Brick");
+        materialsList.add("Brick/Concrete Block");
+        materialsList.add("Calcium Silicate Board");
+        materialsList.add("Chipboard");
+        materialsList.add("Concrete");
+        materialsList.add("Expended Polystyrene");
+        materialsList.add("Fiber Insulation Board");
+        materialsList.add("Glass Fiber Insulation");
+        materialsList.add("Glass Plate");
+        materialsList.add("Gypsum Board");
+        materialsList.add("Plasterboard");
+        materialsList.add("Plywood");
+        materialsList.add("Steel (0.5% Carbon)");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, materialsList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }

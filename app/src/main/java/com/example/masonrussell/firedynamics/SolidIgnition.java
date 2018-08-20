@@ -21,14 +21,15 @@ import java.util.List;
 
 public class SolidIgnition extends AppCompatActivity {
 
-    public Spinner calculationSelectionSpinner, densityUnitSpinner, thicknessUnitSpinner, ignitionTempUnitSpinner, ambientTempUnitSpinner, heatFluxUnitSpinner, materialSelectionSpinner;
-    public EditText densityValue, specificHeatValue, thicknessValue, ignitionTempValue, ambientTempValue, heatFluxValue, thermalConductivityValue, cValue;
-    public LinearLayout resultLayout;
-    public TextView resultView;
-    public Button getResultsButton;
-    public double densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, thermalConductivityDoub, thermalInertiaDoub, criticalIgnitionFluxDoub, cDoub, resultDoub;
-    public String densityUnits, thicknessUnits, ignitionTempUnits, ambientTempUnits, heatFluxUnits, materialSelected;
-    public final DecimalFormat twoDigits = new DecimalFormat("0.00");
+    private Spinner calculationSelectionSpinner, densityUnitSpinner, thicknessUnitSpinner, ignitionTempUnitSpinner, ambientTempUnitSpinner, heatFluxUnitSpinner, materialSelectionSpinner;
+    private EditText densityValue, specificHeatValue, thicknessValue, ignitionTempValue, ambientTempValue, heatFluxValue, thermalConductivityValue, cValue;
+    private LinearLayout resultLayout;
+    private TextView resultView;
+    private Button getResultsButton;
+    private double densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, thermalConductivityDoub, thermalInertiaDoub, criticalIgnitionFluxDoub, cDoub, resultDoub;
+    private String densityUnits, thicknessUnits, ignitionTempUnits, ambientTempUnits, heatFluxUnits, materialSelected;
+    private final DecimalFormat twoDigits = new DecimalFormat("0.00");
+    private List<String> materialSelectionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,46 @@ public class SolidIgnition extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         calculationSelectionSpinner = findViewById(R.id.calculationSelectionSpinner);
         addItemsOnSelectionSpinner(calculationSelectionSpinner);
+        ValueClassStorage.SolidIgnition solidIgnition = ValueClassStorage.solidIgnition;
+        if (ValueClassStorage.solidIgnition != null)
+        {
+
+            switch (solidIgnition.ignitionType)
+            {
+                case "ThermallyThin":
+                    densityDoub = solidIgnition.densityDoub;
+                    specificHeatDoub = solidIgnition.specificHeatDoub;
+                    thicknessDoub = solidIgnition.thicknessDoub;
+                    ignitionTempDoub = solidIgnition.ignitionTempDoub;
+                    ambientTempDoub = solidIgnition.ambientTempDoub;
+                    heatFluxDoub = solidIgnition.heatFluxExposureDoub;
+                    startThermallyThin();
+                    getThermallyThinResults();
+                    break;
+                case "ThermallyThick":
+                    cDoub = solidIgnition.cDoub;
+                    densityDoub = solidIgnition.densityDoub;
+                    specificHeatDoub = solidIgnition.specificHeatDoub;
+                    thermalConductivityDoub = solidIgnition.thermalConductivityDoub;
+                    ignitionTempDoub = solidIgnition.ignitionTempDoub;
+                    ambientTempDoub = solidIgnition.ambientTempDoub;
+                    heatFluxDoub = solidIgnition.heatFluxExposureDoub;
+                    startThermallyThick();
+                    getThermallyThickResults();
+                    break;
+                case "ThermallyThickWithMaterials":
+                    materialSelected = solidIgnition.material;
+                    cDoub = solidIgnition.cDoub;
+                    ambientTempDoub = solidIgnition.ambientTempDoub;
+                    heatFluxDoub = solidIgnition.heatFluxExposureDoub;
+                    thermalInertiaDoub = ValuesConverstions.getSolidIgnitionKPC(materialSelected);
+                    ignitionTempDoub = ValuesConverstions.getSolidIgnitionTig(materialSelected);
+                    criticalIgnitionFluxDoub = ValuesConverstions.getSolidIgnitionQCrit(materialSelected);
+                    startThermallyThickWithMaterial();
+                    getThermallyThickWithMaterialsResults();
+                    break;
+            }
+        }
         calculationSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -85,6 +126,16 @@ public class SolidIgnition extends AppCompatActivity {
         addItemsOnTempSpinner(ignitionTempUnitSpinner);
         addItemsOnTempSpinner(ambientTempUnitSpinner);
         addItemsOnHeatFluxSpinner(heatFluxUnitSpinner);
+        if (ValueClassStorage.solidIgnition != null && ValueClassStorage.solidIgnition.ignitionType.equals("ThermallyThick"))
+        {
+            cValue.setText(String.valueOf(cDoub));
+            densityValue.setText(String.valueOf(densityDoub));
+            specificHeatValue.setText(String.valueOf(specificHeatDoub));
+            thermalConductivityValue.setText(String.valueOf(thermalConductivityDoub));
+            ignitionTempValue.setText(String.valueOf(ignitionTempDoub));
+            ambientTempValue.setText(String.valueOf(ambientTempDoub));
+            heatFluxValue.setText(String.valueOf(heatFluxDoub));
+        }
         calculationSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -92,9 +143,6 @@ public class SolidIgnition extends AppCompatActivity {
                 {
                     case "Thermally Thin Ignition":
                         startThermallyThin();
-                        break;
-                    case "Thermally Thick Ignition":
-                        startThermallyThick();
                         break;
                     case "Thermally Thick Ignition with Materials":
                         startThermallyThickWithMaterial();
@@ -111,7 +159,7 @@ public class SolidIgnition extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                     densityDoub = Double.parseDouble(densityValue.getText().toString());
                     densityUnits = densityUnitSpinner.getSelectedItem().toString();
@@ -123,12 +171,12 @@ public class SolidIgnition extends AppCompatActivity {
                     thermalConductivityDoub = Double.parseDouble(thermalConductivityValue.getText().toString());
                     heatFluxDoub = Double.parseDouble(heatFluxValue.getText().toString());
                     heatFluxUnits = heatFluxUnitSpinner.getSelectedItem().toString();
+                    densityDoub = ValuesConverstions.densityToKilogramsPerMetersCubed(densityDoub, densityUnits);
+                    ignitionTempDoub = ValuesConverstions.toDegreesCentigrade(ignitionTempDoub, ignitionTempUnits);
+                    ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
+                    heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
                     cDoub = Double.parseDouble(cValue.getText().toString());
-                    resultDoub = Calculations.CalculateThermallyThickTimeToIgnition(cDoub, densityDoub, specificHeatDoub, thermalConductivityDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
-                    resultView.setText(twoDigits.format(resultDoub));
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThick", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
-                    ValueClassStorage.solidIgnition = solidIgnition;
+                    getThermallyThickResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -136,6 +184,15 @@ public class SolidIgnition extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void getThermallyThickResults()
+    {
+        resultDoub = Calculations.CalculateThermallyThickTimeToIgnition(cDoub, densityDoub, specificHeatDoub, thermalConductivityDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
+        resultView.setText(twoDigits.format(resultDoub));
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThick", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected, thermalConductivityDoub);
+        ValueClassStorage.solidIgnition = solidIgnition;
     }
 
     public void startThermallyThin()
@@ -163,6 +220,16 @@ public class SolidIgnition extends AppCompatActivity {
         addItemsOnTempSpinner(ignitionTempUnitSpinner);
         addItemsOnTempSpinner(ambientTempUnitSpinner);
         addItemsOnHeatFluxSpinner(heatFluxUnitSpinner);
+        if (ValueClassStorage.solidIgnition != null && ValueClassStorage.solidIgnition.ignitionType.equals("ThermallyThin"))
+        {
+            densityValue.setText(String.valueOf(densityDoub));
+            specificHeatValue.setText(String.valueOf(specificHeatDoub));
+            thicknessValue.setText(String.valueOf(thicknessDoub));
+            ignitionTempValue.setText(String.valueOf(ignitionTempDoub));
+            ambientTempValue.setText(String.valueOf(ambientTempDoub));
+            heatFluxValue.setText(String.valueOf(heatFluxDoub));
+            thicknessUnitSpinner.setSelection(3);
+        }
         calculationSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -209,11 +276,7 @@ public class SolidIgnition extends AppCompatActivity {
                     ignitionTempDoub = ValuesConverstions.toDegreesCentigrade(ignitionTempDoub, ignitionTempUnits);
                     ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
                     heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
-                    resultDoub = Calculations.CalculateThermallyThinTimeToIgnition(densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
-                    resultView.setText(twoDigits.format(resultDoub));
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThin", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
-                    ValueClassStorage.solidIgnition = solidIgnition;
+                    getThermallyThinResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -221,6 +284,15 @@ public class SolidIgnition extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void getThermallyThinResults()
+    {
+        resultDoub = Calculations.CalculateThermallyThinTimeToIgnition(densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub);
+        resultView.setText(twoDigits.format(resultDoub));
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThin", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected, thermalConductivityDoub);
+        ValueClassStorage.solidIgnition = solidIgnition;
     }
 
     public void startThermallyThickWithMaterial()
@@ -241,6 +313,13 @@ public class SolidIgnition extends AppCompatActivity {
         addItemsOnTempSpinner(ambientTempUnitSpinner);
         addItemsOnHeatFluxSpinner(heatFluxUnitSpinner);
         addItemsOnMaterialSpinner(materialSelectionSpinner);
+        if (ValueClassStorage.solidIgnition != null && ValueClassStorage.solidIgnition.ignitionType.equals("ThermallyThickWithMaterials"))
+        {
+            materialSelectionSpinner.setSelection(materialSelectionList.indexOf(materialSelected));
+            cValue.setText(String.valueOf(cDoub));
+            ambientTempValue.setText(String.valueOf(ambientTempDoub));
+            heatFluxValue.setText(String.valueOf(heatFluxDoub));
+        }
         calculationSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -280,15 +359,7 @@ public class SolidIgnition extends AppCompatActivity {
                     criticalIgnitionFluxDoub = ValuesConverstions.getSolidIgnitionQCrit(materialSelected);
                     ambientTempDoub = ValuesConverstions.toDegreesCentigrade(ambientTempDoub, ambientTempUnits);
                     heatFluxDoub = ValuesConverstions.heatFluxToKillowattPerSquaredMeters(heatFluxDoub, heatFluxUnits);
-                    resultDoub = Calculations.CalculateThermallyThickTimeToIgnitionWithMaterialSelected(thermalInertiaDoub, ignitionTempDoub, criticalIgnitionFluxDoub, cDoub, ambientTempDoub, heatFluxDoub);
-                    if (resultDoub == 0) {
-                        resultView.setText("Below Critical Flux");
-                    } else {
-                        resultView.setText(twoDigits.format(resultDoub));
-                    }
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThickWithMaterials", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected);
-                    ValueClassStorage.solidIgnition = solidIgnition;
+                    getThermallyThickWithMaterialsResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -296,6 +367,19 @@ public class SolidIgnition extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void getThermallyThickWithMaterialsResults()
+    {
+        resultDoub = Calculations.CalculateThermallyThickTimeToIgnitionWithMaterialSelected(thermalInertiaDoub, ignitionTempDoub, criticalIgnitionFluxDoub, cDoub, ambientTempDoub, heatFluxDoub);
+        if (resultDoub == 0) {
+            resultView.setText("Below Critical Flux");
+        } else {
+            resultView.setText(twoDigits.format(resultDoub));
+        }
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.SolidIgnition solidIgnition = new ValueClassStorage().new SolidIgnition("ThermallyThickWithMaterials", densityDoub, specificHeatDoub, thicknessDoub, ignitionTempDoub, ambientTempDoub, heatFluxDoub, cDoub, materialSelected, thermalConductivityDoub);
+        ValueClassStorage.solidIgnition = solidIgnition;
     }
 
     public void addItemsOnSelectionSpinner(Spinner spinnerToMake)
@@ -369,35 +453,34 @@ public class SolidIgnition extends AppCompatActivity {
 
     public void addItemsOnMaterialSpinner(Spinner spinnerToMake)
     {
-        List<String> list = new ArrayList<>();
-        list.add("Aircraft Panel, Epoxy Fiberite");
-        list.add("Asphalt Shingle");
-        list.add("Acrylic Carpet");
-        list.add("Nylon/Wool Blend Carpet");
-        list.add("Stock Wool Carpet");
-        list.add("Treated Wool Carpet");
-        list.add("Untreated Wool Carpet");
-        list.add("Douglass Fir Particleboard (1.27 cm)");
-        list.add("Fiber Insulation Board");
-        list.add("Fiberglass Shingle");
-        list.add("Flexible Foam (2.54 cm)");
-        list.add("Rigid Foam (2.54 cm)");
-        list.add("Glass Reinforced Polyester (1.14 mm)");
-        list.add("Glass Reinforced Plyester (2.24 mm)");
-        list.add("Hardboard (3.175 mm)");
-        list.add("Hardboard (6.35 mm)");
-        list.add("Gloss Paint Hardboard (3.4 mm)");
-        list.add("Nitrocellulose Paint Hardboard");
-        list.add("Particleboard");
-        list.add("FR Plywood (1.27 cm)");
-        list.add("Plain Plywood (0.635 cm)");
-        list.add("Plain Plywood (1.27 cm)");
-        list.add("PMMA Polycast (1.599 mm)");
-        list.add("PMMA Type G (1.27 cm)");
-        list.add("Polycarbonate (1.52 mm)");
-        list.add("Polyisocyanurate");
-        list.add("Polystyrene (5.08 cm)");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        materialSelectionList.add("Aircraft Panel, Epoxy Fiberite");
+        materialSelectionList.add("Asphalt Shingle");
+        materialSelectionList.add("Acrylic Carpet");
+        materialSelectionList.add("Nylon/Wool Blend Carpet");
+        materialSelectionList.add("Stock Wool Carpet");
+        materialSelectionList.add("Treated Wool Carpet");
+        materialSelectionList.add("Untreated Wool Carpet");
+        materialSelectionList.add("Douglass Fir Particleboard (1.27 cm)");
+        materialSelectionList.add("Fiber Insulation Board");
+        materialSelectionList.add("Fiberglass Shingle");
+        materialSelectionList.add("Flexible Foam (2.54 cm)");
+        materialSelectionList.add("Rigid Foam (2.54 cm)");
+        materialSelectionList.add("Glass Reinforced Polyester (1.14 mm)");
+        materialSelectionList.add("Glass Reinforced Plyester (2.24 mm)");
+        materialSelectionList.add("Hardboard (3.175 mm)");
+        materialSelectionList.add("Hardboard (6.35 mm)");
+        materialSelectionList.add("Gloss Paint Hardboard (3.4 mm)");
+        materialSelectionList.add("Nitrocellulose Paint Hardboard");
+        materialSelectionList.add("Particleboard");
+        materialSelectionList.add("FR Plywood (1.27 cm)");
+        materialSelectionList.add("Plain Plywood (0.635 cm)");
+        materialSelectionList.add("Plain Plywood (1.27 cm)");
+        materialSelectionList.add("PMMA Polycast (1.599 mm)");
+        materialSelectionList.add("PMMA Type G (1.27 cm)");
+        materialSelectionList.add("Polycarbonate (1.52 mm)");
+        materialSelectionList.add("Polyisocyanurate");
+        materialSelectionList.add("Polystyrene (5.08 cm)");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, materialSelectionList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }

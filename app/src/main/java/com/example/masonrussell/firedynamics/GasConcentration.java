@@ -54,6 +54,22 @@ public class GasConcentration extends AppCompatActivity {
         timestepResult = findViewById(R.id.timestepValue);
         resultsLayout.setVisibility(View.INVISIBLE);
         timestepUnits = "min";
+        if (ValueClassStorage.gasConcentration != null)
+        {
+            ValueClassStorage.GasConcentration gasConcentration = ValueClassStorage.gasConcentration;
+            airchangeDoub = gasConcentration.airChangesDoub;
+            leakageRateDoub = gasConcentration.leakageRateDoub;
+            gasVolumeDoub = gasConcentration.gasFilledAreaVolumeDoub;
+            timestepDoub = gasConcentration.timestepDoub;
+            airchangesResult.setText(String.valueOf(airchangeDoub));
+            leakageRateResult.setText(String.valueOf(leakageRateDoub));
+            gasVolumeResult.setText(String.valueOf(gasVolumeDoub));
+            timestepResult.setText(String.valueOf(timestepDoub*60));
+            gasVolumeUnitSpinner.setSelection(4);
+            leakageRateUnitSpinner.setSelection(2);
+            getValues();
+            resultsLayout.setVisibility(View.VISIBLE);
+        }
         getResultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

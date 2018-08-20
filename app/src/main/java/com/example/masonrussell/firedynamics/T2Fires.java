@@ -49,9 +49,19 @@ public class T2Fires extends AppCompatActivity {
         timeIntervalValue = findViewById(R.id.timeIntervalValue);
         getResults = findViewById(R.id.getMeasurementsButton);
         resultLayout.setVisibility(View.INVISIBLE);
+        if (ValueClassStorage.t2Fires != null)
+        {
+            ValueClassStorage.T2Fires t2Fire = ValueClassStorage.t2Fires;
+            t1Doub = t2Fire.t1Doub;
+            peakHrrDoub = t2Fire.peakHrrDoub;
+            timeIntervalDoub = t2Fire.timeIntervalDoub;
+            t1Value.setText(String.valueOf(t1Doub));
+            peakHrrValue.setText(String.valueOf(peakHrrDoub));
+            timeIntervalValue.setText(String.valueOf(timeIntervalDoub));
+            getResults();
+        }
 
         try {
-
             getResults.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -61,11 +71,7 @@ public class T2Fires extends AppCompatActivity {
                         t1Doub = Double.parseDouble(t1Value.getText().toString());
                         peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
                         timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
-                        alphaDoub = 1000 / Math.pow(t1Doub, 2);
-                        ValueClassStorage.T2Fires t2Fires = new ValueClassStorage().new T2Fires(t1Doub, peakHrrDoub, timeIntervalDoub);
-                        ValueClassStorage.t2Fires = t2Fires;
-                        getValues();
-                        resultLayout.setVisibility(View.VISIBLE);
+                        getResults();
                     } else {
                         String error = "Please Fill the Empty Fields";
                         Toast.makeText(T2Fires.this, error, Toast.LENGTH_LONG).show();
@@ -77,6 +83,15 @@ public class T2Fires extends AppCompatActivity {
         {
             Log.d("T2Fires", ex.getMessage());
         }
+    }
+
+    private void getResults()
+    {
+        alphaDoub = 1000 / Math.pow(t1Doub, 2);
+        ValueClassStorage.T2Fires t2Fires = new ValueClassStorage().new T2Fires(t1Doub, peakHrrDoub, timeIntervalDoub);
+        ValueClassStorage.t2Fires = t2Fires;
+        getValues();
+        resultLayout.setVisibility(View.VISIBLE);
     }
 
     void getValues()

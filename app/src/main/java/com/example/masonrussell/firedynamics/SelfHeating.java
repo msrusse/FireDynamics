@@ -31,6 +31,7 @@ public class SelfHeating extends AppCompatActivity {
     ViewGroup.LayoutParams mParams, pParams;
     Button getResultsButton;
     public final DecimalFormat twoDigits = new DecimalFormat("0.00");
+    private List<String> materialSelectionList = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,27 @@ public class SelfHeating extends AppCompatActivity {
         addUnitsOnVolumeSpinner(volumeUnitSpinner);
         addUnitsOnHeightSpinner(heightUnitSpinner);
         addUnitsOnTemperatureSpinner(tempUnitSpinner);
+        if (ValueClassStorage.selfHeating != null)
+        {
+            ValueClassStorage.SelfHeating selfHeating = ValueClassStorage.selfHeating;
+            volumeDoub = selfHeating.pileVolumeDoub;
+            heightDoub = selfHeating.pileHeightDoub;
+            tempDoub = selfHeating.temperatureDoub;
+            mDoub = selfHeating.mDoub;
+            pDoub = selfHeating.pDoub;
+            volumeValue.setText(String.valueOf(volumeDoub));
+            heightValue.setText(String.valueOf(heightDoub));
+            tempValue.setText(String.valueOf(tempDoub));
+            mValue.setText(String.valueOf(mDoub));
+            pValue.setText(String.valueOf(pValue));
+            materialSelected = selfHeating.material;
+            volumeUnitSpinner.setSelection(2);
+            heightUnitSpinner.setSelection(2);
+            tempUnitSpinner.setSelection(1);
+            materialSelectionSpinner.setSelection(materialSelectionList.indexOf(materialSelected));
+            tempUnitSpinner.setSelection(2);
+            getResults();
+        }
         materialSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -100,9 +122,9 @@ public class SelfHeating extends AppCompatActivity {
                     heightUnits = heightUnitSpinner.getSelectedItem().toString();
                     volumeDoub = ValuesConverstions.toCubicMeters(volumeDoub, volumeUnits);
                     heightDoub = ValuesConverstions.toMeters(heightDoub, heightUnits);
-                    areaDoub = volumeDoub / heightDoub;
-                    radiusDoub = Math.sqrt(areaDoub) / Math.PI;
-                    radiusDoub = ValuesConverstions.toMillimeters(radiusDoub, "m");
+                    tempDoub = Double.parseDouble(tempValue.getText().toString());
+                    tempUnits = tempUnitSpinner.getSelectedItem().toString();
+                    tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
                     if (materialSelected.equals("Enter Statistics for Different Material")) {
                         mDoub = Double.parseDouble(mValue.getText().toString());
                         pDoub = Double.parseDouble(pValue.getText().toString());
@@ -110,14 +132,7 @@ public class SelfHeating extends AppCompatActivity {
                         mDoub = ValuesConverstions.getTamurelloMValue(materialSelected);
                         pDoub = ValuesConverstions.getTamburelloPValue(materialSelected);
                     }
-                    tempDoub = Double.parseDouble(tempValue.getText().toString());
-                    tempUnits = tempUnitSpinner.getSelectedItem().toString();
-                    tempDoub = ValuesConverstions.toDegreesKelvin(tempDoub, tempUnits);
-                    damkohlerDoub = Math.pow(radiusDoub, 2) / Math.pow(tempDoub, 2) * Math.exp(mDoub - pDoub / tempDoub);
-                    damkohlerNumberDisplay.setText(twoDigits.format(damkohlerDoub));
-                    damkohlerResultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.SelfHeating selfHeating = new ValueClassStorage().new SelfHeating(volumeDoub, heightDoub, materialSelected, tempDoub, mDoub, pDoub);
-                    ValueClassStorage.selfHeating = selfHeating;
+                    getResults();
                 } catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
                     Toast.makeText(SelfHeating.this, error, Toast.LENGTH_LONG).show();
@@ -126,20 +141,31 @@ public class SelfHeating extends AppCompatActivity {
         });
     }
 
+    private void getResults()
+    {
+        areaDoub = volumeDoub / heightDoub;
+        radiusDoub = Math.sqrt(areaDoub) / Math.PI;
+        radiusDoub = ValuesConverstions.toMillimeters(radiusDoub, "m");
+        damkohlerDoub = Math.pow(radiusDoub, 2) / Math.pow(tempDoub, 2) * Math.exp(mDoub - pDoub / tempDoub);
+        damkohlerNumberDisplay.setText(twoDigits.format(damkohlerDoub));
+        damkohlerResultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.SelfHeating selfHeating = new ValueClassStorage().new SelfHeating(volumeDoub, heightDoub, materialSelected, tempDoub, mDoub, pDoub);
+        ValueClassStorage.selfHeating = selfHeating;
+    }
+
     public void addItemsOnMaterialSelectionSpinner(Spinner spinnerToMake) {
-        List<String> list = new ArrayList<>();
-        list.add("Ammonium Nitrate");
-        list.add("Animal Feedstuff");
-        list.add("Bagasse");
-        list.add("Cellulose Insulation");
-        list.add("Coal");
-        list.add("Cotton");
-        list.add("Forrest Floor Material I");
-        list.add("Plywood");
-        list.add("Wheat Flour");
-        list.add("Wood Fiberboard");
-        list.add("Enter Statistics for Different Material");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        materialSelectionList.add("Ammonium Nitrate");
+        materialSelectionList.add("Animal Feedstuff");
+        materialSelectionList.add("Bagasse");
+        materialSelectionList.add("Cellulose Insulation");
+        materialSelectionList.add("Coal");
+        materialSelectionList.add("Cotton");
+        materialSelectionList.add("Forrest Floor Material I");
+        materialSelectionList.add("Plywood");
+        materialSelectionList.add("Wheat Flour");
+        materialSelectionList.add("Wood Fiberboard");
+        materialSelectionList.add("Enter Statistics for Different Material");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, materialSelectionList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToMake.setAdapter(dataAdapter);
     }

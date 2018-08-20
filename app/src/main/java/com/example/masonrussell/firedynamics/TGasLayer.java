@@ -67,6 +67,35 @@ public class TGasLayer extends AppCompatActivity {
         addItemsOnTempSpinner(ambientTempSpinner);
         addItemsOnResultSpinner(resultSpinner);
 
+        if (ValueClassStorage.tGasLayer != null)
+        {
+            ValueClassStorage.TGasLayer tGasLayer = ValueClassStorage.tGasLayer;
+            compWidth = tGasLayer.compWdithDoub;
+            compHeight = tGasLayer.compHeightDoub;
+            compLength = tGasLayer.compLengthDoub;
+            ventWidth = tGasLayer.ventWidthDoub;
+            ventHeight = tGasLayer.ventHeightDoub;
+            intLining = tGasLayer.intLiningThicknessDoub;
+            selectedMaterial = tGasLayer.material;
+            qDoub = tGasLayer.qDoub;
+            ambientTempDoub = tGasLayer.ambientTempDoub;
+            compWidthText.setText(String.valueOf(compWidth));
+            compHeightText.setText(String.valueOf(compHeight));
+            compLengthText.setText(String.valueOf(compLength));
+            ventWidthText.setText(String.valueOf(ventWidth));
+            ventHeightText.setText(String.valueOf(ventHeight));
+            intLiningText.setText(String.valueOf(intLining));
+            qValue.setText(String.valueOf(qDoub));
+            ambientTempValue.setText(String.valueOf(ambientTempDoub));
+            compLengthSpinner.setSelection(2);
+            compWidthSpinner.setSelection(2);
+            compHeightSpinner.setSelection(2);
+            ventWidthSpinner.setSelection(2);
+            ventHeightSpinner.setSelection(2);
+            intLiningSpinner.setSelection(2);
+            getResults();
+        }
+
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
@@ -97,16 +126,7 @@ public class TGasLayer extends AppCompatActivity {
                     intLining = ValuesConverstions.toMeters(intLining, intLiningUnits);
                     qDoub = ValuesConverstions.tGasLayerEnergyToKW(qDoub, qUnits);
                     ambientTempDoub = ValuesConverstions.toDegreesKelvin(ambientTempDoub, ambientTempUnits);
-                    thermalConductivity = ValuesConverstions.thermalConductivity(selectedMaterial);
-                    double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
-                    double aoDoub = ventWidth * ventHeight;
-                    double atdoub = Calculations.CalculateTGasLayerAT(compWidth, compLength, compHeight, aoDoub);
-                    resultDoub = Calculations.CalculateTempOfUpperGasLayerAccordingtoMQH(qDoub, ambientTempDoub, hkdoub, aoDoub, atdoub, ventHeight);
-                    resultsView.setText(String.valueOf(Math.round(resultDoub)));
-                    resultUnits = resultSpinner.getSelectedItem().toString();
-                    resultLayout.setVisibility(View.VISIBLE);
-                    ValueClassStorage.TGasLayer tGasLayer = new ValueClassStorage().new TGasLayer(compLength, compWidth, compHeight, ventWidth, ventHeight, intLining, qDoub, ambientTempDoub, selectedMaterial);
-                    ValueClassStorage.tGasLayer = tGasLayer;
+                    getResults();
                 }
                 catch (Exception ex) {
                     String error = "Please Fill the Empty Fields";
@@ -138,6 +158,20 @@ public class TGasLayer extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void getResults()
+    {
+        thermalConductivity = ValuesConverstions.thermalConductivity(selectedMaterial);
+        double hkdoub = Calculations.Calculatehk(thermalConductivity, intLining);
+        double aoDoub = ventWidth * ventHeight;
+        double atdoub = Calculations.CalculateTGasLayerAT(compWidth, compLength, compHeight, aoDoub);
+        resultDoub = Calculations.CalculateTempOfUpperGasLayerAccordingtoMQH(qDoub, ambientTempDoub, hkdoub, aoDoub, atdoub, ventHeight);
+        resultsView.setText(String.valueOf(Math.round(resultDoub)));
+        resultUnits = resultSpinner.getSelectedItem().toString();
+        resultLayout.setVisibility(View.VISIBLE);
+        ValueClassStorage.TGasLayer tGasLayer = new ValueClassStorage().new TGasLayer(compLength, compWidth, compHeight, ventWidth, ventHeight, intLining, qDoub, ambientTempDoub, selectedMaterial);
+        ValueClassStorage.tGasLayer = tGasLayer;
     }
 
     public void addItemsOnUnitSpinner(Spinner spinnerToMake)
