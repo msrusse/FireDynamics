@@ -16,7 +16,7 @@
             android:id="@+id/qFlashoverLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -24,9 +24,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
+                android:paddingEnd="16dp"
                 android:text="@string/flashover"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:paddingEnd="32dp"
                 android:paddingStart="16dp"
+                android:paddingEnd="32dp"
                 android:text="@string/flashover_desc"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -46,7 +46,7 @@
             android:id="@+id/hrrLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/flameHeightLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/t2FiresLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/radiationPoolLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -166,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/conductionLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -196,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/solidIgnitionLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -226,7 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/openPipeLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -256,7 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gasConLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -286,7 +286,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gasAmountLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -316,7 +316,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/oxygenLevelLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -346,7 +346,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/selfHeatingLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
@@ -375,7 +375,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tGasLayersLayout"
-            android:background="@mipmap/main_button"
+            android:background="@drawable/main_button"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical">
