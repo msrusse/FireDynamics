@@ -21,7 +21,7 @@
     <string name="self_heating">Self Heating</string>
     <string name="t_gas_layer">T Gas Layer</string>
     <string name="int_lining_thick">Interior Lining Thickness</string>
-    <string name="get_calculation">Calculate for me!</string>
+    <string name="get_calculation">Calculate for me</string>
     <string name="int_therm_lining">Interior Lining Thermal Conductivity</string>
     <string name="hk">hk</string>
     <string name="av">Av</string>

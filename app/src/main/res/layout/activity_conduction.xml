@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/firedynamics_background_1"
+    android:orientation="vertical"
     tools:context="com.example.masonrussell.firedynamics.FlashOver">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ombre_header">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@mipmap/transparent_header"
+            android:minHeight="?attr/actionBarSize"
+            android:textAlignment="center"
+            android:theme="?attr/actionBarTheme"
+            app:titleTextColor="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/conduction"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@mipmap/small_card"
+        android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:padding="8dp">
+
+        <Spinner
+            android:id="@+id/materialSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@mipmap/drop_down_button"
+            android:textColor="@color/colorPrimaryDark" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/lengthView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight=".6"
-                android:text="@string/length"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/lengthResult"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight=".22"
-                android:ems="10"
-                android:inputType="number|numberDecimal"
-                android:labelFor="@+id/ventWidthText"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/lengthSpinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_weight=".18"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@drawable/firedynamic_button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <TextView
@@ -67,10 +75,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/hot_side"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <EditText
@@ -79,28 +86,45 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".22"
+                android:background="@android:color/white"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/ventHeightText"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
+                android:textColorHighlight="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textCursorDrawable="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/hotSideSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".18"
-                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="center"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/firedynamic_button" />
+                android:layout_weight=".18"
+                android:background="@mipmap/drop_down_button"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@mipmap/divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <TextView
@@ -109,10 +133,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
                 android:layout_weight=".6"
                 android:text="@string/cold_side"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <EditText
@@ -121,53 +144,108 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight=".22"
+                android:background="@android:color/white"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/intLiningText"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
+                android:textColorHighlight="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textCursorDrawable="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/coldSideSpinner"
                 android:layout_width="0dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
+                android:background="@mipmap/drop_down_button"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@mipmap/divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/materialSpinner"
+            <TextView
+                android:id="@+id/lengthView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".6"
+                android:text="@string/length"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/lengthResult"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight=".22"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:labelFor="@+id/ventWidthText"
+                android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
+                android:textColorHighlight="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textCursorDrawable="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/lengthSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:background="@android:drawable/editbox_dropdown_light_frame"
-                android:gravity="center" />
+                android:layout_weight=".18"
+                android:background="@mipmap/drop_down_button"
+                android:textColor="@color/colorPrimaryDark" />
+
         </LinearLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@mipmap/divider" />
 
         <Button
             android:id="@+id/getResultsButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:backgroundTint="@android:color/white"
+            android:layout_marginEnd="16dp"
+            android:background="@mipmap/calculate_button"
+            android:padding="8dp"
             android:text="@string/get_calculation"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -175,12 +253,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="300dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -189,10 +271,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginStart="16dp"
                     android:layout_weight=".6"
                     android:text="@string/heat_flux"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/white"
                     android:textSize="18sp" />
 
                 <TextView
@@ -203,7 +284,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -211,18 +292,28 @@
                     android:id="@+id/heatFluxResultSpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
-                    android:layout_weight=".2"
-                    android:background="@drawable/firedynamic_button"
-                    android:gravity="center" />
+                    android:layout_weight=".18"
+                    android:background="@mipmap/drop_down_button"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark" />
             </LinearLayout>
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@mipmap/divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/thermalPenTimeResultView"
@@ -230,10 +321,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginStart="16dp"
                     android:layout_weight=".6"
                     android:text="@string/thermal_pen_time"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/white"
                     android:textSize="18sp" />
 
                 <TextView
@@ -244,23 +334,25 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight=".22"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/thermalPenTimeResultSpinner"
                     android:layout_width="0dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/colorPrimaryDark"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:background="@drawable/firedynamic_button"
-                    android:gravity="center" />
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight=".18"
+                    android:background="@mipmap/drop_down_button"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark" />
             </LinearLayout>
 
-        </LinearLayout>
 
+
+        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>

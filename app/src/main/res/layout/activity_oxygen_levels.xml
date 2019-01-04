@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/firedynamics_background_1"
+    android:background="@mipmap/ombre_header"
     tools:context="com.example.masonrussell.firedynamics.FlashOver">
 
     <LinearLayout
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
+                android:background="@mipmap/drop_down_button" />
 
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
+                android:background="@mipmap/drop_down_button" />
 
         </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight=".18"
-                android:background="@drawable/firedynamic_button" />
+                android:background="@mipmap/drop_down_button" />
 
         </LinearLayout>
 
