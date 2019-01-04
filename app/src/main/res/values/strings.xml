@@ -102,9 +102,9 @@
     <string name="room_area">Area of Room/House</string>
     <string name="height_from_leak">Height From Leak</string>
     <string name="stoich">Stoich.</string>
-    <string name="gas_volume">Volume of Gas</string>
-    <string name="gas_weight">Weight of Gas</string>
-    <string name="liquid_volume">Volume of Liquid</string>
+    <string name="gas_volume">Gas Volume</string>
+    <string name="gas_weight">Gas Weight</string>
+    <string name="liquid_volume">Liquid Volume</string>
     <string name="flashover_desc">Predict fire size required for flashover</string>
     <string name="hrr_desc">Predict fire size</string>
     <string name="flame_height_desc">Predict flame height</string>

@@ -87,8 +87,7 @@
                 android:textColorHighlight="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textColorLink="@color/colorPrimaryDark"
-                android:textCursorDrawable="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textCursorDrawable="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/qHeatUnitSpinner"
@@ -141,7 +140,10 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textColorHighlight="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textCursorDrawable="@color/colorPrimaryDark" />
 
             <Spinner
                 android:id="@+id/typeUnitSpinner"
@@ -199,7 +201,10 @@
                     android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textColorHighlight="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:textColorLink="@color/colorPrimaryDark"
+                    android:textCursorDrawable="@color/colorPrimaryDark"/>
 
                 <Spinner
                     android:id="@+id/secondSquareSpinner"
