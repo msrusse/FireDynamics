@@ -16,9 +16,9 @@
             android:id="@+id/calculationSelectionSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_margin="16dp"
-            android:background="@android:drawable/dialog_holo_light_frame" />
+            android:background="@mipmap/drop_down_button"
+            android:textColor="@color/colorPrimaryDark" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
