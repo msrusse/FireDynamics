@@ -39,6 +39,10 @@ public class GasConcentration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity(Boolean.FALSE);
+    }
+
+    void mainActivity(Boolean isRestarted) {
         setContentView(R.layout.activity_gas_concentation);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getResultsButton = findViewById(R.id.getResultsButton);
@@ -54,7 +58,7 @@ public class GasConcentration extends AppCompatActivity {
         timestepResult = findViewById(R.id.timestepValue);
         resultsLayout.setVisibility(View.INVISIBLE);
         timestepUnits = "min";
-        if (ValueClassStorage.gasConcentration != null)
+        if (ValueClassStorage.gasConcentration != null && !isRestarted)
         {
             ValueClassStorage.GasConcentration gasConcentration = ValueClassStorage.gasConcentration;
             airchangeDoub = gasConcentration.airChangesDoub;
@@ -100,6 +104,7 @@ public class GasConcentration extends AppCompatActivity {
 
     void getValues()
     {
+        setContentView(R.layout.activity_gas_concentation_graph);
         qaDoub = airchangeDoub * gasVolumeDoub;
         for (double i=0; i <= 8.3; i += timestepDoub)
         {
@@ -138,6 +143,13 @@ public class GasConcentration extends AppCompatActivity {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
                 Toast.makeText(GasConcentration.this, String.valueOf(dataPoint), Toast.LENGTH_LONG).show();
+            }
+        });
+        Button back_button = findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity(Boolean.TRUE);
             }
         });
     }

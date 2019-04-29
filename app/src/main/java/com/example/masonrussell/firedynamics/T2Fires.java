@@ -1,6 +1,7 @@
 package com.example.masonrussell.firedynamics;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,16 +41,18 @@ public class T2Fires extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity(Boolean.FALSE);
+    }
+
+    void mainActivity(Boolean isRestart) {
         setContentView(R.layout.activity_t2_fires);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         resultLayout = findViewById(R.id.resultLayout);
         t1Value = findViewById(R.id.t1Value);
-        resultsGraph = findViewById(R.id.resultsGraph);
         peakHrrValue = findViewById(R.id.peakHrrValue);
         timeIntervalValue = findViewById(R.id.timeIntervalValue);
         getResults = findViewById(R.id.getMeasurementsButton);
-        resultLayout.setVisibility(View.INVISIBLE);
-        if (ValueClassStorage.t2Fires != null)
+        if (ValueClassStorage.t2Fires != null && !isRestart)
         {
             ValueClassStorage.T2Fires t2Fire = ValueClassStorage.t2Fires;
             t1Doub = t2Fire.t1Doub;
@@ -67,7 +70,7 @@ public class T2Fires extends AppCompatActivity {
                 public void onClick(View v) {
                     if (!TextUtils.isEmpty(t1Value.getText()) && !TextUtils.isEmpty(peakHrrValue.getText()) && !TextUtils.isEmpty(timeIntervalValue.getText())) {
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
+                        //imm.hideSoftInputFromWindow(resultLayout.getWindowToken(), 0);
                         t1Doub = Double.parseDouble(t1Value.getText().toString());
                         peakHrrDoub = Double.parseDouble(peakHrrValue.getText().toString());
                         timeIntervalDoub = Double.parseDouble(timeIntervalValue.getText().toString());
@@ -91,11 +94,12 @@ public class T2Fires extends AppCompatActivity {
         ValueClassStorage.T2Fires t2Fires = new ValueClassStorage().new T2Fires(t1Doub, peakHrrDoub, timeIntervalDoub);
         ValueClassStorage.t2Fires = t2Fires;
         getValues();
-        resultLayout.setVisibility(View.VISIBLE);
     }
 
     void getValues()
     {
+        setContentView(R.layout.activity_t2_fires_graph);
+        resultsGraph = findViewById(R.id.resultsGraph);
         int counter = 0;
         for (double i=0; i < 740; i += timeIntervalDoub)
         {
@@ -142,6 +146,13 @@ public class T2Fires extends AppCompatActivity {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
                 Toast.makeText(T2Fires.this, String.valueOf(dataPoint), Toast.LENGTH_LONG).show();
+            }
+        });
+        Button back_button = findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity(Boolean.TRUE);
             }
         });
     }

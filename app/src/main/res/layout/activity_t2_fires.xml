@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,18 +7,52 @@
     android:background="@mipmap/ombre_header"
     tools:context="com.example.masonrussell.firedynamics.FlashOver">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ombre_header">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@mipmap/transparent_header"
+            android:minHeight="?attr/actionBarSize"
+            android:textAlignment="center"
+            android:theme="?attr/actionBarTheme"
+            app:titleTextColor="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/t2_fires"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/small_card"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
+        android:layout_gravity="center"
+        android:padding="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             android:orientation="horizontal">
 
             <TextView
@@ -27,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".78"
                 android:text="@string/t1"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <EditText
@@ -36,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight=".22"
+                android:background="@android:color/white"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compLengthText"
@@ -48,7 +83,10 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
 
             <TextView
                 android:id="@+id/peakHrrView"
@@ -56,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/peak_hrr"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <EditText
@@ -70,6 +108,7 @@
                 android:inputType="number|numberDecimal"
                 android:labelFor="@+id/compWidthText"
                 android:text=""
+                android:background="@android:color/white"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
 
@@ -79,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/kw"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -87,8 +126,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
 
             <TextView
                 android:id="@+id/timeIntervalView"
@@ -96,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".6"
                 android:text="@string/time_interval"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <EditText
@@ -111,6 +152,7 @@
                 android:labelFor="@+id/compHeightText"
                 android:text=""
                 android:textAlignment="center"
+                android:background="@android:color/white"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
@@ -119,79 +161,27 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".18"
                 android:text="@string/seconds"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/getMeasurementsButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@mipmap/calculate_button"
             android:backgroundTint="@android:color/white"
             android:text="@string/get_calculation"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="18sp" />
-
-        <LinearLayout
-            android:id="@+id/resultLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="300dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:rotation="-90"
-                        android:text="HRR - kw"
-                        android:textAlignment="center"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <com.jjoe64.graphview.GraphView
-                    android:id="@+id/resultsGraph"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="10" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="time - sec" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

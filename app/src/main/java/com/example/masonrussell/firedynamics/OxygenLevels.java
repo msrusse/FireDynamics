@@ -1,7 +1,6 @@
 package com.example.masonrussell.firedynamics;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -236,7 +235,7 @@ public class OxygenLevels extends AppCompatActivity {
                 switch (graphSelectionSpinner.getSelectedItem().toString()) {
                     case "Q Over Time":
                         setContentView(R.layout.activity_oxygen_levels_result_graph);
-                        returnButton = findViewById(R.id.button);
+                        returnButton = findViewById(R.id.back_button);
                         resultsGraph = findViewById(R.id.resultsGraph);
                         addPointsOnGraph(q);
                         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -339,7 +338,7 @@ public class OxygenLevels extends AppCompatActivity {
                         break;
                     case "Total Energy Over Time":
                         setContentView(R.layout.activity_oxygen_levels_result_graph);
-                        returnButton = findViewById(R.id.button);
+                        returnButton = findViewById(R.id.back_button);
                         resultsGraph = findViewById(R.id.resultsGraph);
                         addPointsOnGraph(totalEnergy);
                         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -442,7 +441,7 @@ public class OxygenLevels extends AppCompatActivity {
                         break;
                     case "Total O2 Consumed Over Time":
                         setContentView(R.layout.activity_oxygen_levels_result_graph);
-                        returnButton = findViewById(R.id.button);
+                        returnButton = findViewById(R.id.back_button);
                         resultsGraph = findViewById(R.id.resultsGraph);
                         addPointsOnGraph(totalO2Consumed);
                         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -546,7 +545,7 @@ public class OxygenLevels extends AppCompatActivity {
                         break;
                     case "Total Percent O2 In Room":
                         setContentView(R.layout.activity_oxygen_levels_result_graph);
-                        returnButton = findViewById(R.id.button);
+                        returnButton = findViewById(R.id.back_button);
                         resultsGraph = findViewById(R.id.resultsGraph);
                         addPointsOnGraph(percentO2InRoom);
                         returnButton.setOnClickListener(new View.OnClickListener() {

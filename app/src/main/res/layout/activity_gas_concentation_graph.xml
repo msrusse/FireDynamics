@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ombre_header"
     tools:context="com.example.masonrussell.firedynamics.FlashOver">
 
     <FrameLayout
@@ -29,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/oxygen_levels"
+                android:text="@string/gas_conc"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimaryDark"
@@ -81,6 +80,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </FrameLayout>
