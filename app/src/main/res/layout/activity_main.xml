@@ -400,5 +400,26 @@
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/about"
+            android:background="@drawable/main_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/about"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginBottom="24dp"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

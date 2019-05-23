@@ -1,6 +1,10 @@
 package com.example.masonrussell.firedynamics;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,12 +12,18 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout flashoverLayout, hrrLayout, flameHeightLayout, t2FireLayout, radiationPoolLayout, conductionLayout, solidIgnitionLayout, openPipeLayout, gasConcentrationLayout, gasAmountLayout, oxygenLevelsLayout, selfHeatingLayout, tGasLayerLayout;
+    LinearLayout flashoverLayout, hrrLayout, flameHeightLayout, t2FireLayout, radiationPoolLayout, conductionLayout, solidIgnitionLayout, openPipeLayout, gasConcentrationLayout, gasAmountLayout, oxygenLevelsLayout, selfHeatingLayout, tGasLayerLayout, about;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPref = getSharedPreferences("eula",0);
+        boolean eula_accepted = sharedPref.getBoolean("eula", false);
+        if (!eula_accepted) {
+            showAlert();
+        }
         flashoverLayout = findViewById(R.id.qFlashoverLayout);
         hrrLayout = findViewById(R.id.hrrLayout);
         flameHeightLayout = findViewById(R.id.flameHeightLayout);
@@ -27,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         oxygenLevelsLayout = findViewById(R.id.oxygenLevelLayout);
         selfHeatingLayout = findViewById(R.id.selfHeatingLayout);
         tGasLayerLayout = findViewById(R.id.tGasLayersLayout);
+        about = findViewById(R.id.about);
 
         flashoverLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,5 +145,41 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), About.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    void showAlert()
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.euala_title)
+                .setMessage(R.string.eula)
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putBoolean("eula", true);
+                        editor.apply();
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(R.string.decline, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
